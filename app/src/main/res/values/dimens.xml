@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_heading">11dp</dimen>
+    <dimen name="radius_corner">30dp</dimen>
+    <dimen name="main_heading">13dp</dimen>
+    <dimen name="small_text">10dp</dimen>
+</resources>
