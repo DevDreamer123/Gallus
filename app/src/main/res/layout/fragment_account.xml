@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".AccountFragment">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_30sdp"
+        app:cardCornerRadius="@dimen/_50sdp">
+
+<ImageView
+    android:layout_width="@dimen/_100sdp"
+    android:layout_height="@dimen/_100sdp"
+  android:background="@drawable/farmarimg"/>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        app:cardElevation="@dimen/_10sdp"
+        android:layout_height="wrap_content"
+      app:cardBackgroundColor="@color/yellow">
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="@dimen/_10sdp"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:weightSum="2"
+        android:gravity="center"
+      android:orientation="horizontal">
+      <TextView
+          android:layout_width="0dp"
+          android:layout_weight="1"
+          android:gravity="right"
+          android:layout_height="wrap_content"
+          android:text="Name"
+        android:textStyle="bold"/>
+      <TextView
+          android:layout_width="0dp"
+          android:layout_weight="1"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="@dimen/_10sdp"
+          android:text="xyz" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:weightSum="2"
+        android:gravity="center"
+        android:orientation="horizontal">
+      <TextView
+          android:layout_width="0dp"
+          android:layout_weight="1"
+          android:gravity="right"
+          android:layout_height="wrap_content"
+          android:text="Uder Id"
+          android:textStyle="bold"/>
+      <TextView
+          android:layout_width="0dp"
+          android:layout_weight="1"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="@dimen/_10sdp"
+          android:text="xyz00001" />
+    </LinearLayout>
+      </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp">
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Personal Information"
+            android:padding="@dimen/_10sdp"
+            android:drawableRight="@drawable/baseline_arrow_right_24"
+          android:drawableLeft="@drawable/baseline_person_24_yellow"
+          android:drawablePadding="@dimen/_5sdp"/>
+      </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp">
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Schemes Availed"
+            android:padding="@dimen/_10sdp"
+            android:drawableRight="@drawable/baseline_arrow_right_24"
+            android:drawableLeft="@drawable/baseline_person_24_yellow"
+            android:drawablePadding="@dimen/_5sdp"/>
+      </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp">
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Land Details"
+            android:padding="@dimen/_10sdp"
+            android:drawableRight="@drawable/baseline_arrow_right_24"
+            android:drawableLeft="@drawable/baseline_person_24_yellow"
+            android:drawablePadding="@dimen/_5sdp"/>
+      </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp">
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Personal Information"
+            android:padding="@dimen/_10sdp"
+            android:drawableRight="@drawable/baseline_arrow_right_24"
+            android:drawableLeft="@drawable/baseline_person_24_yellow"
+            android:drawablePadding="@dimen/_5sdp"/>
+      </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+      android:text="Update Profile"
+      android:backgroundTint="@color/yellow"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginBottom="@dimen/_150sdp"
+      android:layout_marginRight="@dimen/_10sdp"
+      android:layout_marginLeft="@dimen/_10sdp"/>
+
+
+  </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

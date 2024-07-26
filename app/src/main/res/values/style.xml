@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ThemeOverlay.AppCompat.navTheme">
+        <!-- Background color when SELECTED -->
+        <item name="colorControlHighlight">@color/black</item>
+        <item name="showAsAction">withText</item>
+        <item name="android:backgroundTint">@color/black</item>
+    </style>
+
+    <style name="fab_3_rounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+        <item name="cornerSizeBottomLeft">50%</item>
+    </style>
+
+</resources>
