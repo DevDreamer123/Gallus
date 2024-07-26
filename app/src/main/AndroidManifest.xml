@@ -16,6 +16,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".FarmListDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".DailyRecordActivity"
             android:exported="false" />
         <activity
