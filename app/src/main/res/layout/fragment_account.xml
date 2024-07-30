@@ -51,6 +51,7 @@
           android:text="Name"
         android:textStyle="bold"/>
       <TextView
+          android:id="@+id/user_account"
           android:layout_width="0dp"
           android:layout_weight="1"
           android:layout_height="wrap_content"
@@ -72,6 +73,7 @@
           android:text="Uder Id"
           android:textStyle="bold"/>
       <TextView
+          android:id="@+id/farmer_Id_account"
           android:layout_width="0dp"
           android:layout_weight="1"
           android:layout_height="wrap_content"

@@ -1,6 +1,8 @@
 package in.innovaneers.gallus.Utils;
 
+import static android.content.Context.MODE_PRIVATE;
 import static in.innovaneers.gallus.LoginActivity.KEY_MOBILE;
+import static in.innovaneers.gallus.LoginActivity.KEY_NAME;
 import static in.innovaneers.gallus.LoginActivity.KEY_PASSWORD;
 
 import android.content.Context;
@@ -24,7 +26,7 @@ import in.innovaneers.gallus.R;
 public class SettingFragment extends Fragment {
 
 
-    TextView farmList_setting,logout_link_setting;
+    TextView farmList_setting,logout_link_setting,username_account;
     SharedPreferences shp;
     public static final String SHARED_PREF_NAME = "Gallus";
 
@@ -34,6 +36,13 @@ public class SettingFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_setting, container, false);
+        shp = getActivity().getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
+        String registeredUserNumber = shp.getString(KEY_NAME, "");
+        username_account = view.findViewById(R.id.username_setting);
+        username_account.setText(registeredUserNumber);
+
+
+
         farmList_setting = view.findViewById(R.id.farmList_setting);
         farmList_setting.setOnClickListener(new View.OnClickListener() {
             @Override
