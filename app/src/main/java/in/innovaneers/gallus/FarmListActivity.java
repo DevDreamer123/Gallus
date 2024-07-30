@@ -32,11 +32,13 @@ import retrofit2.Response;
 
 
 
-public class FarmListActivity extends AppCompatActivity {
+public class FarmListActivity extends AppCompatActivity  {
 RecyclerView farm_list_recycler;
     SharedPreferences shp;
     public static final String SHARED_PREF_NAME = "Gallus";
     private static String globalFarmerId;
+
+    private List<FarmsModel> farmsModels;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,11 @@ RecyclerView farm_list_recycler;
 
         shp = getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         String farmerId =shp.getString(KEY_FARMER_ID,"");
+        String selectedFarmId = shp.getString("selectedFarmId","");
+        String selectedName = shp.getString("selectedFarmName","");
+        Toast.makeText(this,selectedFarmId+selectedName, Toast.LENGTH_SHORT).show();
+
+        farmsModels = new ArrayList<>();
         globalFarmerId = farmerId;
         RetrofitInstance.BASEURL = "http://gallus.innovaneers.in/";
         FarmerIdModel farmerIdModel = new FarmerIdModel(globalFarmerId);
@@ -85,6 +92,5 @@ RecyclerView farm_list_recycler;
         }
 
     }
-
 
 }
