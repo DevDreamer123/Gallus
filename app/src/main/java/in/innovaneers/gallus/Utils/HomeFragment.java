@@ -267,9 +267,26 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onResponse(Call<DashBoardModel> call, Response<DashBoardModel> response) {
                     DashBoardModel dashBoardModel = response.body();
-                    cpg_per_kg_home.setText(dashBoardModel.getCostPerKG());
-                    fCR_per_kg_home.setText(dashBoardModel.getFCR());
-                    rate_per_kg_home.setText(dashBoardModel.getRatePerKG());
+                    if (response.isSuccessful() && response.body() != null) {
+                        if (dashBoardModel.getCostPerKG().isEmpty()) {
+                            cpg_per_kg_home.setVisibility(View.VISIBLE);
+                        } else {
+                            cpg_per_kg_home.setText(dashBoardModel.getCostPerKG());
+                        }
+
+                        if (dashBoardModel.getFCR() == null) {
+                            cpg_per_kg_home.setVisibility(View.VISIBLE);
+                        } else {
+                            fCR_per_kg_home.setText(dashBoardModel.getFCR());
+                        }
+                        if (dashBoardModel.getRatePerKG() == null) {
+                            cpg_per_kg_home.setVisibility(View.VISIBLE);
+                        } else {
+                            rate_per_kg_home.setText(dashBoardModel.getRatePerKG());
+                        }
+                    }else {
+                        handleError("API response was unsuccessfully");
+                    }
                 }
 
 
@@ -427,7 +444,10 @@ public class HomeFragment extends Fragment {
     }
 
 
-
+private  void handleError(String errorMessage){
+        Log.e("API Error", errorMessage);
+    Toast.makeText(getActivity(), "Failed to load data", Toast.LENGTH_SHORT).show();
+}
 
 
 

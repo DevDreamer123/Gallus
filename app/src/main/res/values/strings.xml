@@ -5,9 +5,13 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="user">User Name</string>
+<<<<<<< Updated upstream
 <<<<<<< HEAD
     <string name="add">Add New Farm\n</string>
 =======
+=======
+    <string name="value_box">00</string>
+>>>>>>> Stashed changes
     <string name="add">Add Farm\n</string>
     <string name="farmid">FarmID\n</string>
 
