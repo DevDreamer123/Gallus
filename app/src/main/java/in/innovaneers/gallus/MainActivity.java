@@ -1,5 +1,6 @@
 package in.innovaneers.gallus;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -35,7 +36,7 @@ import in.innovaneers.gallus.Utils.SettingFragment;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
-    FloatingActionButton fab;
+    FloatingActionButton fab,fab_msg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +95,14 @@ public class MainActivity extends AppCompatActivity {
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
                 Toast.makeText(MainActivity.this, "Cart", Toast.LENGTH_SHORT).show();
+            }
+        });
+         fab_msg = findViewById(R.id.fab_msg);
+        fab_msg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this,MassageActivity.class);
+                startActivity(i);
             }
         });
 
