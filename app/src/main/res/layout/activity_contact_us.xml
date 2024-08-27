@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ContactUsActivity">
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+      <!-- Title -->
+      <TextView
+          android:id="@+id/tv_contact_us"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerHorizontal="true"
+          android:layout_marginTop="32dp"
+          android:text="Contact Us"
+          android:textColor="@color/yellow"
+          android:textSize="24sp"
+          android:textStyle="bold" />
+
+      <!-- Contact Info Card -->
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/tv_contact_us"
+          android:layout_margin="16dp"
+          android:background="@drawable/rounded_corners"
+          android:orientation="vertical"
+          android:padding="16dp">
+
+          <!-- Phone Info -->
+          <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:padding="8dp">
+
+              <ImageView
+                  android:layout_width="24dp"
+                  android:layout_height="24dp"
+                  android:src="@drawable/baseline_call_24"
+                  app:tint="@color/yellow" />
+
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="8dp"
+                  android:text="+91 9919916661"
+                  android:textColor="#000" />
+          </LinearLayout>
+
+          <!-- Email Info -->
+          <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:padding="8dp">
+
+              <ImageView
+                  android:layout_width="24dp"
+                  android:layout_height="24dp"
+                  android:src="@drawable/baseline_alternate_email_24"
+                  app:tint="@color/yellow" />
+
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="8dp"
+                  android:text="info@gallus.in"
+                  android:textColor="#000" />
+          </LinearLayout>
+
+          <!-- Address Info -->
+          <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:padding="8dp">
+
+              <ImageView
+                  android:layout_width="24dp"
+                  android:layout_height="24dp"
+                  android:src="@drawable/baseline_location_on_24"
+                  app:tint="@color/yellow" />
+
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="8dp"
+                  android:text="Kanpur,UP"
+                  android:textColor="#000" />
+          </LinearLayout>
+
+          <!-- Form Fields -->
+          <EditText
+              android:id="@+id/et_name"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:hint="Name"
+              android:layout_marginTop="16dp"
+              android:background="@drawable/edittext_background"
+              android:padding="12dp" />
+
+          <EditText
+              android:id="@+id/et_email"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:hint="Email"
+              android:layout_marginTop="8dp"
+              android:background="@drawable/edittext_background"
+              android:padding="12dp" />
+
+          <EditText
+              android:id="@+id/et_message"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:hint="Message"
+              android:layout_marginTop="8dp"
+              android:background="@drawable/edittext_background"
+              android:padding="12dp" />
+
+          <!-- Send Button -->
+          <Button
+              android:id="@+id/btn_send_message"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="16dp"
+              android:backgroundTint="@color/yellow"
+              android:text="Send Message"
+              android:textColor="#fff"
+              android:padding="12dp" />
+      </LinearLayout>
+
+  </RelativeLayout>
+
+</androidx.core.widget.NestedScrollView>

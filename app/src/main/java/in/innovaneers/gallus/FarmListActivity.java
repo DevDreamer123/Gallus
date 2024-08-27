@@ -3,9 +3,12 @@ package in.innovaneers.gallus;
 import static in.innovaneers.gallus.LoginActivity.KEY_FARMER_ID;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 import java.util.function.Consumer;
 
@@ -36,6 +39,7 @@ public class FarmListActivity extends AppCompatActivity  {
 RecyclerView farm_list_recycler;
     SharedPreferences shp;
     public static final String SHARED_PREF_NAME = "Gallus";
+    Button btnAddExpense;
     private static String globalFarmerId;
 
     private List<FarmsModel> farmsModels;
@@ -90,6 +94,18 @@ RecyclerView farm_list_recycler;
             Log.d("error1",e.getMessage());
             e.getMessage();
         }
+
+
+
+        //Farm Form clickListener
+        btnAddExpense = findViewById(R.id.btnAddExpense);
+        btnAddExpense.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(FarmListActivity.this, FarmAddActivity.class);
+                startActivity(i);
+            }
+        });
 
     }
 

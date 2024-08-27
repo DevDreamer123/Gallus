@@ -23,5 +23,20 @@ public interface ApiInterface {
     @POST("Batches/Add")  //batch
     Call<RegistrationResponseModel> addBatch(@Body BatchRequestModel batchRequestModel);
 
+    @POST("Batches/List")  //batchList
+    Call<List<BatchListModel>> ListBatch(@Body FarmIdModel farmIdModel);
+
+    @POST("Records/History")  //RecordHistory
+    Call<List<RecordRequestModel>> recordsHistory(@Body BatchIdModel batchIdModel);
+
+    @POST("Records/Add")  //Add Record
+    Call<RecordResponseModel> AddRecord(@Body RecordRequestModel recordRequestModel);
+
+    @POST("Batches/Dashboard")  //DashBoard
+    Call<DashBoardModel> dashBoard(@Body BatchIdModel batchIdModel);
+
+    @POST("Farms/Details")  //CurrentBatchIDGet
+    Call<GetBatchIDModel> GetBatchId(@Body FarmIdModel farmIdModel);
+
 
 }

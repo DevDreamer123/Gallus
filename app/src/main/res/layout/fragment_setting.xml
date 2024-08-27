@@ -62,6 +62,7 @@
             android:weightSum="3"
             android:orientation="horizontal">
             <androidx.cardview.widget.CardView
+                android:id="@+id/record_card_setting"
                 android:layout_width="0dp"
                 app:cardElevation="@dimen/_10sdp"
                 app:cardCornerRadius="@dimen/_5sdp"
@@ -78,6 +79,7 @@
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
+                android:id="@+id/help_contact_us_setting"
                 android:layout_width="0dp"
                 android:layout_marginLeft="@dimen/_2sdp"
                 android:layout_marginTop="@dimen/_5sdp"
@@ -94,6 +96,7 @@
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
+                android:id="@+id/payment_setting"
                 android:layout_width="0dp"
                 android:layout_marginLeft="@dimen/_2sdp"
                 android:layout_marginTop="@dimen/_5sdp"
@@ -105,7 +108,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Settings"
+                    android:text="Payment"
                     android:textStyle="bold"
                     android:layout_gravity="center"/>
 

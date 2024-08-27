@@ -43,8 +43,11 @@ dependencies {
     implementation libs.ssp.android
     androidTestImplementation libs.ext.junit
     implementation libs.retrofit
+    implementation libs.volley
+    implementation libs.glide
     implementation libs.converter.gson
     implementation libs.logging.interceptor
     implementation libs.okhttp
     androidTestImplementation libs.espresso.core
+
 }

@@ -14,7 +14,7 @@
         android:layout_gravity="center"
         android:layout_centerInParent="true"
         android:layout_height="150dp"
-        android:background="@drawable/hen"/>
+        android:background="@drawable/galluslogo"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

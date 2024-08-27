@@ -3,9 +3,9 @@
 
     <style name="ThemeOverlay.AppCompat.navTheme">
         <!-- Background color when SELECTED -->
-        <item name="colorControlHighlight">@color/black</item>
+        <item name="colorControlHighlight">@color/yellow</item>
         <item name="showAsAction">withText</item>
-        <item name="android:backgroundTint">@color/black</item>
+        <item name="android:backgroundTint">@color/yellow</item>
     </style>
 
     <style name="fab_3_rounded">

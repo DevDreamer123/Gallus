@@ -5,6 +5,20 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="user">User Name</string>
-    <string name="add">Add New Farm\n</string>
+    <string name="add">Add Farm\n</string>
     <string name="farmid">FarmID\n</string>
+
+
+    <string name="access_code">Access Code</string>
+    <string name="pay_button">Pay</string>
+    <string name="merchant_id">Merchant Id</string>
+    <string name="currency">Currency</string>
+    <string name="amount">Amount</string>
+    <string name="redirect_url">Redirect Url</string>
+    <string name="cancel_url">Cancel Url</string>
+    <string name="rsa_url">RSA Key Url</string>
+    <string name="view_all"><a href="#">view all</a></string>
+    <string name="forget_password"><a href="#">Forget Password</a></string>
+    <string name="selectmixture">Select</string>
+    <string name="select_farm">Select Farm</string>
 </resources>

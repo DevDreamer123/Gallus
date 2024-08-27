@@ -98,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
                                         editor.apply();
                                         // Toast.makeText(LoginActivity.this,response.body().getName(), Toast.LENGTH_SHORT).show();
                                         //  Toast.makeText(LoginActivity.this, "SuccessFully", Toast.LENGTH_SHORT).show();
-                                        Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                                        Intent i = new Intent(LoginActivity.this, PlanActivity.class);
                                         Toast.makeText(LoginActivity.this, "SuccessFully", Toast.LENGTH_SHORT).show();
                                         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(i);

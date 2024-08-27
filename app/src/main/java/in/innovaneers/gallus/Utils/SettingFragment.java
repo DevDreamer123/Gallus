@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -19,9 +20,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import in.innovaneers.gallus.CCAvenueActivity;
+import in.innovaneers.gallus.ContactUsActivity;
 import in.innovaneers.gallus.FarmListActivity;
 import in.innovaneers.gallus.LoginActivity;
 import in.innovaneers.gallus.R;
+import in.innovaneers.gallus.RecordsHistoryActivity;
 
 public class SettingFragment extends Fragment {
 
@@ -29,6 +33,7 @@ public class SettingFragment extends Fragment {
     TextView farmList_setting,logout_link_setting,username_account;
     SharedPreferences shp;
     public static final String SHARED_PREF_NAME = "Gallus";
+    CardView help_contact_us_setting,payment_setting,record_card_setting;
 
 
     @Override
@@ -40,6 +45,31 @@ public class SettingFragment extends Fragment {
         String registeredUserNumber = shp.getString(KEY_NAME, "");
         username_account = view.findViewById(R.id.username_setting);
         username_account.setText(registeredUserNumber);
+
+        payment_setting = view.findViewById(R.id.payment_setting);
+        payment_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), CCAvenueActivity.class);
+                startActivity(i);
+            }
+        });
+        help_contact_us_setting = view.findViewById(R.id.help_contact_us_setting);
+        help_contact_us_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), ContactUsActivity.class);
+                startActivity(i);
+            }
+        });
+        record_card_setting = view.findViewById(R.id.record_card_setting);
+        record_card_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), RecordsHistoryActivity.class);
+                startActivity(i);
+            }
+        });
 
 
 

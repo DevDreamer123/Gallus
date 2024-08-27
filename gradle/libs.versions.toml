@@ -1,6 +1,7 @@
 [versions]
 agp = "8.3.2"
 converterGson = "2.9.0"
+glide = "4.15.1"
 hiltAndroid = "2.40.5"
 hiltAndroidCompiler = "2.38.1"
 hiltCompiler = "2.29-alpha"
@@ -17,9 +18,11 @@ constraintlayout = "2.1.4"
 meowBottomNavigation = "1.0.0"
 sdpAndroid = "1.1.0"
 sspAndroid = "1.1.0"
+volley = "1.2.1"
 
 [libraries]
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroidCompiler" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltAndroid" }
@@ -41,6 +44,7 @@ retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "converte
 retrofit2 = { module = "com.squareup.retrofit2:retrofit2", version.ref = "converterGson" }
 sdp-android = { module = "com.intuit.sdp:sdp-android", version.ref = "sdpAndroid" }
 ssp-android = { module = "com.intuit.ssp:ssp-android", version.ref = "sspAndroid" }
+volley = { module = "com.android.volley:volley", version.ref = "volley" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

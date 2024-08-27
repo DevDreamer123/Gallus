@@ -42,19 +42,21 @@
             android:layout_marginLeft="@dimen/_10sdp">
 
             <EditText
-                android:id="@+id/editTextDate"
+                android:id="@+id/editTextDate_record"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_10sdp"
+                android:singleLine="true"
+                android:focusable="false"
                 android:backgroundTint="@color/white"
-                android:hint="Enter date"
+                android:hint="Enter dd/mm/yyyy"
                 android:inputType="date" />
         </androidx.cardview.widget.CardView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Grain Type"
+            android:text="Feed Brand"
             android:layout_marginTop="@dimen/_10sdp"
             android:textStyle="bold"
             android:layout_marginBottom="@dimen/_5sdp"
@@ -67,12 +69,12 @@
             android:layout_marginLeft="@dimen/_10sdp">
 
             <EditText
-                android:id="@+id/editTextGrainType"
+                android:id="@+id/editTextbrand_record"
                 android:layout_width="match_parent"
                 android:padding="@dimen/_10sdp"
                 android:backgroundTint="@color/white"
                 android:layout_height="wrap_content"
-                android:hint="Enter grain type" />
+                android:hint="Enter feed brand" />
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -82,7 +84,7 @@
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_5sdp"
-            android:text="Amount of Grain Fed (kg)"
+            android:text="Amount of Grain Fed (per kg)"
             android:paddingTop="8dp" />
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -91,13 +93,37 @@
             android:layout_marginLeft="@dimen/_10sdp">
 
             <EditText
-                android:id="@+id/editTextGrainAmount"
+                android:id="@+id/editTextGrainAmount_record"
                 android:layout_width="match_parent"
                 android:padding="@dimen/_10sdp"
                 android:backgroundTint="@color/white"
+                android:inputType="numberDecimal"
                 android:layout_height="wrap_content"
-                android:hint="Enter amount of grain fed (kg)"
-                android:inputType="numberDecimal" />
+                android:hint="Enter amount of grain fed (per kg)" />
+        </androidx.cardview.widget.CardView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:text="Feed Construction"
+            android:paddingTop="8dp" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp">
+
+            <EditText
+                android:id="@+id/editTextfeedconstruction_record"
+                android:layout_width="match_parent"
+                android:padding="@dimen/_10sdp"
+                android:backgroundTint="@color/white"
+                android:inputType="numberDecimal"
+                android:layout_height="wrap_content"
+                android:hint="Enter feed construction" />
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -107,7 +133,7 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_5sdp"
             android:layout_marginLeft="@dimen/_10sdp"
-            android:text="Chicks Weight (average per bird)"
+            android:text="Chicks Weight (average per chicks)"
             android:paddingTop="8dp" />
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -116,7 +142,7 @@
             android:layout_marginLeft="@dimen/_10sdp">
 
             <EditText
-                android:id="@+id/editTextBirdWeight"
+                android:id="@+id/editTextBirdWeight_record"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_10sdp"
@@ -128,7 +154,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mortality Rate"
+            android:text="Mortality"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_5sdp"
             android:textStyle="bold"
@@ -141,12 +167,12 @@
             android:layout_marginLeft="@dimen/_10sdp">
 
             <EditText
-                android:id="@+id/editTextMortalityRate"
+                android:id="@+id/editTextMortalityRate_record"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_10sdp"
                 android:backgroundTint="@color/white"
-                android:hint="Enter mortality rate"
+                android:hint="Enter mortality "
                 android:inputType="number" />
         </androidx.cardview.widget.CardView>
 
@@ -166,7 +192,7 @@
             android:layout_marginLeft="@dimen/_10sdp">
 
             <EditText
-                android:id="@+id/editTextHealthStatus"
+                android:id="@+id/editTextHealthStatus_record"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_10sdp"
@@ -190,7 +216,7 @@
             android:layout_marginLeft="@dimen/_10sdp">
 
             <EditText
-                android:id="@+id/editTextWaterConsumed"
+                android:id="@+id/editTextWaterConsumed_record"
                 android:layout_width="match_parent"
                 android:padding="@dimen/_10sdp"
                 android:backgroundTint="@color/white"
@@ -199,7 +225,7 @@
                 android:inputType="numberDecimal" />
         </androidx.cardview.widget.CardView>
 
-        <TextView
+    <!--    <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
@@ -222,10 +248,10 @@
                 android:padding="@dimen/_10sdp"
                 android:hint="Enter egg production"
                 android:inputType="number" />
-        </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>-->
 
         <Button
-            android:id="@+id/buttonSubmit"
+            android:id="@+id/buttonSubmit_record"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/yellow"
