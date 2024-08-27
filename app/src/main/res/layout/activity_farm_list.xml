@@ -14,30 +14,23 @@
             android:layout_width="match_parent"
             app:cardBackgroundColor="@color/yellow"
             android:layout_height="wrap_content">
-<<<<<<< HEAD
-=======
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:orientation="horizontal">
->>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Farm List"
                 android:padding="@dimen/_10sdp"
-<<<<<<< HEAD
-=======
+
                 android:layout_marginLeft="@dimen/_100sdp"
->>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
                 android:textColor="@color/white"
                 android:textSize="@dimen/_13sdp"
                 android:layout_gravity="center"
                 android:paddingBottom="@dimen/_10sdp"/>
-<<<<<<< HEAD
-=======
                 <Button
                     android:id="@+id/btnAddExpense"
                     android:layout_width="wrap_content"
@@ -50,7 +43,6 @@
                     android:text="@string/add"
                     android:layout_gravity="center" />
             </LinearLayout>
->>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
         </androidx.cardview.widget.CardView>
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"

@@ -1,6 +1,6 @@
 package in.innovaneers.gallus;
 
-<<<<<<< HEAD
+
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -8,7 +8,6 @@ import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-=======
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -17,7 +16,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
->>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -47,23 +45,17 @@ import in.innovaneers.gallus.Utils.SettingFragment;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
-<<<<<<< HEAD
     FloatingActionButton fab,fab_msg;
-=======
-    FloatingActionButton fab;
->>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-<<<<<<< HEAD
-=======
+
      /*   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.yellow));
         }*/
->>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
         setContentView(R.layout.activity_main);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -81,11 +73,8 @@ public class MainActivity extends AppCompatActivity {
                         .setTopLeftCorner(CornerFamily.ROUNDED,radius)
                         .build());*/
         showHomeFragment();
-<<<<<<< HEAD
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-=======
-        bottomNavigationView = findViewById(R.id.bottonnav);
->>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
+      //  bottomNavigationView = findViewById(R.id.bottonnav);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 
             @Override
@@ -124,7 +113,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Cart", Toast.LENGTH_SHORT).show();
             }
         });
-<<<<<<< HEAD
          fab_msg = findViewById(R.id.fab_msg);
         fab_msg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,8 +121,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-=======
->>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
 
 
     }

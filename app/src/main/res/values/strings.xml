@@ -5,13 +5,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="user">User Name</string>
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-    <string name="add">Add New Farm\n</string>
-=======
-=======
     <string name="value_box">00</string>
->>>>>>> Stashed changes
     <string name="add">Add Farm\n</string>
     <string name="farmid">FarmID\n</string>
 
@@ -28,5 +22,4 @@
     <string name="forget_password"><a href="#">Forget Password</a></string>
     <string name="selectmixture">Select</string>
     <string name="select_farm">Select Farm</string>
->>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
 </resources>

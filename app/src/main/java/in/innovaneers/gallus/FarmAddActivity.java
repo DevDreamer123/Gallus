@@ -28,11 +28,8 @@ import retrofit2.Response;
 
 public class FarmAddActivity extends AppCompatActivity {
 
-<<<<<<< HEAD
-    EditText name_addFarm,address_addFarm,area_addFarm,city_addFarm,state_addFarm,pincode_addFarm,chicks_addFarm,size_addFarm;
-=======
-    EditText name_addFarm,mobile_addFarm,address_addFarm,area_addFarm,city_addFarm,state_addFarm,pincode_addFarm,chicks_addFarm,size_addFarm;
->>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
+
+    EditText name_addFarm,address_addFarm,area_addFarm,city_addFarm,state_addFarm,mobile_addFarm,pincode_addFarm,chicks_addFarm,size_addFarm;
     Button saveFarmButton;
     SharedPreferences shp;
     public static final String SHARED_PREF_NAME = "Gallus";
@@ -56,10 +53,7 @@ public class FarmAddActivity extends AppCompatActivity {
 
         name_addFarm = findViewById(R.id.name_addFarm);
         address_addFarm = findViewById(R.id.address_addFarm);
-<<<<<<< HEAD
-=======
         mobile_addFarm = findViewById(R.id.mobile_addFarm);
->>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
         area_addFarm = findViewById(R.id.area_addFarm);
         city_addFarm = findViewById(R.id.city_addFarm);
         state_addFarm = findViewById(R.id.state_addFarm);

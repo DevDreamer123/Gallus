@@ -1,8 +1,6 @@
 package in.innovaneers.gallus;
 
-<<<<<<< HEAD
 import android.os.Bundle;
-=======
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,7 +13,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
->>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,10 +20,6 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-<<<<<<< HEAD
-public class DailyRecordActivity extends AppCompatActivity {
-
-=======
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -54,7 +47,6 @@ public class DailyRecordActivity extends AppCompatActivity {
     private String currentBatchId;
 
 
->>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,8 +57,6 @@ public class DailyRecordActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-<<<<<<< HEAD
-=======
 
         shp = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
          currentBatchId = shp.getString("currentBatchID","");
@@ -178,6 +168,5 @@ public class DailyRecordActivity extends AppCompatActivity {
                     }
                 }, year, month, dayOfMonth);
         datePickerDialog.show();
->>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
     }
 }

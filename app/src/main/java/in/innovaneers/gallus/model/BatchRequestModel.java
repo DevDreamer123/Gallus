@@ -7,7 +7,10 @@ public class BatchRequestModel {
     private String FarmID ;
     @SerializedName("Chicks")
     private String Chicks;
-<<<<<<< HEAD
+    @SerializedName("FreeChicks ")
+    private String FreeChicks ;
+    @SerializedName("Date")
+    private String Date ;
     @SerializedName("Purchase")
     private String Purchase;
 
@@ -17,14 +20,6 @@ public class BatchRequestModel {
         this.Purchase = Purchase;
     }
 
-=======
-    @SerializedName("FreeChicks ")
-    private String FreeChicks ;
-    @SerializedName("Date")
-    private String Date ;
-    @SerializedName("Purchase")
-    private String Purchase;
-
     public BatchRequestModel(String farmID, String chicks, String freeChicks, String date, String purchase) {
         FarmID = farmID;
         Chicks = chicks;
@@ -32,5 +27,4 @@ public class BatchRequestModel {
         Date = date;
         Purchase = purchase;
     }
->>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
 }

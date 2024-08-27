@@ -42,9 +42,11 @@
             android:layout_marginLeft="@dimen/_10sdp">
 
             <EditText
+                android:id="@+id/editTextDate_record"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_10sdp"
+                android:hint="Enter dd/mm/yyyy"
                 android:backgroundTint="@color/white"
                 android:inputType="date" />
         </androidx.cardview.widget.CardView>
@@ -54,6 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
             android:textStyle="bold"
+            android:text="Feed Brand"
             android:layout_marginBottom="@dimen/_5sdp"
             android:layout_marginLeft="@dimen/_10sdp"
             android:paddingTop="8dp" />
@@ -64,10 +67,12 @@
             android:layout_marginLeft="@dimen/_10sdp">
 
             <EditText
+                android:id="@+id/editTextbrand_record"
                 android:layout_width="match_parent"
                 android:padding="@dimen/_10sdp"
+                android:hint="Enter feed brand"
                 android:backgroundTint="@color/white"
-                android:layout_height="wrap_content"
+                android:layout_height="wrap_content"/>
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -75,6 +80,7 @@
             android:textStyle="bold"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginLeft="@dimen/_10sdp"
+            android:text="Amount of Grain (per kg)"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_5sdp"
             android:paddingTop="8dp" />
@@ -85,16 +91,19 @@
             android:layout_marginLeft="@dimen/_10sdp">
 
             <EditText
+                android:id="@+id/editTextGrainAmount_record"
                 android:layout_width="match_parent"
                 android:padding="@dimen/_10sdp"
+                android:hint="Enter amount of grain fed (per kg)"
                 android:backgroundTint="@color/white"
-                android:layout_height="wrap_content"
+                android:layout_height="wrap_content"/>
         </androidx.cardview.widget.CardView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
+            android:text="Feed Construction"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_5sdp"
             android:layout_marginLeft="@dimen/_10sdp"
@@ -106,6 +115,31 @@
             android:layout_marginLeft="@dimen/_10sdp">
 
             <EditText
+                android:id="@+id/editTextfeedconstruction_record"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:backgroundTint="@color/white"
+                android:hint="Enter feed construction"
+                android:inputType="numberDecimal" />
+        </androidx.cardview.widget.CardView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Chicks Weight (average per chicks)"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:paddingTop="8dp" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp">
+
+            <EditText
+                android:id="@+id/editTextBirdWeight_record"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_10sdp"
@@ -120,6 +154,7 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_5sdp"
             android:textStyle="bold"
+            android:text="Mortality"
             android:layout_marginLeft="@dimen/_10sdp"
             android:paddingTop="8dp" />
         <androidx.cardview.widget.CardView
@@ -129,10 +164,12 @@
             android:layout_marginLeft="@dimen/_10sdp">
 
             <EditText
+                android:id="@+id/editTextMortalityRate_record"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_10sdp"
                 android:backgroundTint="@color/white"
+                android:hint="Enter mortality"
                 android:inputType="number" />
         </androidx.cardview.widget.CardView>
 
@@ -152,6 +189,7 @@
             android:layout_marginLeft="@dimen/_10sdp">
 
             <EditText
+                android:id="@+id/editTextHealthStatus_record"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_10sdp"
@@ -175,6 +213,7 @@
             android:layout_marginLeft="@dimen/_10sdp">
 
             <EditText
+                android:id="@+id/editTextWaterConsumed_record"
                 android:layout_width="match_parent"
                 android:padding="@dimen/_10sdp"
                 android:backgroundTint="@color/white"
@@ -183,30 +222,9 @@
                 android:inputType="numberDecimal" />
         </androidx.cardview.widget.CardView>
 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_5sdp"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:text="Egg Production"
-            android:paddingTop="8dp" />
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:layout_marginLeft="@dimen/_10sdp">
-
-            <EditText
-                android:id="@+id/editTextEggProduction"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:padding="@dimen/_10sdp"
-                android:hint="Enter egg production"
-                android:inputType="number" />
 
         <Button
+            android:id="@+id/buttonSubmit_record"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/yellow"

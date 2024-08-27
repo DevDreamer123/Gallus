@@ -33,11 +33,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 // Check if the user is logged in
                 if (isUserLoggedIn()) {
-<<<<<<< HEAD
-                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
-=======
                     startActivity(new Intent(SplashActivity.this, PlanActivity.class));
->>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
                 } else {
                     startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                 }

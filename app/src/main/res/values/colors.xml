@@ -4,8 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="green">#008000</color>
     <color name="yellow">#FFD119</color>
-<<<<<<< HEAD
-=======
     <color name="green_dark">#296e01</color>
     <color name="purple">#8E24AA</color>
     <color name="grey">#a6a6a6</color>
@@ -20,5 +18,4 @@
     <color name="golden2">#F7EF8A</color>
     <color name="golden3">#D2AC47</color>
 
->>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
 </resources>

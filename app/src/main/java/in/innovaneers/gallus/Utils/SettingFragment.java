@@ -1,9 +1,7 @@
 package in.innovaneers.gallus.Utils;
 
-<<<<<<< HEAD
 import android.os.Bundle;
 
-=======
 import static android.content.Context.MODE_PRIVATE;
 import static in.innovaneers.gallus.LoginActivity.KEY_MOBILE;
 import static in.innovaneers.gallus.LoginActivity.KEY_NAME;
@@ -16,19 +14,15 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
->>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-<<<<<<< HEAD
 
 import in.innovaneers.gallus.R;
 
-public class SettingFragment extends Fragment {
 
-=======
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -47,17 +41,11 @@ public class SettingFragment extends Fragment {
     public static final String SHARED_PREF_NAME = "Gallus";
     CardView help_contact_us_setting,payment_setting,record_card_setting;
 
-
->>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_setting, container, false);
-<<<<<<< HEAD
-        return view;
-    }
-=======
         shp = getActivity().getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
         String registeredUserNumber = shp.getString(KEY_NAME, "");
         username_account = view.findViewById(R.id.username_setting);
@@ -150,5 +138,4 @@ public class SettingFragment extends Fragment {
 
         dialog.show();
     }
->>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
 }

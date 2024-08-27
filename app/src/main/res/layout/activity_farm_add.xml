@@ -49,8 +49,6 @@
             android:hint="Enter Farm Name"
             android:inputType="text" />
         </androidx.cardview.widget.CardView>
-<<<<<<< HEAD
-=======
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -73,7 +71,6 @@
                 android:hint="Enter mobile no"
                 android:inputType="text" />
         </androidx.cardview.widget.CardView>
->>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
 
         <TextView
             android:layout_width="wrap_content"
