@@ -3,9 +3,18 @@ package in.innovaneers.gallus;
 import static in.innovaneers.gallus.LoginActivity.KEY_FARMER_ID;
 
 import android.content.Context;
+<<<<<<< HEAD
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+=======
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
 import android.widget.Toast;
 import java.util.function.Consumer;
 
@@ -32,12 +41,24 @@ import retrofit2.Response;
 
 
 
+<<<<<<< HEAD
 public class FarmListActivity extends AppCompatActivity {
 RecyclerView farm_list_recycler;
     SharedPreferences shp;
     public static final String SHARED_PREF_NAME = "Gallus";
     private static String globalFarmerId;
 
+=======
+public class FarmListActivity extends AppCompatActivity  {
+RecyclerView farm_list_recycler;
+    SharedPreferences shp;
+    public static final String SHARED_PREF_NAME = "Gallus";
+    Button btnAddExpense;
+    private static String globalFarmerId;
+
+    private List<FarmsModel> farmsModels;
+
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +73,14 @@ RecyclerView farm_list_recycler;
 
         shp = getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         String farmerId =shp.getString(KEY_FARMER_ID,"");
+<<<<<<< HEAD
+=======
+        String selectedFarmId = shp.getString("selectedFarmId","");
+        String selectedName = shp.getString("selectedFarmName","");
+        Toast.makeText(this,selectedFarmId+selectedName, Toast.LENGTH_SHORT).show();
+
+        farmsModels = new ArrayList<>();
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
         globalFarmerId = farmerId;
         RetrofitInstance.BASEURL = "http://gallus.innovaneers.in/";
         FarmerIdModel farmerIdModel = new FarmerIdModel(globalFarmerId);
@@ -84,7 +113,24 @@ RecyclerView farm_list_recycler;
             e.getMessage();
         }
 
+<<<<<<< HEAD
     }
 
 
+=======
+
+
+        //Farm Form clickListener
+        btnAddExpense = findViewById(R.id.btnAddExpense);
+        btnAddExpense.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(FarmListActivity.this, FarmAddActivity.class);
+                startActivity(i);
+            }
+        });
+
+    }
+
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
 }

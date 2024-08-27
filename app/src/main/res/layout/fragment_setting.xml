@@ -24,8 +24,12 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:textColor="@color/black"
                 android:drawableLeft="@drawable/baseline_arrow_right_24"
+<<<<<<< HEAD
                 android:textStyle="bold"
                 android:textSize="@dimen/_15sdp"/>
+=======
+                android:textStyle="bold" />
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -40,18 +44,29 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Hello"
+<<<<<<< HEAD
                         android:textSize="@dimen/_15sdp"
+=======
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
                         android:layout_marginTop="@dimen/_8sdp"
                         android:textColor="@color/black"
                         android:layout_marginLeft="@dimen/_20sdp"/>
                     <TextView
+<<<<<<< HEAD
+=======
+                        android:id="@+id/username_setting"
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Ameesha"
                         android:layout_marginLeft="@dimen/_5sdp"
+<<<<<<< HEAD
                         android:textSize="@dimen/_13sdp"
                         android:layout_marginTop="@dimen/_8sdp"
                         android:textStyle="bold"
+=======
+                        android:layout_marginTop="@dimen/_8sdp"
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
                         android:textColor="@color/black"/>
 
 
@@ -65,6 +80,10 @@
             android:weightSum="3"
             android:orientation="horizontal">
             <androidx.cardview.widget.CardView
+<<<<<<< HEAD
+=======
+                android:id="@+id/record_card_setting"
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
                 android:layout_width="0dp"
                 app:cardElevation="@dimen/_10sdp"
                 app:cardCornerRadius="@dimen/_5sdp"
@@ -81,6 +100,10 @@
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
+<<<<<<< HEAD
+=======
+                android:id="@+id/help_contact_us_setting"
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
                 android:layout_width="0dp"
                 android:layout_marginLeft="@dimen/_2sdp"
                 android:layout_marginTop="@dimen/_5sdp"
@@ -97,6 +120,10 @@
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
+<<<<<<< HEAD
+=======
+                android:id="@+id/payment_setting"
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
                 android:layout_width="0dp"
                 android:layout_marginLeft="@dimen/_2sdp"
                 android:layout_marginTop="@dimen/_5sdp"
@@ -108,7 +135,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+<<<<<<< HEAD
                     android:text="Settings"
+=======
+                    android:text="Payment"
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
                     android:textStyle="bold"
                     android:layout_gravity="center"/>
 
@@ -148,7 +179,11 @@
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_marginRight="@dimen/_10sdp"
                 app:cardCornerRadius="@dimen/_5sdp"
+<<<<<<< HEAD
                 android:layout_marginBottom="@dimen/_10sdp"
+=======
+                android:layout_marginBottom="@dimen/_100sdp"
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
                 app:cardElevation="@dimen/_5sdp"
                 android:layout_height="wrap_content">
                 <LinearLayout
@@ -158,12 +193,37 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+<<<<<<< HEAD
                         android:text="Order"
+=======
+                        android:text="My Setting"
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
                         android:layout_marginLeft="@dimen/_10sdp"
                         android:textStyle="bold"
                         android:padding="@dimen/_5sdp"
                         android:textColor="@color/black"/>
                     <TextView
+<<<<<<< HEAD
+=======
+                        android:id="@+id/farmList_setting"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/baseline_settings_24"
+                        android:text="Farm List"
+                        android:drawableRight="@drawable/baseline_arrow_right_24"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:textStyle="bold"
+                        android:padding="@dimen/_5sdp" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_marginLeft="@dimen/_15sdp"
+                        android:background="@color/yellow"/>
+                    <TextView
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableLeft="@drawable/baseline_settings_24"
@@ -246,11 +306,35 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_1sdp"
                         android:layout_marginTop="@dimen/_5sdp"
+<<<<<<< HEAD
                         android:layout_marginBottom="@dimen/_10sdp"
+=======
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
                         android:layout_marginRight="@dimen/_10sdp"
                         android:layout_marginLeft="@dimen/_15sdp"
                         android:background="@color/yellow"/>
 
+<<<<<<< HEAD
+=======
+                    <TextView
+                        android:id="@+id/logout_link_setting"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Logout"
+                        android:drawableRight="@drawable/baseline_arrow_right_24"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:textStyle="bold"
+                        android:padding="@dimen/_5sdp" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_marginLeft="@dimen/_15sdp"
+                        android:background="@color/yellow"/>
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
 
                 </LinearLayout>
 

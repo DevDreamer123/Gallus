@@ -11,13 +11,28 @@
         android:orientation="vertical">
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
+<<<<<<< HEAD
+=======
+            app:cardBackgroundColor="@color/yellow"
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
             app:cardElevation="@dimen/_5sdp"
             android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
+<<<<<<< HEAD
             android:padding="@dimen/_5sdp"
             android:orientation="horizontal">
+=======
+            android:weightSum="2"
+            android:padding="@dimen/_5sdp"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
 
             <TextView
                 android:id="@+id/userName_home"
@@ -27,6 +42,7 @@
                 android:text="@string/user"
                 android:textColor="@color/black"
                 android:layout_marginLeft="@dimen/_10sdp"
+<<<<<<< HEAD
                 android:layout_marginTop="@dimen/_5sdp"
                 android:textSize="@dimen/_13sdp" />
             <LinearLayout
@@ -43,6 +59,35 @@
                 android:text="@string/add"
                 android:layout_gravity="right"
                 android:layout_marginRight="15dp" />
+=======
+                android:textStyle="bold"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/farmId_home"
+                    android:layout_width="wrap_content"
+                    android:padding="@dimen/_5sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:textColor="@color/green"
+                    android:textAllCaps="false"
+                    android:background="@color/white"
+                    android:visibility="visible"
+                    android:layout_marginLeft="10dp"
+                    android:text="Select Farm"
+                    android:drawableRight="@drawable/baseline_keyboard_arrow_down_24_green" />
+                </LinearLayout>
+                </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content">
+
+
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
             </LinearLayout>
 
         </LinearLayout>
@@ -52,16 +97,30 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:weightSum="3"
+<<<<<<< HEAD
                 android:layout_marginTop="@dimen/_20sdp"
                 android:orientation="horizontal"
                 android:layout_height="wrap_content">
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
+=======
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/add_record_card"
+                    android:layout_width="0dp"
+                    app:cardBackgroundColor="@color/sky_blue"
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
                     android:layout_marginLeft="@dimen/_5sdp"
                     app:cardCornerRadius="@dimen/_5sdp"
                     android:layout_marginBottom="@dimen/_5sdp"
                     android:layout_weight="1"
+<<<<<<< HEAD
                     android:layout_height="@dimen/_100sdp"
+=======
+                    android:layout_height="@dimen/_80sdp"
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
                     >
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -71,6 +130,10 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Daily Record"
+<<<<<<< HEAD
+=======
+                            android:textColor="@color/white"
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
                             android:textStyle="bold"
                             android:layout_marginTop="@dimen/_30sdp"
                             android:gravity="center"/>
@@ -79,6 +142,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:layout_height="match_parent">
+<<<<<<< HEAD
                         <Button
                             android:id="@+id/add_record"
                             android:background="@color/yellow"
@@ -86,19 +150,32 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Add record"/>
+=======
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
                         </LinearLayout>
 
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
+<<<<<<< HEAD
                     android:layout_width="0dp"
                     android:layout_weight="1"
+=======
+                    android:id="@+id/show_farm_list_btn_card"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="@color/green_light"
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
                     android:layout_marginBottom="@dimen/_5sdp"
                     android:layout_marginLeft="@dimen/_5sdp"
                     android:layout_marginRight="@dimen/_5sdp"
                     app:cardCornerRadius="@dimen/_5sdp"
+<<<<<<< HEAD
                     android:layout_height="@dimen/_100sdp"
+=======
+                    android:layout_height="@dimen/_80sdp"
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
                     >
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -107,7 +184,12 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+<<<<<<< HEAD
                             android:text="Farm List"
+=======
+                            android:text="All Batches"
+                            android:textColor="@color/white"
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
                             android:textStyle="bold"
                             android:layout_marginTop="@dimen/_30sdp"
                             android:gravity="center"/>
@@ -118,6 +200,7 @@
                             android:layout_gravity="center"
                             android:gravity="center">
 
+<<<<<<< HEAD
                             <Button
                                 android:id="@+id/show_farm_list_btn"
                                 android:layout_width="match_parent"
@@ -125,16 +208,27 @@
                                 android:layout_marginTop="@dimen/_10sdp"
                                 android:background="@color/yellow"
                                 android:text="Show List" />
+=======
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
                         </LinearLayout>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
+<<<<<<< HEAD
+=======
+                    android:id="@+id/add_batch_home_card"
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
                     android:layout_width="0dp"
                     android:layout_marginBottom="@dimen/_5sdp"
                     android:layout_weight="1"
                     android:layout_marginRight="@dimen/_5sdp"
                     app:cardCornerRadius="@dimen/_5sdp"
+<<<<<<< HEAD
                     android:layout_height="@dimen/_100sdp"
+=======
+                    app:cardBackgroundColor="@color/lavander"
+                    android:layout_height="@dimen/_80sdp"
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
                     >
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -145,6 +239,10 @@
                             android:layout_height="wrap_content"
                             android:text="New Batch"
                             android:textStyle="bold"
+<<<<<<< HEAD
+=======
+                            android:textColor="@color/white"
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
                             android:layout_marginTop="@dimen/_30sdp"
                             android:gravity="center"/>
                         <LinearLayout
@@ -152,6 +250,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:layout_height="match_parent">
+<<<<<<< HEAD
                             <Button
                                 android:id="@+id/add_batch_home"
                                 android:background="@color/yellow"
@@ -159,13 +258,213 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Add Batch"/>
+=======
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
                         </LinearLayout>
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
 
+<<<<<<< HEAD
 
+=======
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="2"
+    android:layout_marginTop="@dimen/_5sdp"
+    android:orientation="horizontal">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/fcr_home_card"
+        android:layout_width="0dp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_weight="1"
+        app:cardElevation="@dimen/_5sdp"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_marginRight="@dimen/_5sdp"
+        app:cardCornerRadius="@dimen/_5sdp"
+        android:layout_height="@dimen/_80sdp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:background="@color/purple"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/fCR_per_kg_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0.0"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15sdp"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:gravity="center"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_height="match_parent">
+                <Button
+                    android:backgroundTint="@color/purple"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Feed Conversion Ratio"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cost_per_kghome_card"
+        android:layout_width="0dp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        app:cardElevation="@dimen/_5sdp"
+        android:layout_weight="1"
+        android:layout_marginRight="@dimen/_5sdp"
+        app:cardCornerRadius="@dimen/_5sdp"
+        android:layout_height="@dimen/_80sdp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:background="@color/green"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/cpg_per_kg_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0.0"
+                android:textSize="@dimen/_15sdp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:gravity="center"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_height="match_parent">
+                <Button
+                    android:id="@+id/cpk_batch_home"
+                    android:backgroundTint="@color/green"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cost Per Kg"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:cardElevation="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_5sdp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:background="@drawable/gradient_golden"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Current Rate"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:textStyle="bold"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+                <TextView
+                    android:id="@+id/rate_per_kg_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.0"
+                    android:textColor="@color/purple"
+                    android:textSize="@dimen/_15sdp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="per kg"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_gravity="center"
+                        android:textColor="@color/purple"
+                        android:gravity="center"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:gravity="right">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="bottom"
+                    android:text="Sell"
+                    android:padding="@dimen/_5sdp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:background="@drawable/gradient_third_color"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:cardElevation="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_150sdp"
+            android:layout_marginLeft="@dimen/_5sdp"
+            app:cardBackgroundColor="@color/blue_sky"
+            android:layout_marginRight="@dimen/_5sdp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Current History"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:textStyle="bold"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:gravity="right">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="false"
+                    android:padding="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Check History"
+                    android:textColor="@color/white"
+                    android:background="@drawable/gradient_third_color"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
 
 
 

@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+=======
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+<<<<<<< HEAD
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -49,3 +54,54 @@
         android:layout_margin="@dimen/_16sdp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+=======
+
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/container"/>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bottomAppBar"
+            android:layout_gravity="bottom"
+            app:fabAlignmentMode="center"
+            app:contentInsetRight="0dp"
+            app:contentInsetStart="0dp"
+            app:fabCradleRoundedCornerRadius="@dimen/_15sdp"
+            app:navigationIconTint="@color/white"
+            app:titleTextColor="@color/black"
+            android:backgroundTint="@color/white"
+            app:fabCradleMargin="@dimen/_8sdp">
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/bottonnav"
+                app:labelVisibilityMode="unlabeled"
+                android:theme="@style/ThemeOverlay.AppCompat.navTheme"
+                app:itemIconTint="@color/black"
+                android:background="@android:color/transparent"
+                app:menu="@menu/menu" />
+
+        </com.google.android.material.bottomappbar.BottomAppBar>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fab"
+            app:shapeAppearanceOverlay="@style/fab_3_rounded"
+            android:backgroundTint="@color/yellow"
+            android:src="@drawable/baseline_settings_24"
+            app:layout_anchor="@id/bottomAppBar"
+            app:maxImageSize="@dimen/_20sdp" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</RelativeLayout>
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f

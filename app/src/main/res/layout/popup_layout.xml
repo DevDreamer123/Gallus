@@ -37,6 +37,32 @@
             android:layout_height="wrap_content"/>
 
     </com.google.android.material.textfield.TextInputLayout>>
+<<<<<<< HEAD
+=======
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:textColorHint="@color/black"
+        app:boxStrokeWidth="0dp"
+        android:backgroundTint="#FAFAFA"
+        app:boxBackgroundColor="#FAFAFA"
+        app:hintTextColor="@color/black"
+        app:boxStrokeColor="@color/black"
+        android:hint="Number of Free Chicks ">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:singleLine="true"
+            android:id="@+id/free_chicks_no_edit_popup"
+            android:textColorHint="@color/black"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>>
+
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
 
 
 
@@ -52,7 +78,11 @@
         app:boxBackgroundColor="#FAFAFA"
         app:hintTextColor="@color/black"
         app:boxStrokeColor="@color/black"
+<<<<<<< HEAD
         android:hint="Purchase ">
+=======
+        android:hint="Rate">
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -62,6 +92,33 @@
             android:layout_height="wrap_content"/>
 
     </com.google.android.material.textfield.TextInputLayout>
+<<<<<<< HEAD
+=======
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:textColorHint="@color/black"
+        app:boxStrokeWidth="0dp"
+        android:backgroundTint="#FAFAFA"
+        app:boxBackgroundColor="#FAFAFA"
+        app:hintTextColor="@color/black"
+        app:boxStrokeColor="@color/black"
+        android:hint="Set Date DD/MM/YYYY">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:singleLine="true"
+            android:focusable="false"
+            android:id="@+id/date_text_edit_popup"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

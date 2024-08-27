@@ -3,6 +3,10 @@
     <style name="Base.Theme.Gallus" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/yellow</item>
+<<<<<<< HEAD
+=======
+        <item name="colorPrimaryDark">@color/yellow</item>
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
     </style>
 
     <style name="Theme.Gallus" parent="Base.Theme.Gallus" />

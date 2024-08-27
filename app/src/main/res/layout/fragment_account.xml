@@ -14,7 +14,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+<<<<<<< HEAD
         android:layout_marginTop="@dimen/_30sdp"
+=======
+        android:layout_marginTop="@dimen/_50sdp"
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
         app:cardCornerRadius="@dimen/_50sdp">
 
 <ImageView
@@ -51,6 +55,10 @@
           android:text="Name"
         android:textStyle="bold"/>
       <TextView
+<<<<<<< HEAD
+=======
+          android:id="@+id/user_account"
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
           android:layout_width="0dp"
           android:layout_weight="1"
           android:layout_height="wrap_content"
@@ -72,6 +80,10 @@
           android:text="Uder Id"
           android:textStyle="bold"/>
       <TextView
+<<<<<<< HEAD
+=======
+          android:id="@+id/farmer_Id_account"
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
           android:layout_width="0dp"
           android:layout_weight="1"
           android:layout_height="wrap_content"

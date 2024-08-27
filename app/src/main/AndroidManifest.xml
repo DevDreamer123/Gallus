@@ -16,7 +16,29 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+<<<<<<< HEAD
             android:name=".MassageActivity"
+=======
+            android:name=".RecordsHistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BatchListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PlanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ContactUsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WebViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CCAvenueActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FarmListDetailActivity"
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
             android:exported="false" />
         <activity
             android:name=".DailyRecordActivity"

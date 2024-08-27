@@ -43,8 +43,17 @@ dependencies {
     implementation libs.ssp.android
     androidTestImplementation libs.ext.junit
     implementation libs.retrofit
+<<<<<<< HEAD
+=======
+    implementation libs.volley
+    implementation libs.glide
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
     implementation libs.converter.gson
     implementation libs.logging.interceptor
     implementation libs.okhttp
     androidTestImplementation libs.espresso.core
+<<<<<<< HEAD
+=======
+
+>>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
 }
