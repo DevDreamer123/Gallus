@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AboutUsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="About Us"
+        android:layout_gravity="center"
+        android:textSize="@dimen/_18sdp"
+        android:textStyle="bold"
+        android:layout_marginBottom="@dimen/_5sdp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:justificationMode="inter_word"
+        android:gravity="center"
+        android:text="Welcome to Gallus App! We are committed to revolutionizing poultry management by providing innovative digital solutions tailored to the needs of poultry farmers. Our mission is to enhance farm productivity and efficiency through advanced technology and user-friendly tools. Our team of experts is dedicated to delivering reliable services and continuous improvements to meet the evolving demands of the industry.\n\nOur Vision\nTo become the leading digital platform for poultry management, driving innovation and supporting farmers worldwide in achieving their operational goals.\n\nOur Mission\nTo provide state-of-the-art tools and resources that simplify poultry management, ensuring better growth, health, and productivity of chicks."
+        android:textSize="@dimen/_13sdp" />
+    </LinearLayout>
+
+</ScrollView>

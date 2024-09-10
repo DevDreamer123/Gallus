@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TermAndConditionActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:padding="@dimen/_10sdp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Terms and Conditions"
+            android:textSize="@dimen/_18sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:textStyle="bold"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <!-- Introduction -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Effective Date: [Insert Date]"
+            android:textSize="@dimen/_13sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:justificationMode="inter_word"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:textStyle="italic"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1. Introduction:\nBy using the Gallus App, you agree to comply with and be bound by the following terms and conditions."
+            android:textSize="@dimen/_13sdp"
+            android:justificationMode="inter_word"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2. Account Creation:\nUsers must provide accurate and complete information when creating an account."
+            android:textSize="@dimen/_13sdp"
+            android:justificationMode="inter_word"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3. Usage Restrictions:\nThe app is intended solely for poultry management-related activities. Misuse is prohibited."
+            android:textSize="@dimen/_13sdp"
+            android:justificationMode="inter_word"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4. Data Accuracy:\nWe strive to ensure accurate information but do not guarantee its accuracy."
+            android:textSize="@dimen/_13sdp"
+            android:justificationMode="inter_word"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5. Liability:\nWe are not liable for losses or damages arising from the use of the app."
+            android:textSize="@dimen/_13sdp"
+            android:justificationMode="inter_word"
+            android:layout_marginBottom="@dimen/_5sdp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6. Modifications:\nWe may modify these terms without notice. Continued use constitutes acceptance of modified terms."
+            android:textSize="@dimen/_13sdp"
+            android:justificationMode="inter_word"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7. Termination:\nAccounts may be terminated for violations of these terms."
+            android:textSize="@dimen/_13sdp"
+            android:justificationMode="inter_word"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="8. Intellectual Property:\nContent and materials on the app are protected by intellectual property laws."
+            android:textSize="@dimen/_13sdp"
+            android:justificationMode="inter_word"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9. Contact Us:\nFor questions about these Terms and Conditions, contact us at help.gallus@gmail.com."
+            android:textSize="@dimen/_13sdp"
+            android:justificationMode="inter_word"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+    </LinearLayout>
+
+</ScrollView>

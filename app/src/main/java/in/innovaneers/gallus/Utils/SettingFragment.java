@@ -20,6 +20,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import in.innovaneers.gallus.AboutUsActivity;
+import in.innovaneers.gallus.PrivacyPolicyActivity;
+import in.innovaneers.gallus.ProductDetailsActivity;
 import in.innovaneers.gallus.R;
 
 
@@ -32,11 +35,12 @@ import in.innovaneers.gallus.FarmListActivity;
 import in.innovaneers.gallus.LoginActivity;
 import in.innovaneers.gallus.R;
 import in.innovaneers.gallus.RecordsHistoryActivity;
+import in.innovaneers.gallus.TermAndConditionActivity;
 
 public class SettingFragment extends Fragment {
 
 
-    TextView farmList_setting,logout_link_setting,username_account;
+    TextView farmList_setting,logout_link_setting,username_account,term_setting,about_Setting,privacy_setting,product_setting;
     SharedPreferences shp;
     public static final String SHARED_PREF_NAME = "Gallus";
     CardView help_contact_us_setting,payment_setting,record_card_setting;
@@ -72,6 +76,38 @@ public class SettingFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getContext(), RecordsHistoryActivity.class);
+                startActivity(i);
+            }
+        });
+        term_setting = view.findViewById(R.id.term_setting);
+        term_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), TermAndConditionActivity.class);
+                startActivity(i);
+            }
+        });
+        about_Setting = view.findViewById(R.id.about_Setting);
+        about_Setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), AboutUsActivity.class);
+                startActivity(i);
+            }
+        });
+        privacy_setting = view.findViewById(R.id.privacy_setting);
+        privacy_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), PrivacyPolicyActivity.class);
+                startActivity(i);
+            }
+        });
+        product_setting = view.findViewById(R.id.product_setting);
+        product_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), ProductDetailsActivity.class);
                 startActivity(i);
             }
         });

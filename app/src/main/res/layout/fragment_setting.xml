@@ -93,7 +93,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Help"
+                    android:text="Contact Us"
                     android:textStyle="bold"
                     android:layout_gravity="center"/>
 
@@ -185,26 +185,10 @@
                         android:layout_marginLeft="@dimen/_15sdp"
                         android:background="@color/yellow"/>
                     <TextView
+                        android:id="@+id/about_Setting"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/baseline_settings_24"
-                        android:text="Data Export/Import"
-                        android:drawableRight="@drawable/baseline_arrow_right_24"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_marginLeft="@dimen/_10sdp"
-                        android:textStyle="bold"
-                        android:padding="@dimen/_5sdp" />
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_1sdp"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_marginRight="@dimen/_10sdp"
-                        android:layout_marginLeft="@dimen/_15sdp"
-                        android:background="@color/yellow"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="User Management"
+                        android:text="About Us"
                         android:drawableLeft="@drawable/baseline_settings_24"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:drawableRight="@drawable/baseline_arrow_right_24"
@@ -219,10 +203,10 @@
                         android:layout_marginLeft="@dimen/_15sdp"
                         android:background="@color/yellow"/>
                     <TextView
-                        android:id="@+id/address_book"
+                        android:id="@+id/privacy_setting"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Analytics"
+                        android:text="Privacy Policy"
                         android:drawableLeft="@drawable/baseline_settings_24"
                         android:drawableRight="@drawable/baseline_arrow_right_24"
                         android:layout_marginTop="@dimen/_5sdp"
@@ -238,9 +222,29 @@
                         android:layout_marginLeft="@dimen/_15sdp"
                         android:background="@color/yellow"/>
                     <TextView
+                        android:id="@+id/term_setting"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Backup &amp; Restore"
+                        android:drawableLeft="@drawable/baseline_settings_24"
+                        android:text="Term and Condition"
+                        android:drawableRight="@drawable/baseline_arrow_right_24"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:textStyle="bold"
+                        android:padding="@dimen/_5sdp" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_marginLeft="@dimen/_15sdp"
+                        android:background="@color/yellow"/>
+                    <TextView
+                        android:id="@+id/product_setting"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Product/Service Details"
+                        android:drawableLeft="@drawable/baseline_settings_24"
                         android:drawableRight="@drawable/baseline_arrow_right_24"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:layout_marginLeft="@dimen/_10sdp"
@@ -253,11 +257,35 @@
                         android:layout_marginRight="@dimen/_10sdp"
                         android:layout_marginLeft="@dimen/_15sdp"
                         android:background="@color/yellow"/>
+
+                    <TextView
+                        android:id="@+id/address_book"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Analytics"
+                        android:drawableLeft="@drawable/baseline_settings_24"
+                        android:drawableRight="@drawable/baseline_arrow_right_24"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:textSize="@dimen/_11sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:textStyle="bold"
+                        android:padding="@dimen/_5sdp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginLeft="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:background="@color/yellow" />
+
+
                     <TextView
                         android:id="@+id/edit_link"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Notifications"
+                        android:drawableLeft="@drawable/baseline_settings_24"
                         android:drawableRight="@drawable/baseline_arrow_right_24"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:layout_marginLeft="@dimen/_10sdp"
@@ -277,6 +305,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Logout"
+                        android:drawableLeft="@drawable/baseline_settings_24"
                         android:drawableRight="@drawable/baseline_arrow_right_24"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:layout_marginLeft="@dimen/_10sdp"
