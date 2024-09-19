@@ -1,6 +1,7 @@
 package in.innovaneers.gallus.model;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import in.innovaneers.gallus.BatchDetailActivity;
 import in.innovaneers.gallus.R;
 
 public class BatchListAdapter extends RecyclerView.Adapter<BatchListAdapter.ViewHolder> {
@@ -36,6 +38,11 @@ public class BatchListAdapter extends RecyclerView.Adapter<BatchListAdapter.View
         holder.bodyweight_batch_adapter.setText(batchListModel.getBodyWeight());
         holder.date_batch_adpter.setText(batchListModel.getDate());
         holder.chicks_batch_adapter.setText(batchListModel.getChicks());
+        holder.itemView.setOnClickListener(view -> {
+            Intent i = new Intent(context, BatchDetailActivity.class);
+            i.putExtra("BatchId",batchListModel.getBatchID());
+            context.startActivity(i);
+        });
 
     }
 

@@ -49,32 +49,27 @@ RecyclerView recycler_records_list;
         recycler_records_list = findViewById(R.id.recycler_records_list);
         RetrofitInstance.BASEURL = "http://gallus.innovaneers.in/";
         BatchIdModel farmIdModel = new BatchIdModel(currentBatchId);
-        try {
-            Call<List<RecordRequestModel>> call = RetrofitInstance.getInstance().getMyApi().recordsHistory(farmIdModel);
-            call.enqueue(new Callback<List<RecordRequestModel>>() {
-                @Override
-                public void onResponse(Call<List<RecordRequestModel>> call, Response<List<RecordRequestModel>> response) {
-                    Toast.makeText(RecordsHistoryActivity.this, "Hello", Toast.LENGTH_SHORT).show();
+
+        Call<List<RecordRequestModel>> call = RetrofitInstance.getInstance().getMyApi().recordsHistory(farmIdModel);
+        call.enqueue(new Callback<List<RecordRequestModel>>() {
+            @Override
+            public void onResponse(Call<List<RecordRequestModel>> call, Response<List<RecordRequestModel>> response) {
+                if (response.isSuccessful() && response.body() != null) {
                     List<RecordRequestModel> farmsModels = response.body();
-                    recycler_records_list.setLayoutManager(new LinearLayoutManager(RecordsHistoryActivity.this, LinearLayoutManager.VERTICAL,false));
-                    RecordHistoryAdapter cate = new RecordHistoryAdapter(RecordsHistoryActivity.this,farmsModels);
-                    recycler_records_list.setAdapter(cate);
+                    recycler_records_list.setLayoutManager(new LinearLayoutManager(RecordsHistoryActivity.this, LinearLayoutManager.VERTICAL, false));
+                    RecordHistoryAdapter adapter = new RecordHistoryAdapter(RecordsHistoryActivity.this, farmsModels);
+                    recycler_records_list.setAdapter(adapter);
+                } else {
+                    Toast.makeText(RecordsHistoryActivity.this, "Response unsuccessful or empty", Toast.LENGTH_SHORT).show();
+                    Log.d("error", "Response unsuccessful or empty: " + response.message());
                 }
+            }
 
-
-                @Override
-                public void onFailure(Call<List<RecordRequestModel>> call, Throwable t) {
-                    Toast.makeText(RecordsHistoryActivity.this,t.toString(), Toast.LENGTH_SHORT).show();
-                    Log.d("error",t.getMessage());
-
-                    t.toString();
-                }
-            });
-
-        } catch (Exception e) {
-            Toast.makeText(RecordsHistoryActivity.this,e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-            Log.d("error1",e.getMessage());
-            e.getMessage();
-        }
+            @Override
+            public void onFailure(Call<List<RecordRequestModel>> call, Throwable t) {
+                Toast.makeText(RecordsHistoryActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.d("error", t.getMessage());
+            }
+        });
     }
 }

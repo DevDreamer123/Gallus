@@ -167,19 +167,7 @@ public class HomeFragment extends Fragment {
                 startActivity(i);
             }
         });
-        /*add_batch_home = view.findViewById(R.id.add_batch_home);
->>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
-        add_batch_home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openPopup();
-            }
-<<<<<<< HEAD
-        });
 
-
-=======
-        });*/
         add_batch_home_card = view.findViewById(R.id.add_batch_home_card);
         add_batch_home_card.setOnClickListener(new View.OnClickListener() {
             @Override
