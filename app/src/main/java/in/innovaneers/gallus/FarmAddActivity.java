@@ -89,7 +89,7 @@ public class FarmAddActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<RegistrationResponseModel> call, Response<RegistrationResponseModel> response) {
                                 Intent intent = new Intent(FarmAddActivity.this, MainActivity.class);
-                                Toast.makeText(FarmAddActivity.this,response.body().getStatus(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(FarmAddActivity.this,"Successfully", Toast.LENGTH_SHORT).show();
                                 startActivity(intent);
 
                                 finish();

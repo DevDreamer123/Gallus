@@ -64,8 +64,12 @@ EditText user_name_regi,mobile_regi,email_regi,address_regi,area_regi,city_regi,
             @Override
             public void onClick(View view) {
 
-                if (TextUtils.isEmpty(user_name_regi.getText().toString()) && TextUtils.isEmpty(email_regi.getText().toString()) && TextUtils.isEmpty(mobile_regi.getText().toString()) && TextUtils.isEmpty(password_regi.getText().toString())){
+                if (TextUtils.isEmpty(user_name_regi.getText().toString()) ||
+                        TextUtils.isEmpty(email_regi.getText().toString()) ||
+                        TextUtils.isEmpty(mobile_regi.getText().toString()) ||
+                        TextUtils.isEmpty(password_regi.getText().toString())) {
                     Toast.makeText(RegistrationActivity.this, "Please Enter All Details", Toast.LENGTH_SHORT).show();
+                    return; // Ensure no further action occurs when details are missing
                 }else {
 
 
@@ -85,15 +89,14 @@ EditText user_name_regi,mobile_regi,email_regi,address_regi,area_regi,city_regi,
                         call.enqueue(new Callback<RegistrationResponseModel>() {
                             @Override
                             public void onResponse(Call<RegistrationResponseModel> call, Response<RegistrationResponseModel> response) {
-                                Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
-                                Toast.makeText(RegistrationActivity.this,response.body().getStatus(), Toast.LENGTH_SHORT).show();
-                                startActivity(intent);
-
-                                finish();
-
-                               // Toast.makeText(RegistrationActivity.this, "SuccessFully", Toast.LENGTH_SHORT).show();
-
-
+                                if (response.isSuccessful() && response.body() != null) {
+                                    Toast.makeText(RegistrationActivity.this, response.body().getStatus(), Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    Toast.makeText(RegistrationActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
+                                }
                             }
 
                             @Override

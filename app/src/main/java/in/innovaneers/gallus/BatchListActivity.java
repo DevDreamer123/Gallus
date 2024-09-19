@@ -47,35 +47,41 @@ public class BatchListActivity extends AppCompatActivity {
         String farmerId =shp.getString(KEY_FARMER_ID,"");
         String selectedFarmId = shp.getString("selectedFarmId","");
         recycler_batch_list = findViewById(R.id.recycler_batch_list);
-        Log.d("selectFaemId",selectedFarmId);
-        RetrofitInstance.BASEURL = "http://gallus.innovaneers.in/";
-        FarmIdModel farmIdModel = new FarmIdModel(selectedFarmId);
-        try {
-            Call<List<BatchListModel>> call = RetrofitInstance.getInstance().getMyApi().ListBatch(farmIdModel);
-            call.enqueue(new Callback<List<BatchListModel>>() {
-                @Override
-                public void onResponse(Call<List<BatchListModel>> call, Response<List<BatchListModel>> response) {
-                     Toast.makeText(BatchListActivity.this, "Hello", Toast.LENGTH_SHORT).show();
-                    List<BatchListModel> farmsModels = response.body();
-                    recycler_batch_list.setLayoutManager(new LinearLayoutManager(BatchListActivity.this, LinearLayoutManager.VERTICAL,false));
-                    BatchListAdapter cate = new BatchListAdapter(BatchListActivity.this,farmsModels);
-                    recycler_batch_list.setAdapter(cate);
-                }
+        Log.d("selectedFarmId",selectedFarmId);
+        if (!farmerId.isEmpty() && !selectedFarmId.isEmpty()) {
+            Log.d("selectFarmId", selectedFarmId);
+            RetrofitInstance.BASEURL = "http://gallus.innovaneers.in/";
+            FarmIdModel farmIdModel = new FarmIdModel(selectedFarmId);
 
+            try {
+                Call<List<BatchListModel>> call = RetrofitInstance.getInstance().getMyApi().ListBatch(farmIdModel);
+                call.enqueue(new Callback<List<BatchListModel>>() {
+                    @Override
+                    public void onResponse(Call<List<BatchListModel>> call, Response<List<BatchListModel>> response) {
+                        if (response.isSuccessful() && response.body() != null && !response.body().isEmpty()) {
+                            List<BatchListModel> farmsModels = response.body();
+                            recycler_batch_list.setLayoutManager(new LinearLayoutManager(BatchListActivity.this, LinearLayoutManager.VERTICAL, false));
+                            BatchListAdapter cate = new BatchListAdapter(BatchListActivity.this, farmsModels);
+                            recycler_batch_list.setAdapter(cate);
+                        } else {
+                            Toast.makeText(BatchListActivity.this, "No data available", Toast.LENGTH_SHORT).show();
+                            Log.d("API Response", "Empty or null response received");
+                        }
+                    }
 
-                @Override
-                public void onFailure(Call<List<BatchListModel>> call, Throwable t) {
-                    Toast.makeText(BatchListActivity.this,t.toString(), Toast.LENGTH_SHORT).show();
-                    Log.d("error",t.getMessage());
+                    @Override
+                    public void onFailure(Call<List<BatchListModel>> call, Throwable t) {
+                        Toast.makeText(BatchListActivity.this, "Failed to load data. Check your network.", Toast.LENGTH_SHORT).show();
+                        Log.d("error", t.getMessage());
+                    }
+                });
 
-                    t.toString();
-                }
-            });
-
-        } catch (Exception e) {
-            Toast.makeText(BatchListActivity.this,e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-            Log.d("error1",e.getMessage());
-            e.getMessage();
+            } catch (Exception e) {
+                Toast.makeText(BatchListActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Log.d("error1", e.getMessage());
+            }
+        } else {
+            Toast.makeText(this, "Farmer ID or Farm ID missing", Toast.LENGTH_SHORT).show();
         }
 
 

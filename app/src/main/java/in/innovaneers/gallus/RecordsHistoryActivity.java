@@ -54,11 +54,18 @@ RecyclerView recycler_records_list;
             call.enqueue(new Callback<List<RecordRequestModel>>() {
                 @Override
                 public void onResponse(Call<List<RecordRequestModel>> call, Response<List<RecordRequestModel>> response) {
-                    Toast.makeText(RecordsHistoryActivity.this, "Hello", Toast.LENGTH_SHORT).show();
-                    List<RecordRequestModel> farmsModels = response.body();
-                    recycler_records_list.setLayoutManager(new LinearLayoutManager(RecordsHistoryActivity.this, LinearLayoutManager.VERTICAL,false));
-                    RecordHistoryAdapter cate = new RecordHistoryAdapter(RecordsHistoryActivity.this,farmsModels);
-                    recycler_records_list.setAdapter(cate);
+                    //Toast.makeText(RecordsHistoryActivity.this, "Hello", Toast.LENGTH_SHORT).show();
+
+                    if (response.isSuccessful() && response.body() != null && !response.body().isEmpty()) {
+                        List<RecordRequestModel> farmsModels = response.body();
+                        recycler_records_list.setLayoutManager(new LinearLayoutManager(RecordsHistoryActivity.this, LinearLayoutManager.VERTICAL,false));
+                        RecordHistoryAdapter cate = new RecordHistoryAdapter(RecordsHistoryActivity.this,farmsModels);
+                        recycler_records_list.setAdapter(cate);
+                    } else {
+                        Toast.makeText(RecordsHistoryActivity.this, "No data available", Toast.LENGTH_SHORT).show();
+                        Log.d("API Response", "Empty or null response received");
+                    }
+
                 }
 
 

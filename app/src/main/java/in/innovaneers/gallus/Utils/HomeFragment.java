@@ -22,6 +22,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.text.InputType;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,6 +73,7 @@ public class HomeFragment extends Fragment {
     TextInputEditText free_chicks_no_edit_popup,editTextDate;
      String farmId;
      String currentBatchId;
+    String selectedFarmId;
 
     CardView add_record_card,show_farm_list_btn_card,add_batch_home_card;
 
@@ -91,20 +93,26 @@ public class HomeFragment extends Fragment {
         shp = getActivity().getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
         String registeredUserNumber = shp.getString(KEY_NAME, "");
         userName_home = view.findViewById(R.id.userName_home);
-        userName_home.setText(registeredUserNumber);
+        if (registeredUserNumber != null && !registeredUserNumber.isEmpty()) {
+            userName_home.setText(registeredUserNumber);
+        } else {
+            userName_home.setText("Unknown User");
+        }
 
 
+         selectedFarmId = shp.getString("selectedFarmId", "");
+        String selectedName = shp.getString("selectedFarmName", "");
 
-        String farmerId = shp.getString(KEY_FARMER_ID,"");
-        farmId = farmerId;
-        String selectedFarmId = shp.getString("selectedFarmId","");
-        String selectedName = shp.getString("selectedFarmName","");
-        Toast.makeText(getContext(),selectedName+selectedFarmId, Toast.LENGTH_SHORT).show();
+        if (selectedName != null && selectedFarmId != null) {
+            Toast.makeText(getContext(), selectedName + selectedFarmId, Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getContext(), "No farm selected", Toast.LENGTH_SHORT).show();
+        }
         userName_home = view.findViewById(R.id.userName_home);
         farmId_home = view.findViewById(R.id.farmId_home);
         userName_home.setText(registeredUserNumber);
 
-        if (selectedName.isEmpty()) {
+        if (selectedName == null || selectedName.isEmpty()) {
             farmId_home.setText(R.string.select_farm);
         } else {
             farmId_home.setText(selectedName);
@@ -121,27 +129,6 @@ public class HomeFragment extends Fragment {
 
 
 
-        /*add_record = view.findViewById(R.id.add_record);
->>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
-        add_record.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getContext(), DailyRecordActivity.class);
-                startActivity(i);
-            }
-<<<<<<< HEAD
-        });
-        show_farm_list_btn = view.findViewById(R.id.show_farm_list_btn);
-        show_farm_list_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getContext(), FarmListActivity.class);
-                startActivity(i);
-            }
-        });
-        add_batch_home = view.findViewById(R.id.add_batch_home);
-=======
-        });*/
         add_record_card = view.findViewById(R.id.add_record_card);
         add_record_card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,19 +154,7 @@ public class HomeFragment extends Fragment {
                 startActivity(i);
             }
         });
-        /*add_batch_home = view.findViewById(R.id.add_batch_home);
->>>>>>> ef3c6549b89830f91825af27b024f24cc9ef2d1f
-        add_batch_home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openPopup();
-            }
-<<<<<<< HEAD
-        });
 
-
-=======
-        });*/
         add_batch_home_card = view.findViewById(R.id.add_batch_home_card);
         add_batch_home_card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -199,17 +174,21 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onResponse(Call<GetBatchIDModel> call, Response<GetBatchIDModel> response) {
                     GetBatchIDModel getBatchIDModel = response.body();
-                    currentBatchId = getBatchIDModel.getCurrentBatch();
-                    Toast.makeText(getContext(),"CurrentBatchId" +currentBatchId, Toast.LENGTH_SHORT).show();
-                    SharedPreferences.Editor editor = shp.edit();
-                    editor.putString("currentBatchID", getBatchIDModel.getCurrentBatch());
-                    editor.apply();
+                    if (getBatchIDModel != null) {
+                        currentBatchId = getBatchIDModel.getCurrentBatch();
+                        SharedPreferences.Editor editor = shp.edit();
+                        editor.putString("currentBatchID", currentBatchId);
+                        editor.apply();
+                    } else {
+                        // Handle null case
+                        Toast.makeText(getContext(), "Failed to get batch ID", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
 
                 @Override
                 public void onFailure(Call<GetBatchIDModel> call, Throwable t) {
-                    Toast.makeText(getContext(),t.toString(), Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(getContext(),t.toString(), Toast.LENGTH_SHORT).show();
                     Log.d("error",t.getMessage());
 
                     t.toString();
@@ -217,7 +196,7 @@ public class HomeFragment extends Fragment {
             });
 
         } catch (Exception e) {
-            Toast.makeText(getContext(),e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(),e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             Log.d("error1",e.getMessage());
             e.getMessage();
         }
@@ -257,7 +236,7 @@ public class HomeFragment extends Fragment {
 
                 @Override
                 public void onFailure(Call<DashBoardModel> call, Throwable t) {
-                    Toast.makeText(getContext(),t.toString(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(),t.toString(), Toast.LENGTH_SHORT).show();
                     Log.d("error",t.getMessage());
 
                     t.toString();
@@ -265,7 +244,7 @@ public class HomeFragment extends Fragment {
             });
 
         } catch (Exception e) {
-            Toast.makeText(getContext(),e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(getContext(),e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             Log.d("error1",e.getMessage());
             e.getMessage();
         }
@@ -302,23 +281,40 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 RetrofitInstance.BASEURL = "http://gallus.innovaneers.in/";
-                String chicks = chicks_no_edit_popup.getText().toString();
-                String free_chicks = free_chicks_no_edit_popup.getText().toString();
-                String purchase = purchase_edit_popup.getText().toString();
-                BatchRequestModel model = new BatchRequestModel(farmId,chicks,free_chicks,editTextDate.toString(),purchase);
+
+                // Get values from EditTexts and trim
+                String chicks = chicks_no_edit_popup.getText().toString().trim();
+                String free_chicks = free_chicks_no_edit_popup.getText().toString().trim();
+                String purchase = purchase_edit_popup.getText().toString().trim();
+                String date = editTextDate.getText().toString().trim();
+
+
+                // Validate fields
+                if (TextUtils.isEmpty(chicks) || TextUtils.isEmpty(free_chicks) || TextUtils.isEmpty(purchase) || TextUtils.isEmpty(date)) {
+                    Toast.makeText(getContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                BatchRequestModel model = new BatchRequestModel(selectedFarmId,chicks,free_chicks,date,purchase);
                 try {
                     Call<RegistrationResponseModel> lcall = RetrofitInstance.getInstance().getMyApi().addBatch(model);
                     lcall.enqueue(new Callback<RegistrationResponseModel>() {
                         @Override
                         public void onResponse(Call<RegistrationResponseModel> call, Response<RegistrationResponseModel> response) {
-                            RegistrationResponseModel showModel= response.body();
-                            Toast.makeText(getContext(), response.body().getStatus(), Toast.LENGTH_SHORT).show();
-                            dialog.dismiss();
+                            if (response.isSuccessful() && response.body() != null) {
+                                RegistrationResponseModel showModel = response.body();
+                                // Show success toast
+                                Toast.makeText(getContext(), "Successfully Added", Toast.LENGTH_SHORT).show();
+                                dialog.dismiss();  // Dismiss dialog only on successful response
+                            } else {
+                                Log.d("error", "Response unsuccessful or null body");
+                                Toast.makeText(getContext(), "Failed to Add", Toast.LENGTH_SHORT).show();
+                            }
                         }
 
                         @Override
                         public void onFailure(Call<RegistrationResponseModel> call, Throwable t) {
-                            Toast.makeText(getContext(),t.getMessage(), Toast.LENGTH_SHORT).show();
+                           // Toast.makeText(getContext(),t.getMessage(), Toast.LENGTH_SHORT).show();
                             Log.d("error",t.getMessage());
                             Log.d("erroe2",t.getLocalizedMessage());
                             Log.d("erroe3",t.toString());

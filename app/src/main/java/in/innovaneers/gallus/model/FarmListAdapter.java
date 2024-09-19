@@ -63,21 +63,24 @@ public class FarmListAdapter extends RecyclerView.Adapter<FarmListAdapter.ViewHo
         holder.address_list_farm.setText(farmsModel.getAddress());
         holder.farmerid_list_farm.setText(farmsModel.getFarmerID());
         String farmid = farmsModel.getFarmID();
+        shp = context.getSharedPreferences(SHARED_PREF_NAME,context.MODE_PRIVATE);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Save selected farm ID and name in SharedPreferences
                 Toast.makeText(context, "Selected", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(context, MainActivity.class);
-                context.startActivity(i);
+
+                // Save in SharedPreferences first
                 SharedPreferences.Editor editor = shp.edit();
                 editor.putString("selectedFarmId", farmsModel.getFarmID());
                 editor.putString("selectedFarmName", farmsModel.getName());
-                editor.apply();
+                editor.apply(); // Apply changes to SharedPreferences
 
+                // Then start the activity
+                Intent i = new Intent(context, MainActivity.class);
+                context.startActivity(i);
             }
         });
-
 
 
     }

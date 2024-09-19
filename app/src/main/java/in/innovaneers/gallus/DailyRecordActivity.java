@@ -117,7 +117,7 @@ public class DailyRecordActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<RecordResponseModel> call, Response<RecordResponseModel> response) {
                     Intent intent = new Intent(DailyRecordActivity.this, MainActivity.class);
-                    Toast.makeText(DailyRecordActivity.this,response.body().getStatus(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DailyRecordActivity.this,"Successfully", Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                     Log.d("Date",editTextDate_record.toString());
 

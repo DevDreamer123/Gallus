@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:background="@color/white"
+    android:background="#b51d1c"
     android:layout_height="match_parent"
     tools:context=".SplashActivity">
 
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Gallus"
-        android:textColor="#b51d1c"
+        android:textColor="@color/white"
         android:layout_below="@+id/img"
         android:gravity="center"
         android:textSize="30dp"
