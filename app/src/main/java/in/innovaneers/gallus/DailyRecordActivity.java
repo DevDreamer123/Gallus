@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -20,9 +21,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import in.innovaneers.gallus.model.FarmsModel;
 import in.innovaneers.gallus.model.RecordRequestModel;
@@ -39,12 +43,14 @@ public class DailyRecordActivity extends AppCompatActivity {
     EditText editTextDate_record,editTextbrand_record,editTextGrainAmount_record,
             editTextfeedconstruction_record,editTextBirdWeight_record,editTextMortalityRate_record,
             editTextHealthStatus_record,editTextWaterConsumed_record;
+    TextView day_of_record_from;
 
     Button buttonSubmit_record;
 
     SharedPreferences shp;
     public static final String SHARED_PREF_NAME = "Gallus";
     private String currentBatchId;
+    private String day_of_record;
 
 
     @Override
@@ -71,7 +77,8 @@ public class DailyRecordActivity extends AppCompatActivity {
         editTextHealthStatus_record = findViewById(R.id.editTextHealthStatus_record);
         editTextWaterConsumed_record = findViewById(R.id.editTextWaterConsumed_record);
         editTextDate_record = findViewById(R.id.editTextDate_record);
-
+        day_of_record_from = findViewById(R.id.day_of_record_from);
+        showCurrentDay();
         buttonSubmit_record = findViewById(R.id.buttonSubmit_record);
         buttonSubmit_record.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,6 +109,7 @@ public class DailyRecordActivity extends AppCompatActivity {
     private void apiResponse(){
         RecordRequestModel recordRequestModel = new RecordRequestModel();
         recordRequestModel.setBatchID(currentBatchId);
+        recordRequestModel.setAge(day_of_record);
         recordRequestModel.setFeedBrand(editTextbrand_record.getText().toString());
         recordRequestModel.setDate(editTextDate_record.getText().toString());
         recordRequestModel.setFeedConsumption(editTextGrainAmount_record.getText().toString());
@@ -168,5 +176,30 @@ public class DailyRecordActivity extends AppCompatActivity {
                     }
                 }, year, month, dayOfMonth);
         datePickerDialog.show();
+    }
+    private void showCurrentDay() {
+        shp = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
+        String batchDateString = shp.getString("batchDate", null);
+
+        if (batchDateString != null) {
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+                Date batchDate = sdf.parse(batchDateString);
+                Date currentDate = new Date();
+
+                // Calculate the difference in days
+                long differenceInMillis = currentDate.getTime() - batchDate.getTime();
+                long daysDifference = TimeUnit.DAYS.convert(differenceInMillis, TimeUnit.MILLISECONDS);
+
+                // Show the day as "1st day", "2nd day", etc.
+                String dayString = (daysDifference + 1) + (daysDifference == 0 ? "st" : "th") + " day";
+                day_of_record = String.valueOf((daysDifference + 1) + (daysDifference));
+                Toast.makeText(this, day_of_record, Toast.LENGTH_SHORT).show();
+                day_of_record_from.setText(dayString);
+                Toast.makeText(this, dayString, Toast.LENGTH_SHORT).show();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

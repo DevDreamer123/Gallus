@@ -9,22 +9,19 @@ public class BatchRequestModel {
     private String Chicks;
     @SerializedName("FreeChicks ")
     private String FreeChicks ;
+    @SerializedName("BodyWeight")
+    private int BodyWeight ;
     @SerializedName("Date")
     private String Date ;
-    @SerializedName("Purchase")
-    private String Purchase;
+    @SerializedName("PurchaseRate")
+    private String PurchaseRate;
 
-    public BatchRequestModel(String FarmID, String Chicks, String Purchase) {
-        this.FarmID = FarmID;
-        this.Chicks = Chicks;
-        this.Purchase = Purchase;
-    }
-
-    public BatchRequestModel(String farmID, String chicks, String freeChicks, String date, String purchase) {
-        FarmID = farmID;
-        Chicks = chicks;
-        FreeChicks = freeChicks;
-        Date = date;
-        Purchase = purchase;
+    public BatchRequestModel(String farmID, String chicks, String freeChicks, int bodyWeight, String date, String PurchaseRate) {
+        this.FarmID = farmID;
+        this.Chicks = chicks;
+        this.FreeChicks = freeChicks;
+        this.BodyWeight = bodyWeight;
+        this.Date = date;
+        this.PurchaseRate = PurchaseRate;
     }
 }

@@ -7,7 +7,7 @@
     <string name="user">User Name</string>
     <string name="value_box">00</string>
     <string name="add">Add Farm\n</string>
-    <string name="farmid">FarmID\n</string>
+    <string name="farmId">FarmID\n</string>
 
 
     <string name="access_code">Access Code</string>
@@ -20,6 +20,6 @@
     <string name="rsa_url">RSA Key Url</string>
     <string name="view_all"><a href="#">view all</a></string>
     <string name="forget_password"><a href="#">Forget Password</a></string>
-    <string name="selectmixture">Select</string>
+    <string name="selectMixture">Select</string>
     <string name="select_farm">Select Farm</string>
 </resources>
