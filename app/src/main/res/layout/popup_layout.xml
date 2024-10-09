@@ -83,6 +83,27 @@
             android:textColorHint="@color/black"
             android:layout_height="wrap_content"/>
 
+    </com.google.android.material.textfield.TextInputLayout> <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:textColorHint="@color/black"
+        app:boxStrokeWidth="0dp"
+        android:backgroundTint="#FAFAFA"
+        app:boxBackgroundColor="#FAFAFA"
+        app:hintTextColor="@color/black"
+        app:boxStrokeColor="@color/black"
+        android:hint="Body Weight">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:singleLine="true"
+            android:id="@+id/body_weight_text_edit_popup"
+            android:textColorHint="@color/black"
+            android:layout_height="wrap_content"/>
+
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"

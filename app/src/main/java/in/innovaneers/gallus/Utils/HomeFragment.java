@@ -37,6 +37,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -70,7 +71,7 @@ public class HomeFragment extends Fragment {
     TextInputEditText chicks_no_edit_popup,purchase_edit_popup;
     AppCompatButton farmId_home;
     TextView rate_per_kg_home,fCR_per_kg_home,cpg_per_kg_home;
-    TextInputEditText free_chicks_no_edit_popup,editTextDate;
+    TextInputEditText free_chicks_no_edit_popup,editTextDate,body_weight_text_edit_popup;
      String farmId;
      String currentBatchId;
     String selectedFarmId;
@@ -271,6 +272,7 @@ public class HomeFragment extends Fragment {
         editTextDate = dialogView.findViewById(R.id.date_text_edit_popup);
         chicks_no_edit_popup = dialogView.findViewById(R.id.chicks_no_edit_popup);
         free_chicks_no_edit_popup = dialogView.findViewById(R.id.free_chicks_no_edit_popup);
+        body_weight_text_edit_popup = dialogView.findViewById(R.id.body_weight_text_edit_popup);
         purchase_edit_popup = dialogView.findViewById(R.id.purchase_edit_popup);
         Button resetButton = dialogView.findViewById(R.id.resetButton);
         Button closeButton = dialogView.findViewById(R.id.closeButton);
@@ -285,17 +287,18 @@ public class HomeFragment extends Fragment {
                 // Get values from EditTexts and trim
                 String chicks = chicks_no_edit_popup.getText().toString().trim();
                 String free_chicks = free_chicks_no_edit_popup.getText().toString().trim();
+                int Body_weight = Integer.parseInt(body_weight_text_edit_popup.getText().toString().trim());
                 String purchase = purchase_edit_popup.getText().toString().trim();
                 String date = editTextDate.getText().toString().trim();
 
 
                 // Validate fields
-                if (TextUtils.isEmpty(chicks) || TextUtils.isEmpty(free_chicks) || TextUtils.isEmpty(purchase) || TextUtils.isEmpty(date)) {
+                if (TextUtils.isEmpty(chicks) || TextUtils.isEmpty(purchase) || TextUtils.isEmpty(date)) {
                     Toast.makeText(getContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                BatchRequestModel model = new BatchRequestModel(selectedFarmId,chicks,free_chicks,date,purchase);
+                BatchRequestModel model = new BatchRequestModel(selectedFarmId,chicks,free_chicks,Body_weight,date,purchase);
                 try {
                     Call<RegistrationResponseModel> lcall = RetrofitInstance.getInstance().getMyApi().addBatch(model);
                     lcall.enqueue(new Callback<RegistrationResponseModel>() {
@@ -304,6 +307,7 @@ public class HomeFragment extends Fragment {
                             if (response.isSuccessful() && response.body() != null) {
                                 RegistrationResponseModel showModel = response.body();
                                 // Show success toast
+                                addBatch(date);
                                 Toast.makeText(getContext(), "Successfully Added", Toast.LENGTH_SHORT).show();
                                 dialog.dismiss();  // Dismiss dialog only on successful response
                             } else {
@@ -364,6 +368,17 @@ public class HomeFragment extends Fragment {
 
 
 
+    }
+    private void addBatch(String batchName){
+        shp = getActivity().getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editor = shp.edit();
+        editor.putString("batchDate",getCurrentDate());
+        editor.apply();
+
+    }
+    private String getCurrentDate(){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy",Locale.getDefault());
+        return sdf.format(new Date());
     }
 
 
