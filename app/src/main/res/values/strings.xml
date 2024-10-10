@@ -22,4 +22,5 @@
     <string name="forget_password"><a href="#">Forget Password</a></string>
     <string name="selectMixture">Select</string>
     <string name="select_farm">Select Farm</string>
+    <string name="no_batch_id_current">No Batch Available</string>
 </resources>
