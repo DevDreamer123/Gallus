@@ -27,6 +27,8 @@ public interface ApiInterface {
 
     @POST("Records/History")  //RecordHistory
     Call<List<RecordRequestModel>> recordsHistory(@Body BatchIdModel batchIdModel);
+    @POST("Records/History")  //RecordHistory
+    Call<List<DailyRecordHistoryModel>> recordsHistoryRecord(@Body BatchIdModel batchIdModel);
 
     @POST("Records/Add")  //Add Record
     Call<RecordResponseModel> AddRecord(@Body RecordRequestModel recordRequestModel);
