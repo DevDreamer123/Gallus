@@ -177,11 +177,11 @@ public class HomeFragment extends Fragment {
                     GetBatchIDModel getBatchIDModel = response.body();
                     if (getBatchIDModel != null) {
                         currentBatchId = getBatchIDModel.getCurrentBatch();
+                        Log.d("API Response", currentBatchId);  // API से आया हुआ response
                         SharedPreferences.Editor editor = shp.edit();
                         editor.putString("currentBatchID", currentBatchId);
                         editor.apply();
                     } else {
-                        // Handle null case
                         Toast.makeText(getContext(), "Failed to get batch ID", Toast.LENGTH_SHORT).show();
                     }
                 }

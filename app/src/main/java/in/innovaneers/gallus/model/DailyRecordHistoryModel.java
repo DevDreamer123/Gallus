@@ -8,27 +8,27 @@ public class DailyRecordHistoryModel {
     @SerializedName("BatchID")
     private String BatchID;
     @SerializedName("Housed")
-    private float Housed;
+    private String Housed;
     @SerializedName("Age")
     private String Age;
     @SerializedName("MortalityCount")
-    private float MortalityCount;
+    private String MortalityCount;
     @SerializedName("MortalityTotal")
-    private float MortalityTotal;
+    private String MortalityTotal;
     @SerializedName("MortalityPercentage")
-    private float MortalityPercentage;
+    private String MortalityPercentage;
     @SerializedName("FeedBrand")
     private String FeedBrand ;
     @SerializedName("FeedConsumption")
-    private float FeedConsumption;
+    private String FeedConsumption;
     @SerializedName("CumulativeFeed")
-    private float CumulativeFeed;
+    private String CumulativeFeed;
     @SerializedName("BodyWeight")
-    private float BodyWeight;
+    private String BodyWeight;
     @SerializedName("DayGain")
-    private float DayGain;
+    private String DayGain;
     @SerializedName("FCR")
-    private float FCR;
+    private String FCR;
     @SerializedName("Medicine")
     private String Medicine ;
     @SerializedName("Vaccine")
@@ -38,15 +38,15 @@ public class DailyRecordHistoryModel {
     @SerializedName("Date")
     private String Date ;
     @SerializedName("StandardFeedConsumption")
-    private float StandardFeedConsumption;
+    private String StandardFeedConsumption;
     @SerializedName("StandardCumulativeFeed")
-    private float StandardCumulativeFeed;
+    private String StandardCumulativeFeed;
     @SerializedName("StandardBodyWeight")
-    private float StandardBodyWeight;
+    private String StandardBodyWeight;
     @SerializedName("StandardDayGain")
-    private float StandardDayGain;
+    private String StandardDayGain;
     @SerializedName("StandardFCR")
-    private float StandardFCR;
+    private String StandardFCR;
 
 
     // Getter Methods
@@ -59,7 +59,7 @@ public class DailyRecordHistoryModel {
         return BatchID;
     }
 
-    public float getHoused() {
+    public String getHoused() {
         return Housed;
     }
 
@@ -67,15 +67,15 @@ public class DailyRecordHistoryModel {
         return Age;
     }
 
-    public float getMortalityCount() {
+    public String getMortalityCount() {
         return MortalityCount;
     }
 
-    public float getMortalityTotal() {
+    public String getMortalityTotal() {
         return MortalityTotal;
     }
 
-    public float getMortalityPercentage() {
+    public String getMortalityPercentage() {
         return MortalityPercentage;
     }
 
@@ -83,23 +83,23 @@ public class DailyRecordHistoryModel {
         return FeedBrand;
     }
 
-    public float getFeedConsumption() {
+    public String getFeedConsumption() {
         return FeedConsumption;
     }
 
-    public float getCumulativeFeed() {
+    public String getCumulativeFeed() {
         return CumulativeFeed;
     }
 
-    public float getBodyWeight() {
+    public String getBodyWeight() {
         return BodyWeight;
     }
 
-    public float getDayGain() {
+    public String getDayGain() {
         return DayGain;
     }
 
-    public float getFCR() {
+    public String getFCR() {
         return FCR;
     }
 
@@ -119,23 +119,23 @@ public class DailyRecordHistoryModel {
         return Date;
     }
 
-    public float getStandardFeedConsumption() {
+    public String getStandardFeedConsumption() {
         return StandardFeedConsumption;
     }
 
-    public float getStandardCumulativeFeed() {
+    public String getStandardCumulativeFeed() {
         return StandardCumulativeFeed;
     }
 
-    public float getStandardBodyWeight() {
+    public String getStandardBodyWeight() {
         return StandardBodyWeight;
     }
 
-    public float getStandardDayGain() {
+    public String getStandardDayGain() {
         return StandardDayGain;
     }
 
-    public float getStandardFCR() {
+    public String getStandardFCR() {
         return StandardFCR;
     }
 
@@ -149,7 +149,7 @@ public class DailyRecordHistoryModel {
         this.BatchID = BatchID;
     }
 
-    public void setHoused(float Housed) {
+    public void setHoused(String Housed) {
         this.Housed = Housed;
     }
 
@@ -157,15 +157,15 @@ public class DailyRecordHistoryModel {
         this.Age = Age;
     }
 
-    public void setMortalityCount(float MortalityCount) {
+    public void setMortalityCount(String MortalityCount) {
         this.MortalityCount = MortalityCount;
     }
 
-    public void setMortalityTotal(float MortalityTotal) {
+    public void setMortalityTotal(String MortalityTotal) {
         this.MortalityTotal = MortalityTotal;
     }
 
-    public void setMortalityPercentage(float MortalityPercentage) {
+    public void setMortalityPercentage(String MortalityPercentage) {
         this.MortalityPercentage = MortalityPercentage;
     }
 
@@ -173,23 +173,23 @@ public class DailyRecordHistoryModel {
         this.FeedBrand = FeedBrand;
     }
 
-    public void setFeedConsumption(float FeedConsumption) {
+    public void setFeedConsumption(String FeedConsumption) {
         this.FeedConsumption = FeedConsumption;
     }
 
-    public void setCumulativeFeed(float CumulativeFeed) {
+    public void setCumulativeFeed(String CumulativeFeed) {
         this.CumulativeFeed = CumulativeFeed;
     }
 
-    public void setBodyWeight(float BodyWeight) {
+    public void setBodyWeight(String BodyWeight) {
         this.BodyWeight = BodyWeight;
     }
 
-    public void setDayGain(float DayGain) {
+    public void setDayGain(String DayGain) {
         this.DayGain = DayGain;
     }
 
-    public void setFCR(float FCR) {
+    public void setFCR(String FCR) {
         this.FCR = FCR;
     }
 
@@ -209,23 +209,23 @@ public class DailyRecordHistoryModel {
         this.Date = Date;
     }
 
-    public void setStandardFeedConsumption(float StandardFeedConsumption) {
+    public void setStandardFeedConsumption(String StandardFeedConsumption) {
         this.StandardFeedConsumption = StandardFeedConsumption;
     }
 
-    public void setStandardCumulativeFeed(float StandardCumulativeFeed) {
+    public void setStandardCumulativeFeed(String StandardCumulativeFeed) {
         this.StandardCumulativeFeed = StandardCumulativeFeed;
     }
 
-    public void setStandardBodyWeight(float StandardBodyWeight) {
+    public void setStandardBodyWeight(String StandardBodyWeight) {
         this.StandardBodyWeight = StandardBodyWeight;
     }
 
-    public void setStandardDayGain(float StandardDayGain) {
+    public void setStandardDayGain(String StandardDayGain) {
         this.StandardDayGain = StandardDayGain;
     }
 
-    public void setStandardFCR(float StandardFCR) {
+    public void setStandardFCR(String StandardFCR) {
         this.StandardFCR = StandardFCR;
     }
 }

@@ -36,80 +36,353 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-        <TableLayout
-            android:id="@+id/tableLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:stretchColumns="*"
-            android:padding="16dp">
 
-            <!-- Header Row -->
-            <TableRow>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Date"
-                    android:padding="8dp"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Age"
-                    android:padding="8dp"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Housed"
-                    android:padding="8dp"
-                    android:textStyle="bold"/>
-                
-
-                <TextView
-                    android:id="@+id/feedIntake"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Feed Intake"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
+                <TableLayout
+                    android:id="@+id/tableLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="8dp">
+                    android:stretchColumns="*"
+                    android:padding="@dimen/_10sdp">
 
-                    <TextView
-                        android:id="@+id/stdValue"
-                        android:layout_width="0dp"
+                    <!-- Table Header Row -->
+                    <TableRow
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="STD"
-                        android:gravity="end" />
+                        android:background="#ececec">
 
-                    <TextView
-                        android:id="@+id/actualValue"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Actual"
-                        android:gravity="start" />
-                </LinearLayout>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Body Weight (Actual)"
-                    android:padding="8dp"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Day Gain (Actual)"
-                    android:padding="8dp"
-                    android:textStyle="bold"/>
-            </TableRow>
 
-        </TableLayout>
+                        <TextView
+                            android:text="Date"
+                            android:padding="@dimen/_8sdp"
+                            android:textStyle="bold"
+                            android:layout_marginRight="@dimen/_50sdp"
+                            android:layout_gravity="center"
+                            android:layout_weight="1" />
+
+                        <View
+                            android:layout_height="match_parent"
+                            android:layout_width="@dimen/_1sdp"
+                            android:background="#dfdfdf"/>
+
+                        <TextView
+                            android:text="Age"
+                            android:padding="@dimen/_8sdp"
+                            android:textStyle="bold"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_weight="1"
+                            android:gravity="center"/>
+
+                        <View
+                            android:layout_height="match_parent"
+                            android:layout_width="@dimen/_1sdp"
+                            android:background="#dfdfdf"/>
+
+                        <TextView
+                            android:text="Housed"
+                            android:padding="@dimen/_8sdp"
+                            android:textStyle="bold"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_weight="1"
+                            android:gravity="center"/>
+
+                        <View android:layout_height="match_parent"
+                            android:layout_width="@dimen/_1sdp"
+                            android:background="#dfdfdf"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/mortaltity_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Mortality"
+                                android:layout_marginRight="@dimen/_50sdp"
+                                android:layout_marginLeft="@dimen/_50sdp"
+                                android:textSize="@dimen/_10sdp"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="3"
+                                android:layout_marginTop="@dimen/_8sdp">
+
+                                <TextView
+                                    android:id="@+id/daily_value"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Daily"
+                                    android:layout_marginLeft="@dimen/_10sdp"
+                                    android:layout_marginRight="@dimen/_10sdp" />
+
+                                <TextView
+                                    android:id="@+id/total_value"
+                                    android:layout_width="0dp"
+                                    android:layout_marginRight="@dimen/_5sdp"
+                                    android:layout_marginLeft="@dimen/_5sdp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Total" />
+                                <TextView
+                                    android:id="@+id/cum_value"
+                                    android:layout_width="0dp"
+                                    android:layout_marginRight="@dimen/_10sdp"
+                                    android:layout_marginLeft="@dimen/_5sdp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Cum" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <View android:layout_height="match_parent"
+                            android:layout_width="@dimen/_1sdp"
+                            android:background="#dfdfdf"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_gravity="center">
+
+                        <TextView
+                            android:id="@+id/feedIntake"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Feed Intake"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="@dimen/_30sdp"
+                            android:layout_marginLeft="@dimen/_20sdp"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="@dimen/_8sdp">
+
+                            <TextView
+                                android:id="@+id/stdValue"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="STD"
+                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginRight="@dimen/_10sdp"
+                                />
+
+                            <TextView
+                                android:id="@+id/actualValue"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginRight="@dimen/_10sdp"
+                                android:text="Actual"
+                                />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <View android:layout_height="match_parent"
+                            android:layout_width="@dimen/_1sdp"
+                            android:background="#dfdfdf"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_gravity="center">
+
+                            <TextView
+                                android:id="@+id/cumulative_feed"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Cumulative Feed(gm)"
+                                android:layout_marginRight="@dimen/_20sdp"
+                                android:layout_marginLeft="@dimen/_20sdp"
+                                android:textSize="@dimen/_10sdp"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="@dimen/_8sdp">
+
+                                <TextView
+                                    android:id="@+id/std_cfValue"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="STD"
+                                    android:layout_marginLeft="@dimen/_10sdp"
+                                    android:layout_marginRight="@dimen/_10sdp"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/actual_cfValue"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Actual"
+                                    android:layout_marginRight="@dimen/_10sdp"
+                                    android:layout_marginLeft="@dimen/_10sdp"
+                                    />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <View android:layout_height="match_parent"
+                            android:layout_width="@dimen/_1sdp"
+                            android:background="#dfdfdf"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_gravity="center">
+
+                            <TextView
+                                android:id="@+id/body_weight_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Body Weight(gm)"
+                                android:layout_marginRight="@dimen/_30sdp"
+                                android:layout_marginLeft="@dimen/_20sdp"
+                                android:textSize="@dimen/_10sdp"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="@dimen/_8sdp">
+
+                                <TextView
+                                    android:id="@+id/std_bwValue"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="STD"
+                                    android:layout_marginLeft="@dimen/_10sdp"
+                                    android:layout_marginRight="@dimen/_10sdp"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/actual_bwValue"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Actual"
+                                    />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <View android:layout_height="match_parent"
+                            android:layout_width="@dimen/_1sdp"
+                            android:background="#dfdfdf"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_gravity="center">
+
+                            <TextView
+                                android:id="@+id/gay_gain__value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Day Gain(gm)"
+                                android:layout_marginRight="@dimen/_30sdp"
+                                android:layout_marginLeft="@dimen/_20sdp"
+                                android:textSize="@dimen/_10sdp"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="@dimen/_8sdp">
+
+                                <TextView
+                                    android:id="@+id/std_dyValue"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="STD"
+                                    android:layout_marginLeft="@dimen/_10sdp"
+                                    android:layout_marginRight="@dimen/_10sdp"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/actual_dyValue"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Actual"
+                                    />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <View android:layout_height="match_parent"
+                            android:layout_width="@dimen/_1sdp"
+                            android:background="#dfdfdf"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_gravity="center">
+
+                            <TextView
+                                android:id="@+id/fcr_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="FCR"
+                                android:layout_marginRight="@dimen/_50sdp"
+                                android:layout_marginLeft="@dimen/_50sdp"
+                                android:textSize="@dimen/_10sdp"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="@dimen/_8sdp">
+
+                                <TextView
+                                    android:id="@+id/std_fcrValue"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="STD"
+                                    android:layout_marginLeft="@dimen/_10sdp"
+                                    android:layout_marginRight="@dimen/_10sdp"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/actual_fcrValue"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Actual"
+                                    />
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+
+                    </TableRow>
+
+                    <!-- Table Rows will be dynamically generated here -->
+                </TableLayout>
+
 
         <!--<androidx.cardview.widget.CardView
             android:layout_width="match_parent"
