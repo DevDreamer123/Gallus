@@ -145,10 +145,12 @@ public class RecordsHistoryActivity extends AppCompatActivity {
 
             TextView ageView = new TextView(this);
             ageView.setText(String.valueOf(record.getAge()));
+            ageView.setPadding(50,0,0,0);
             tableRow.addView(ageView);
 
             TextView housedView = new TextView(this);
             housedView.setText(String.valueOf(record.getHoused()));
+            housedView.setPadding(50,0,0,0);
             tableRow.addView(housedView);
 
             // Feed Intake Column (with Std and Actual values)
@@ -157,12 +159,14 @@ public class RecordsHistoryActivity extends AppCompatActivity {
 
             // Standard Value (Std.)
             TextView stdFeedIntakeView = new TextView(this);
-            stdFeedIntakeView.setText("Std: " + record.getFeedConsumption()); // Assuming FeedIntakeStd field exists
+            stdFeedIntakeView.setText(String.valueOf(record.getFeedConsumption())); // Assuming FeedIntakeStd field exists
+            stdFeedIntakeView.setPadding(50,0,0,0);
             feedIntakeLayout.addView(stdFeedIntakeView);
 
             // Actual Value (Actual)
             TextView actualFeedIntakeView = new TextView(this);
-            actualFeedIntakeView.setText("Actual: " + record.getCumulativeFeed());
+            actualFeedIntakeView.setText(String.valueOf(record.getCumulativeFeed()));
+            actualFeedIntakeView.setPadding(50,0,0,0);
             feedIntakeLayout.addView(actualFeedIntakeView);
             // Add the layout with both values to the table row
             tableRow.addView(feedIntakeLayout);
@@ -170,10 +174,12 @@ public class RecordsHistoryActivity extends AppCompatActivity {
 
             TextView bodyWeightActualView = new TextView(this);
             bodyWeightActualView.setText(String.valueOf(record.getBodyWeight()));
+            bodyWeightActualView.setPadding(150,0,0,0);
             tableRow.addView(bodyWeightActualView);
 
             TextView dayGainActualView = new TextView(this);
             dayGainActualView.setText(String.valueOf(record.getStandardCumulativeFeed()));
+            dayGainActualView.setPadding(100,0,0,0);
             tableRow.addView(dayGainActualView);
 
             // Add row to TableLayout
