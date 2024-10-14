@@ -132,12 +132,37 @@
 
         <TextView
             android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:text="Cumulative Feed"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:paddingTop="8dp" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp">
+
+            <EditText
+                android:id="@+id/editTextcumulative_record"
+                android:layout_width="match_parent"
+                android:padding="@dimen/_10sdp"
+                android:hint="Enter cumulative feed"
+                android:backgroundTint="@color/white"
+                android:layout_height="wrap_content"/>
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_5sdp"
             android:paddingTop="8dp"
-            android:text="Feed Constructor"
+            android:text="Feed Consumption"
             android:textStyle="bold" />
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -146,12 +171,12 @@
             android:layout_marginLeft="@dimen/_10sdp">
 
             <EditText
-                android:id="@+id/editTextfeedconstruction_record"
+                android:id="@+id/editTextfeedconsumption_record"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_10sdp"
                 android:backgroundTint="@color/white"
-                android:hint="Enter feed constructor"
+                android:hint="Enter feed consumption"
                 android:inputType="numberDecimal" />
         </androidx.cardview.widget.CardView>
         <TextView
@@ -175,8 +200,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_10sdp"
                 android:backgroundTint="@color/white"
-                android:hint="Enter bird weight (average per bird)"
-                android:inputType="numberDecimal" />
+                android:hint="Enter bird weight (average per bird)" />
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -185,7 +209,7 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_5sdp"
             android:textStyle="bold"
-            android:text="Mortality"
+            android:text="Mortality Count"
             android:layout_marginLeft="@dimen/_10sdp"
             android:paddingTop="8dp" />
         <androidx.cardview.widget.CardView
@@ -195,22 +219,23 @@
             android:layout_marginLeft="@dimen/_10sdp">
 
             <EditText
-                android:id="@+id/editTextMortalityRate_record"
+                android:id="@+id/editTextMortalitycount_record"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_10sdp"
                 android:backgroundTint="@color/white"
-                android:hint="Enter mortality"
+                android:hint="Enter mortality count"
                 android:inputType="number" />
         </androidx.cardview.widget.CardView>
 
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Health Status"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_5sdp"
             android:textStyle="bold"
+            android:text="Medicine"
             android:layout_marginLeft="@dimen/_10sdp"
             android:paddingTop="8dp" />
         <androidx.cardview.widget.CardView
@@ -220,13 +245,62 @@
             android:layout_marginLeft="@dimen/_10sdp">
 
             <EditText
-                android:id="@+id/editTextHealthStatus_record"
+                android:id="@+id/editTextMedicine_record"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_10sdp"
                 android:backgroundTint="@color/white"
-                android:hint="Enter health status" />
+                android:hint="Enter medicine" />
         </androidx.cardview.widget.CardView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:textStyle="bold"
+            android:text="Vaccine"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:paddingTop="8dp" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp">
+
+            <EditText
+                android:id="@+id/editTextvaccine_record"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:backgroundTint="@color/white"
+                android:hint="Enter vaccine"/>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:textStyle="bold"
+            android:text="FCR"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:paddingTop="8dp" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp">
+
+            <EditText
+                android:id="@+id/editTextfcr_record"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:backgroundTint="@color/white"
+                android:hint="Enter fcr"
+                android:inputType="text" />
+        </androidx.cardview.widget.CardView>
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -249,8 +323,7 @@
                 android:padding="@dimen/_10sdp"
                 android:backgroundTint="@color/white"
                 android:layout_height="wrap_content"
-                android:hint="Enter water consumed (liters)"
-                android:inputType="numberDecimal" />
+                android:hint="Enter water consumed (liters)" />
         </androidx.cardview.widget.CardView>
 
 

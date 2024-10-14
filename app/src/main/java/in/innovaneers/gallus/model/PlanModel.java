@@ -13,6 +13,78 @@ public class PlanModel {
     private String Amount;
     @SerializedName("Validity")
     private String Validity;
+    @SerializedName("isActive")
+    private boolean isActive;
+
+
+    // Getter Methods
+
+    public float getID() {
+        return ID;
+    }
+
+    public String getPlanID() {
+        return PlanID;
+    }
+
+    public String getTitle() {
+        return Title;
+    }
+
+    public String getAmount() {
+        return Amount;
+    }
+
+    public String getValidity() {
+        return Validity;
+    }
+
+    public boolean getIsActive() {
+        return isActive;
+    }
+
+    // Setter Methods
+
+    public void setID(float ID) {
+        this.ID = ID;
+    }
+
+    public void setPlanID(String PlanID) {
+        this.PlanID = PlanID;
+    }
+
+    public void setTitle(String Title) {
+        this.Title = Title;
+    }
+
+    public void setAmount(String Amount) {
+        this.Amount = Amount;
+    }
+
+    public void setValidity(String Validity) {
+        this.Validity = Validity;
+    }
+
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
+    }
+
+
+
+
+
+
+
+    /*@SerializedName("ID")
+    private float ID;
+    @SerializedName("PlanID")
+    private String PlanID;
+    @SerializedName("Title")
+    private String Title;
+    @SerializedName("Amount")
+    private String Amount;
+    @SerializedName("Validity")
+    private String Validity;
     @SerializedName("Mobiles")
     private String Mobiles;
     @SerializedName("CommissionForFreeMember")
@@ -123,5 +195,5 @@ public class PlanModel {
 
     public void setImage(int image) {
         Image = image;
-    }
+    }*/
 }

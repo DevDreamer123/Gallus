@@ -27,6 +27,7 @@ public interface ApiInterface {
 
     @POST("Records/History")  //RecordHistory
     Call<List<RecordRequestModel>> recordsHistory(@Body BatchIdModel batchIdModel);
+
     @POST("Records/History")  //RecordHistory
     Call<List<DailyRecordHistoryModel>> recordsHistoryRecord(@Body BatchIdModel batchIdModel);
 
@@ -38,6 +39,10 @@ public interface ApiInterface {
 
     @POST("Farms/Details")  //CurrentBatchIDGet
     Call<GetBatchIDModel> GetBatchId(@Body FarmIdModel farmIdModel);
+
+    @POST("Plans/List ")  //Plan List
+    Call<List<PlanModel>> createPlanList();
+
 
 
 }

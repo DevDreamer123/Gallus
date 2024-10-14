@@ -19,6 +19,7 @@ import java.util.List;
 
 import in.innovaneers.gallus.MainActivity;
 import in.innovaneers.gallus.R;
+import retrofit2.Call;
 
 public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.ViewHolder> {
     private final Context context;
@@ -43,11 +44,16 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.ViewHolder> {
         holder.amount_text_plan.setText(model.getAmount());
         holder.validaity_text_plan.setText(model.getValidity());
         holder.discount_plan.setText("₹599");
-        holder.background_img_plan.setImageResource(model.getImage());
+       // holder.background_img_plan.setImageResource(model.getImage());
         holder.discount_plan.setPaintFlags(holder.discount_plan.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+               /* RetrofitInstance.BASEURL = " http://gallus.innovaneers.in/";
+                try {
+                    Call<List<PlanModel>> lcall = RetrofitInstance.getInstance().getMyApi().createPlanList();*/
                 Intent i = new Intent(context, MainActivity.class);
                 context.startActivity(i);
             }

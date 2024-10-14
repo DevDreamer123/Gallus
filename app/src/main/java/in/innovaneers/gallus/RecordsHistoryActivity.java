@@ -50,7 +50,8 @@ public class RecordsHistoryActivity extends AppCompatActivity {
     TextView current_batch_record_id;
     public static final String SHARED_PREF_NAME = "Gallus";
     private static final int STORAGE_PERMISSION_CODE = 101;
-    private static String CurrentBatchId ;
+    private static String CurrentBatchId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,17 +65,17 @@ public class RecordsHistoryActivity extends AppCompatActivity {
         current_batch_record_id = findViewById(R.id.current_batch_record_id);
 
 
+        // Retrieve and Display the Batch ID
         shp = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
-        String currentBatchId = shp.getString("currentBatchID","");
-        Log.d("currentBatchId",currentBatchId);
+        String currentBatchId = shp.getString("currentBatchID", "");
+        Log.d("StoredBatchId", currentBatchId);
+
         CurrentBatchId = currentBatchId;
         if (CurrentBatchId == null || CurrentBatchId.isEmpty()) {
             current_batch_record_id.setText(R.string.no_batch_id_current);
         } else {
-            current_batch_record_id.setText(currentBatchId);
+            current_batch_record_id.setText(CurrentBatchId);
         }
-
-
 
 
         // Request storage permission
@@ -87,20 +88,21 @@ public class RecordsHistoryActivity extends AppCompatActivity {
     }
 
     private void fetchDataFromApi() {
-       // recycler_records_list = findViewById(R.id.recycler_records_list);
-        RetrofitInstance.BASEURL = "http://gallus.innovaneers.in/";
+        // recycler_records_list = findViewById(R.id.recycler_records_list);
+        RetrofitInstance.BASEURL = "http://api.gallus.in/";
         BatchIdModel farmIdModel = new BatchIdModel(CurrentBatchId);
         try {
             Call<List<DailyRecordHistoryModel>> call = RetrofitInstance.getInstance().getMyApi().recordsHistoryRecord(farmIdModel);
             call.enqueue(new Callback<List<DailyRecordHistoryModel>>() {
                 @Override
                 public void onResponse(Call<List<DailyRecordHistoryModel>> call, Response<List<DailyRecordHistoryModel>> response) {
-                    //Toast.makeText(RecordsHistoryActivity.this, "Hello", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RecordsHistoryActivity.this, "Hello", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RecordsHistoryActivity.this, response.body().toString(), Toast.LENGTH_SHORT).show();
 
                     if (response.isSuccessful() && response.body() != null && !response.body().isEmpty()) {
                         //createExcelFile(response.body());
                         List<DailyRecordHistoryModel> dailyRecordHistoryModels = response.body();
-                        if (dailyRecordHistoryModels != null){
+                        if (dailyRecordHistoryModels != null) {
                             populateTable(dailyRecordHistoryModels);
                         }
 
@@ -113,16 +115,16 @@ public class RecordsHistoryActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<List<DailyRecordHistoryModel>> call, Throwable t) {
-                    Toast.makeText(RecordsHistoryActivity.this,t.toString(), Toast.LENGTH_SHORT).show();
-                    Log.d("error",t.getMessage());
+                    Toast.makeText(RecordsHistoryActivity.this, t.toString(), Toast.LENGTH_SHORT).show();
+                    Log.d("error", t.getMessage());
 
                     t.toString();
                 }
             });
 
         } catch (Exception e) {
-            Toast.makeText(RecordsHistoryActivity.this,e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-            Log.d("error1",e.getMessage());
+            Toast.makeText(RecordsHistoryActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            Log.d("error1", e.getMessage());
             e.getMessage();
         }
     }
@@ -134,44 +136,99 @@ public class RecordsHistoryActivity extends AppCompatActivity {
         for (DailyRecordHistoryModel record : records) {
             TableRow tableRow = new TableRow(this);
 
+            // Date Column
             TextView dateView = new TextView(this);
-            if (record.getDate() == null || record.getDate().isEmpty()){
-                dateView.setText("N/A");
-            }else {
-                String date = Method.UnixToDate(record.getDate());
-                dateView.setText(date);
-            }
+            dateView.setText(record.getDate() != null ? Method.UnixToDate(record.getDate()) : "N/A");
             tableRow.addView(dateView);
 
+            // Age Column
             TextView ageView = new TextView(this);
+<<<<<<< HEAD
             ageView.setText(String.valueOf(record.getAge()));
             ageView.setPadding(50,0,0,0);
+=======
+            ageView.setText(record.getAge() != null ? String.valueOf(record.getAge()) : "N/A");
+>>>>>>> a474a291b004a638001a0844fa15b6119facc46f
             tableRow.addView(ageView);
 
+            // Housed Column
             TextView housedView = new TextView(this);
+<<<<<<< HEAD
             housedView.setText(String.valueOf(record.getHoused()));
             housedView.setPadding(50,0,0,0);
+=======
+            housedView.setText(record.getHoused() != null ? String.valueOf(record.getHoused()) : "N/A");
+>>>>>>> a474a291b004a638001a0844fa15b6119facc46f
             tableRow.addView(housedView);
 
-            // Feed Intake Column (with Std and Actual values)
+            // Mortality (Daily/Total/Cum%)
+            LinearLayout mortalityLayout = new LinearLayout(this);
+            mortalityLayout.setOrientation(LinearLayout.VERTICAL);
+
+            // Daily Mortality
+            TextView dailyMortalityView = new TextView(this);
+            dailyMortalityView.setText(record.getMortalityCount() != null ? String.valueOf(record.getMortalityCount()) : "N/A");
+            mortalityLayout.addView(dailyMortalityView);
+
+            // Total Mortality
+            TextView totalMortalityView = new TextView(this);
+            totalMortalityView.setText(record.getMortalityCount() != null ? String.valueOf(record.getMortalityCount()) : "N/A");
+            mortalityLayout.addView(totalMortalityView);
+
+            // Cumulative Mortality Percentage
+            TextView cumMortalityView = new TextView(this);
+            cumMortalityView.setText(record.getMortalityCount() != null ? String.valueOf(record.getMortalityCount()) : "N/A");
+            mortalityLayout.addView(cumMortalityView);
+
+            tableRow.addView(mortalityLayout);
+
+            // Mortality (Standard and Actual)
+            LinearLayout mortalityStdActualLayout = new LinearLayout(this);
+            mortalityStdActualLayout.setOrientation(LinearLayout.HORIZONTAL);
+
+            // Standard Mortality
+            TextView stdMortalityView = new TextView(this);
+            stdMortalityView.setText(record.getMortalityCount() != null ? String.valueOf(record.getMortalityCount()) : "N/A");
+            mortalityStdActualLayout.addView(stdMortalityView);
+
+            // Actual Mortality
+            TextView actualMortalityView = new TextView(this);
+            actualMortalityView.setText(record.getMortalityTotal() != null ? String.valueOf(record.getMortalityTotal()) : "N/A");
+            mortalityStdActualLayout.addView(actualMortalityView);
+
+            tableRow.addView(mortalityStdActualLayout);
+
+            // Feed Intake (Standard and Actual)
             LinearLayout feedIntakeLayout = new LinearLayout(this);
             feedIntakeLayout.setOrientation(LinearLayout.HORIZONTAL);
 
-            // Standard Value (Std.)
+            // Standard Feed Intake
             TextView stdFeedIntakeView = new TextView(this);
+<<<<<<< HEAD
             stdFeedIntakeView.setText(String.valueOf(record.getFeedConsumption())); // Assuming FeedIntakeStd field exists
             stdFeedIntakeView.setPadding(50,0,0,0);
+=======
+            stdFeedIntakeView.setText(record.getFeedBrand() != null ? String.valueOf(record.getFeedBrand()) : "N/A");
+>>>>>>> a474a291b004a638001a0844fa15b6119facc46f
             feedIntakeLayout.addView(stdFeedIntakeView);
 
-            // Actual Value (Actual)
+            // Actual Feed Intake
             TextView actualFeedIntakeView = new TextView(this);
+<<<<<<< HEAD
             actualFeedIntakeView.setText(String.valueOf(record.getCumulativeFeed()));
             actualFeedIntakeView.setPadding(50,0,0,0);
+=======
+            actualFeedIntakeView.setText(record.getFeedBrand() != null ? String.valueOf(record.getFeedBrand()) : "N/A");
+>>>>>>> a474a291b004a638001a0844fa15b6119facc46f
             feedIntakeLayout.addView(actualFeedIntakeView);
-            // Add the layout with both values to the table row
+
             tableRow.addView(feedIntakeLayout);
 
+            // Cumulative (Standard and Actual)
+            LinearLayout cumulativeLayout = new LinearLayout(this);
+            cumulativeLayout.setOrientation(LinearLayout.HORIZONTAL);
 
+<<<<<<< HEAD
             TextView bodyWeightActualView = new TextView(this);
             bodyWeightActualView.setText(String.valueOf(record.getBodyWeight()));
             bodyWeightActualView.setPadding(150,0,0,0);
@@ -181,10 +238,77 @@ public class RecordsHistoryActivity extends AppCompatActivity {
             dayGainActualView.setText(String.valueOf(record.getStandardCumulativeFeed()));
             dayGainActualView.setPadding(100,0,0,0);
             tableRow.addView(dayGainActualView);
+=======
+            // Standard Cumulative
+            TextView stdCumulativeView = new TextView(this);
+            stdCumulativeView.setText(record.getCumulativeFeed() != null ? String.valueOf(record.getCumulativeFeed()) : "N/A");
+            cumulativeLayout.addView(stdCumulativeView);
 
-            // Add row to TableLayout
+            // Actual Cumulative
+            TextView actualCumulativeView = new TextView(this);
+            actualCumulativeView.setText(record.getCumulativeFeed() != null ? String.valueOf(record.getCumulativeFeed()) : "N/A");
+            cumulativeLayout.addView(actualCumulativeView);
+>>>>>>> a474a291b004a638001a0844fa15b6119facc46f
+
+            tableRow.addView(cumulativeLayout);
+
+            // Body Weight (Standard and Actual)
+            LinearLayout bodyWeightLayout = new LinearLayout(this);
+            bodyWeightLayout.setOrientation(LinearLayout.HORIZONTAL);
+
+            // Standard Body Weight
+            TextView stdBodyWeightView = new TextView(this);
+            stdBodyWeightView.setText(record.getBodyWeight() != null ? String.valueOf(record.getBodyWeight()) : "N/A");
+//actualBodyWeightView.setText(record.getActualBodyWeight() != null ? String.valueOf(record.getActualBodyWeight()) : "N/A");
+            bodyWeightLayout.addView(stdBodyWeightView);
+
+            // Actual Body Weight
+            TextView actualBodyWeightView = new TextView(this);
+            actualBodyWeightView.setText(record.getBodyWeight() != null ? String.valueOf(record.getBodyWeight()) : "N/A");
+            bodyWeightLayout.addView(actualBodyWeightView);
+
+            tableRow.addView(bodyWeightLayout);
+
+            // Day Gain (Standard and Actual)
+            LinearLayout dayGainLayout = new LinearLayout(this);
+            dayGainLayout.setOrientation(LinearLayout.HORIZONTAL);
+
+            // Standard Day Gain
+            TextView stdDayGainView = new TextView(this);
+            stdDayGainView.setText(record.getMedicine() != null ? String.valueOf(record.getMedicine()) : "N/A");
+            dayGainLayout.addView(stdDayGainView);
+
+            // Actual Day Gain
+            TextView actualDayGainView = new TextView(this);
+            actualDayGainView.setText(record.getMedicine() != null ? String.valueOf(record.getMedicine()) : "N/A");
+            dayGainLayout.addView(actualDayGainView);
+
+            tableRow.addView(dayGainLayout);
+
+            // FCR (Standard and Actual)
+            LinearLayout fcrLayout = new LinearLayout(this);
+            fcrLayout.setOrientation(LinearLayout.HORIZONTAL);
+
+            // Standard FCR
+            TextView stdFcrView = new TextView(this);
+            stdFcrView.setText(record.getDayGain() != null ? String.valueOf(record.getDayGain()) : "N/A");
+            fcrLayout.addView(stdFcrView);
+
+            // Actual FCR
+            TextView actualFcrView = new TextView(this);
+            actualFcrView.setText(record.getDayGain() != null ? String.valueOf(record.getDayGain()) : "N/A");
+            fcrLayout.addView(actualFcrView);
+
+            tableRow.addView(fcrLayout);
+
+            // Add the completed table row to the TableLayout
             tableLayout.addView(tableRow);
         }
+
+    }
+}
+
+
 
 
 
@@ -339,6 +463,5 @@ public class RecordsHistoryActivity extends AppCompatActivity {
             Log.d("error1",e.getMessage());
             e.getMessage();
         }*/
-    }
 
-}
+

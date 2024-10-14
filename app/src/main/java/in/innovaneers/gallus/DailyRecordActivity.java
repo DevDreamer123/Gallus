@@ -41,8 +41,8 @@ public class DailyRecordActivity extends AppCompatActivity {
 
 
     EditText editTextDate_record,editTextbrand_record,editTextGrainAmount_record,
-            editTextfeedconstruction_record,editTextBirdWeight_record,editTextMortalityRate_record,
-            editTextHealthStatus_record,editTextWaterConsumed_record;
+            editTextcumulative_record,editTextfeedconsumption_record,editTextBirdWeight_record,editTextMortalitycount_record,
+            editTextMedicine_record,editTextvaccine_record,editTextfcr_record,editTextWaterConsumed_record;
     TextView day_of_record_from;
 
     Button buttonSubmit_record;
@@ -64,26 +64,37 @@ public class DailyRecordActivity extends AppCompatActivity {
             return insets;
         });
 
+       // shp = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
+       //  currentBatchId = shp.getString("currentBatchID","");
+       // Log.d("currentBatchId",currentBatchId);
+
         shp = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
-         currentBatchId = shp.getString("currentBatchID","");
-        Log.d("currentBatchId",currentBatchId);
+        String CurrentBatchId = shp.getString("currentBatchID", "");
+        Log.d("currentBatchId", CurrentBatchId);
+        currentBatchId = CurrentBatchId;
+
+
+
 
 
         editTextbrand_record = findViewById(R.id.editTextbrand_record);
         editTextGrainAmount_record = findViewById(R.id.editTextGrainAmount_record);
-        editTextfeedconstruction_record = findViewById(R.id.editTextfeedconstruction_record);
+        editTextcumulative_record = findViewById(R.id.editTextcumulative_record);
+        editTextfeedconsumption_record = findViewById(R.id.editTextfeedconsumption_record);
         editTextBirdWeight_record = findViewById(R.id.editTextBirdWeight_record);
-        editTextMortalityRate_record = findViewById(R.id.editTextMortalityRate_record);
-        editTextHealthStatus_record = findViewById(R.id.editTextHealthStatus_record);
+        editTextMortalitycount_record = findViewById(R.id.editTextMortalitycount_record);
+        editTextMedicine_record = findViewById(R.id.editTextMedicine_record);
+        editTextvaccine_record = findViewById(R.id.editTextvaccine_record);
         editTextWaterConsumed_record = findViewById(R.id.editTextWaterConsumed_record);
         editTextDate_record = findViewById(R.id.editTextDate_record);
+        editTextfcr_record = findViewById(R.id.editTextfcr_record);
         day_of_record_from = findViewById(R.id.day_of_record_from);
         showCurrentDay();
         buttonSubmit_record = findViewById(R.id.buttonSubmit_record);
         buttonSubmit_record.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (TextUtils.isEmpty(editTextbrand_record.getText().toString()) && TextUtils.isEmpty(editTextBirdWeight_record.getText().toString()) && TextUtils.isEmpty(editTextfeedconstruction_record.getText().toString()) && TextUtils.isEmpty(editTextMortalityRate_record.getText().toString())){
+                if (TextUtils.isEmpty(editTextbrand_record.getText().toString()) && TextUtils.isEmpty(editTextBirdWeight_record.getText().toString()) && TextUtils.isEmpty(editTextfeedconsumption_record.getText().toString()) && TextUtils.isEmpty(editTextMortalitycount_record.getText().toString())){
                     Toast.makeText(DailyRecordActivity.this, "Please Enter All Details", Toast.LENGTH_SHORT).show();
                 }else {
 
@@ -111,14 +122,16 @@ public class DailyRecordActivity extends AppCompatActivity {
         recordRequestModel.setBatchID(currentBatchId);
         recordRequestModel.setAge(day_of_record);
         recordRequestModel.setFeedBrand(editTextbrand_record.getText().toString());
+        recordRequestModel.setFeedConsumption(editTextfeedconsumption_record.getText().toString());
         recordRequestModel.setDate(editTextDate_record.getText().toString());
-        recordRequestModel.setFeedConsumption(editTextGrainAmount_record.getText().toString());
-        recordRequestModel.setMortalityCount(editTextfeedconstruction_record.getText().toString());
+        recordRequestModel.setCumulativeFeed(editTextcumulative_record.getText().toString());
+        recordRequestModel.setMortalityCount(editTextMortalitycount_record.getText().toString());
         recordRequestModel.setBodyWeight(editTextBirdWeight_record.getText().toString());
-        recordRequestModel.setMortalityTotal(editTextMortalityRate_record.getText().toString());
-        recordRequestModel.setMedicine(editTextHealthStatus_record.getText().toString());
+        recordRequestModel.setFCR(editTextfcr_record.getText().toString());
+        recordRequestModel.setMedicine(editTextMedicine_record.getText().toString());
+        recordRequestModel.setVaccine(editTextvaccine_record.getText().toString());
         recordRequestModel.setWaterConsumption(editTextWaterConsumed_record.getText().toString());
-        RetrofitInstance.BASEURL = " http://gallus.innovaneers.in/";
+        RetrofitInstance.BASEURL = "http://api.gallus.in/";
         try {
             Call<RecordResponseModel> call = RetrofitInstance.getInstance().getMyApi().AddRecord(recordRequestModel);
             call.enqueue(new Callback<RecordResponseModel>() {
