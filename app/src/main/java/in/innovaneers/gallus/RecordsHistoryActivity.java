@@ -143,22 +143,20 @@ public class RecordsHistoryActivity extends AppCompatActivity {
 
             // Age Column
             TextView ageView = new TextView(this);
-<<<<<<< HEAD
+
             ageView.setText(String.valueOf(record.getAge()));
             ageView.setPadding(50,0,0,0);
-=======
             ageView.setText(record.getAge() != null ? String.valueOf(record.getAge()) : "N/A");
->>>>>>> a474a291b004a638001a0844fa15b6119facc46f
             tableRow.addView(ageView);
 
             // Housed Column
             TextView housedView = new TextView(this);
-<<<<<<< HEAD
+
             housedView.setText(String.valueOf(record.getHoused()));
             housedView.setPadding(50,0,0,0);
-=======
+
             housedView.setText(record.getHoused() != null ? String.valueOf(record.getHoused()) : "N/A");
->>>>>>> a474a291b004a638001a0844fa15b6119facc46f
+
             tableRow.addView(housedView);
 
             // Mortality (Daily/Total/Cum%)
@@ -204,22 +202,22 @@ public class RecordsHistoryActivity extends AppCompatActivity {
 
             // Standard Feed Intake
             TextView stdFeedIntakeView = new TextView(this);
-<<<<<<< HEAD
+
             stdFeedIntakeView.setText(String.valueOf(record.getFeedConsumption())); // Assuming FeedIntakeStd field exists
             stdFeedIntakeView.setPadding(50,0,0,0);
-=======
+
             stdFeedIntakeView.setText(record.getFeedBrand() != null ? String.valueOf(record.getFeedBrand()) : "N/A");
->>>>>>> a474a291b004a638001a0844fa15b6119facc46f
+
             feedIntakeLayout.addView(stdFeedIntakeView);
 
             // Actual Feed Intake
             TextView actualFeedIntakeView = new TextView(this);
-<<<<<<< HEAD
+
             actualFeedIntakeView.setText(String.valueOf(record.getCumulativeFeed()));
             actualFeedIntakeView.setPadding(50,0,0,0);
-=======
+
             actualFeedIntakeView.setText(record.getFeedBrand() != null ? String.valueOf(record.getFeedBrand()) : "N/A");
->>>>>>> a474a291b004a638001a0844fa15b6119facc46f
+
             feedIntakeLayout.addView(actualFeedIntakeView);
 
             tableRow.addView(feedIntakeLayout);
@@ -228,7 +226,7 @@ public class RecordsHistoryActivity extends AppCompatActivity {
             LinearLayout cumulativeLayout = new LinearLayout(this);
             cumulativeLayout.setOrientation(LinearLayout.HORIZONTAL);
 
-<<<<<<< HEAD
+
             TextView bodyWeightActualView = new TextView(this);
             bodyWeightActualView.setText(String.valueOf(record.getBodyWeight()));
             bodyWeightActualView.setPadding(150,0,0,0);
@@ -238,7 +236,7 @@ public class RecordsHistoryActivity extends AppCompatActivity {
             dayGainActualView.setText(String.valueOf(record.getStandardCumulativeFeed()));
             dayGainActualView.setPadding(100,0,0,0);
             tableRow.addView(dayGainActualView);
-=======
+
             // Standard Cumulative
             TextView stdCumulativeView = new TextView(this);
             stdCumulativeView.setText(record.getCumulativeFeed() != null ? String.valueOf(record.getCumulativeFeed()) : "N/A");
@@ -248,7 +246,7 @@ public class RecordsHistoryActivity extends AppCompatActivity {
             TextView actualCumulativeView = new TextView(this);
             actualCumulativeView.setText(record.getCumulativeFeed() != null ? String.valueOf(record.getCumulativeFeed()) : "N/A");
             cumulativeLayout.addView(actualCumulativeView);
->>>>>>> a474a291b004a638001a0844fa15b6119facc46f
+
 
             tableRow.addView(cumulativeLayout);
 

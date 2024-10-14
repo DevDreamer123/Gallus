@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-<<<<<<< HEAD
-=======
-  <component name="ScreenshotViewer">
-    <option name="frameScreenshot" value="true" />
-  </component>
->>>>>>> a474a291b004a638001a0844fa15b6119facc46f
   <component name="direct_access_persist.xml">
     <option name="deviceSelectionList">
       <list>

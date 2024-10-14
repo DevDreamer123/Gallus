@@ -43,6 +43,9 @@ public interface ApiInterface {
     @POST("Plans/List ")  //Plan List
     Call<List<PlanModel>> createPlanList();
 
+    @POST("Plans/Purchase")  //Plan purchase
+    Call<PlanModel> createPlanPurchase(@Body PlanRequestModel planRequestModel);
+
 
 
 }

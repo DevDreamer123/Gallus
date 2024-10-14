@@ -26,6 +26,7 @@ import retrofit2.Response;
 public class BatchDetailsActivity extends AppCompatActivity {
     private RecyclerView batchListDetailRecyclerView;
     private BatchIdModel batchIdModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +38,7 @@ public class BatchDetailsActivity extends AppCompatActivity {
             return insets;
         });
         // Initialize views
-        batchListDetailRecyclerView = findViewById(R.id.recyclerview_batch_details);
+      /*  batchListDetailRecyclerView = findViewById(R.id.recyclerview_batch_details);
 
         // Get Batch ID from intent
         Intent intent = getIntent();
@@ -85,5 +86,6 @@ public class BatchDetailsActivity extends AppCompatActivity {
     private void handleError(String errorMessage) {
         Toast.makeText(BatchDetailsActivity.this, "Error: " + errorMessage, Toast.LENGTH_SHORT).show();
         Log.e("BatchDetailActivity", errorMessage);
+    }*/
     }
-    }
+}

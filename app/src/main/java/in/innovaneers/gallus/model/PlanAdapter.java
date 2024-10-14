@@ -23,11 +23,17 @@ import retrofit2.Call;
 
 public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.ViewHolder> {
     private final Context context;
-    private final List<PlanModel> planModels;
+    private List<PlanModel> planModels;
+    private OnPlanClickListener onPlanClickListener;
 
-    public PlanAdapter(Context context, List<PlanModel> planModels) {
+    public PlanAdapter(Context context, List<PlanModel> planModels,OnPlanClickListener onplanclickListener) {
         this.context = context;
         this.planModels = planModels;
+        this.onPlanClickListener = onplanclickListener;
+    }
+    public void setPlans(List<PlanModel> planModels){
+        this.planModels = planModels;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -41,21 +47,22 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull PlanAdapter.ViewHolder holder, int position) {
         final PlanModel model = planModels.get(position);
         holder.offer_title_text.setText(model.getTitle());
-        holder.amount_text_plan.setText(model.getAmount());
-        holder.validaity_text_plan.setText(model.getValidity());
+        holder.amount_text_plan.setText("₹"+model.getAmount());
+        holder.validaity_text_plan.setText("Validity "+model.getValidity()+" Days");
         holder.discount_plan.setText("₹599");
        // holder.background_img_plan.setImageResource(model.getImage());
         holder.discount_plan.setPaintFlags(holder.discount_plan.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                onPlanClickListener.onPlanClick(model);
 
 
                /* RetrofitInstance.BASEURL = " http://gallus.innovaneers.in/";
                 try {
                     Call<List<PlanModel>> lcall = RetrofitInstance.getInstance().getMyApi().createPlanList();*/
-                Intent i = new Intent(context, MainActivity.class);
-                context.startActivity(i);
+               // Intent i = new Intent(context, MainActivity.class);
+                //context.startActivity(i);
             }
         });
 
@@ -63,7 +70,8 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return planModels.size();
+        return planModels == null ? 0 : planModels.size();
+        //return planModels.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -79,5 +87,8 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.ViewHolder> {
             background_img_plan = itemView.findViewById(R.id.background_img_plan);
             discount_plan = itemView.findViewById(R.id.discount_plan);
         }
+    }
+    public interface OnPlanClickListener{
+        void onPlanClick(PlanModel planModel);
     }
 }
