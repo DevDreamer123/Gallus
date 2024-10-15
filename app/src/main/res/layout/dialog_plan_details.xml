@@ -3,51 +3,55 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="20dp">
+    android:padding="@dimen/_20sdp">
 
     <TextView
         android:id="@+id/popupTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Plan Confirmation"
-        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:textSize="@dimen/_15sdp"
         android:textStyle="bold"
         android:textColor="#000"/>
 
     <TextView
         android:id="@+id/planName"
         android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
         android:layout_height="wrap_content"
         android:text="Plan Name: Monthly Subscription"
-        android:textSize="16sp"/>
+        android:textSize="@dimen/_13sdp"/>
 
     <TextView
         android:id="@+id/planDuration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Plan Duration: 1 Month"
-        android:textSize="16sp"/>
+        android:textSize="@dimen/_13sdp"/>
 
     <TextView
         android:id="@+id/planPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Price: ₹499"
-        android:textSize="16sp"/>
+        android:textSize="@dimen/_13sdp"/>
 
     <TextView
         android:id="@+id/planFeatures"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
         android:text="Features:\n- Unlimited Access\n- 24/7 Support\n- No Ads"
-        android:textSize="16sp"/>
+        android:textSize="@dimen/_13sdp"/>
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
         android:text="Payment Details:"
-        android:textSize="16sp"/>
+        android:textSize="@dimen/_13sdp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -57,16 +61,17 @@
     <TextView
         android:id="@+id/paymentDetails"
         android:layout_width="wrap_content"
+        android:textStyle="bold"
         android:layout_height="wrap_content"
-        android:text="Total Amount: "
-        android:textSize="16sp"/>
+        android:text="Total Amount: ₹ "
+        android:textSize="@dimen/_13sdp"/>
 
         <TextView
         android:id="@+id/paymentTotalDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="16sp"/>
+            android:textStyle="bold"
+        android:textSize="@dimen/_13sdp"/>
     </LinearLayout>
 
     <EditText
@@ -87,7 +92,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="end"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="@dimen/_10sdp">
 
         <Button
             android:id="@+id/cancelButton"
@@ -101,6 +106,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Payment"
-            android:layout_marginStart="8dp"/>
+            android:layout_marginStart="@dimen/_8sdp"/>
     </LinearLayout>
 </LinearLayout>

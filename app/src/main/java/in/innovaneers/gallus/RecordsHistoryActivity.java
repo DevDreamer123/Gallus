@@ -187,6 +187,7 @@ public class RecordsHistoryActivity extends AppCompatActivity {
             // Standard Mortality
             TextView stdMortalityView = new TextView(this);
             stdMortalityView.setText(record.getMortalityCount() != null ? String.valueOf(record.getMortalityCount()) : "N/A");
+            stdMortalityView.setPadding(150,0,0,0);
             mortalityStdActualLayout.addView(stdMortalityView);
 
             // Actual Mortality

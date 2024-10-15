@@ -317,6 +317,7 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/daily_record"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
@@ -333,7 +334,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Current History"
+                    android:text="Daily Records"
                     android:layout_marginBottom="@dimen/_10sdp"
                     android:textColor="@color/white"
                     android:layout_marginTop="@dimen/_10sdp"
@@ -350,7 +351,7 @@
                     android:textAllCaps="false"
                     android:padding="@dimen/_5sdp"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:text="Check History"
+                    android:text="Show"
                     android:textColor="@color/white"
                     android:background="@drawable/gradient_third_color"/>
                 </LinearLayout>

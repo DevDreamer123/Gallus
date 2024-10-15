@@ -46,6 +46,7 @@ import in.innovaneers.gallus.DailyRecordActivity;
 import in.innovaneers.gallus.FarmAddActivity;
 import in.innovaneers.gallus.FarmListActivity;
 import in.innovaneers.gallus.R;
+import in.innovaneers.gallus.RecordsHistoryActivity;
 import in.innovaneers.gallus.model.BatchRequestModel;
 import in.innovaneers.gallus.model.BatchIdModel;
 import in.innovaneers.gallus.model.BatchRequestModel;
@@ -76,7 +77,7 @@ public class HomeFragment extends Fragment {
      String currentBatchId;
     String selectedFarmId;
 
-    CardView add_record_card,show_farm_list_btn_card,add_batch_home_card;
+    CardView add_record_card,show_farm_list_btn_card,add_batch_home_card,daily_record;
 
 
     @Override
@@ -88,6 +89,11 @@ public class HomeFragment extends Fragment {
         rate_per_kg_home = view.findViewById(R.id.rate_per_kg_home);
         fCR_per_kg_home = view.findViewById(R.id.fCR_per_kg_home);
         cpg_per_kg_home = view.findViewById(R.id.cpg_per_kg_home);
+        daily_record = view.findViewById(R.id.daily_record);
+        daily_record.setOnClickListener(view1 -> {
+            Intent i = new Intent(getContext(), RecordsHistoryActivity.class);
+            startActivity(i);
+        });
 
 
 
