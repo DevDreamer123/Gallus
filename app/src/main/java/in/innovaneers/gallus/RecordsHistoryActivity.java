@@ -227,7 +227,7 @@ public class RecordsHistoryActivity extends AppCompatActivity {
             tableRow.addView(consumptionLayout);
 
             // Cumulative (Standard and Actual)
-            LinearLayout cumulativeLayout = new LinearLayout(this);
+           /* LinearLayout cumulativeLayout = new LinearLayout(this);
             cumulativeLayout.setOrientation(LinearLayout.HORIZONTAL);
 
             // Standard Cumulative
@@ -244,7 +244,7 @@ public class RecordsHistoryActivity extends AppCompatActivity {
             actualCumulativeView.setText(record.getCumulativeFeed() != null ? String.valueOf(record.getCumulativeFeed()) : "N/A");
             cumulativeLayout.addView(actualCumulativeView);
 
-            tableRow.addView(cumulativeLayout);
+            tableRow.addView(cumulativeLayout);*/
 
 
 
@@ -302,7 +302,7 @@ public class RecordsHistoryActivity extends AppCompatActivity {
             // FCR (Standard and Actual)
 
             // Day Gain (Standard and Actual)
-            LinearLayout fcrLayout = new LinearLayout(this);
+           /* LinearLayout fcrLayout = new LinearLayout(this);
             fcrLayout.setOrientation(LinearLayout.HORIZONTAL);
 
             // Standard Day Gain
@@ -319,9 +319,9 @@ public class RecordsHistoryActivity extends AppCompatActivity {
             actualFCRView.setText(record.getFCR() != null ? String.valueOf(record.getFCR()) : "N/A");
             fcrLayout.addView(actualFCRView);
 
-            tableRow.addView(fcrLayout);
+            tableRow.addView(fcrLayout);*/
 
-            // Actual FCR
+            // Medicine
             TextView medicineView = new TextView(this);
             medicineView.setText(String.valueOf(record.getMedicine()));
             medicineView.setPadding(80,0,0,0);
