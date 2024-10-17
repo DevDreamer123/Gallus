@@ -17,17 +17,17 @@
             android:gravity="right"
             android:orientation="vertical">
             <ImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="@dimen/_150sdp"
                 android:background="@drawable/leeftwo_removebg"/>
         </LinearLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Create Account"
-            android:textSize="30dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
+            android:textSize="@dimen/_25sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:textStyle="bold"
             android:textColor="@color/black"/>
         <!-- Name Field -->
@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="@dimen/_20sdp">
 
             <ImageView
                 android:layout_width="@dimen/_20sdp"
@@ -52,7 +52,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="Enter name"
-                android:textColorHint="#808080"
                 android:textColor="@color/black"
                 android:backgroundTint="#808080"
                 android:imeOptions="actionNext"
@@ -64,7 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="@dimen/_10sdp">
 
             <ImageView
                 android:layout_width="@dimen/_20sdp"
@@ -81,7 +80,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="Enter mobile"
-                android:textColorHint="#808080"
                 android:textColor="@color/black"
                 android:backgroundTint="#808080"
                 android:imeOptions="actionNext"
@@ -93,7 +91,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="@dimen/_10sdp">
 
             <ImageView
                 android:layout_width="@dimen/_20sdp"
@@ -110,7 +108,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="Enter email id"
-                android:textColorHint="#808080"
                 android:textColor="@color/black"
                 android:backgroundTint="#808080"
                 android:imeOptions="actionNext"
@@ -122,7 +119,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="@dimen/_10sdp">
 
             <ImageView
                 android:layout_width="@dimen/_20sdp"
@@ -139,7 +136,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="Enter address"
-                android:textColorHint="#808080"
                 android:textColor="@color/black"
                 android:backgroundTint="#808080"
                 android:imeOptions="actionNext"
@@ -151,7 +147,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="@dimen/_10sdp">
 
             <ImageView
                 android:layout_width="@dimen/_20sdp"
@@ -168,7 +164,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="Enter Area"
-                android:textColorHint="#808080"
                 android:textColor="@color/black"
                 android:backgroundTint="#808080"
                 android:imeOptions="actionNext"
@@ -180,7 +175,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="@dimen/_10sdp">
 
             <ImageView
                 android:layout_width="@dimen/_20sdp"
@@ -197,7 +192,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="Enter city"
-                android:textColorHint="#808080"
                 android:textColor="@color/black"
                 android:backgroundTint="#808080"
                 android:imeOptions="actionNext"
@@ -209,7 +203,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="@dimen/_10sdp">
 
             <ImageView
                 android:layout_width="@dimen/_20sdp"
@@ -217,7 +211,7 @@
                 android:tint="@color/yellow"
                 android:layout_gravity="center"
                 android:layout_marginLeft="@dimen/_5sdp"
-                android:src="@drawable/baseline_location_on_24"
+                android:src="@drawable/baseline_calendar_today_24"
                 android:contentDescription="Date Icon" />
 
             <EditText
@@ -225,9 +219,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="Enter date"
-                android:textColorHint="#808080"
+                android:hint="Enter dd/mm/yyyy"
                 android:textColor="@color/black"
+                android:focusable="false"
                 android:backgroundTint="#808080"
                 android:imeOptions="actionNext"
                 android:inputType="date"/>
@@ -238,7 +232,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="@dimen/_10sdp">
 
             <ImageView
                 android:layout_width="@dimen/_20sdp"
@@ -254,7 +248,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="Enter password"
-                android:textColorHint="#808080"
                 android:textColor="@color/black"
                 android:backgroundTint="#808080"
                 android:imeOptions="actionDone"
@@ -265,15 +258,16 @@
             android:id="@+id/sign_up_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sign_up"
-            android:layout_marginRight="20dp"
+            android:text="Register"
+            android:layout_marginRight="@dimen/_10sdp"
             android:backgroundTint="#FFD119"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"/>
+            android:textSize="@dimen/_13sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_20sdp"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:layout_gravity="center"
             android:gravity="center"
             android:orientation="horizontal">
@@ -281,16 +275,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Back to"
-                android:textSize="15dp"
+                android:textSize="@dimen/_10sdp"
                 android:textColor="#808080" />
             <TextView
                 android:id="@+id/sign_in_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sing in"
-                android:layout_marginLeft="8dp"
-                android:textStyle="bold"
-                android:textColor="#FFD119"
+                android:text="Login"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:textColor="#0000FF"
                 />
         </LinearLayout>
 

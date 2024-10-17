@@ -1,7 +1,11 @@
 package in.innovaneers.gallus;
 
+import static in.innovaneers.gallus.LoginActivity.KEY_FARMER_ID;
+import static in.innovaneers.gallus.LoginActivity.KEY_NAME;
+
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,6 +31,7 @@ import in.innovaneers.gallus.model.FarmIdModel;
 import in.innovaneers.gallus.model.GetBatchIDModel;
 import in.innovaneers.gallus.model.PlanAdapter;
 import in.innovaneers.gallus.model.PlanModel;
+import in.innovaneers.gallus.model.PlanPurchaseResponseModel;
 import in.innovaneers.gallus.model.PlanRequestModel;
 import in.innovaneers.gallus.model.RetrofitInstance;
 import retrofit2.Call;
@@ -34,9 +39,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PlanActivity extends AppCompatActivity {
-RecyclerView plan_card_recycler;
-private PlanAdapter planAdapter;
-private List<PlanModel> planModels;
+
+    RecyclerView plan_card_recycler;
+    private PlanAdapter planAdapter;
+    private List<PlanModel> planModels;
+    public static String farmerID;
+
+    SharedPreferences shp;
+    public static final String SHARED_PREF_NAME = "Gallus";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,8 +57,15 @@ private List<PlanModel> planModels;
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        shp = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
+        String registeredUserId = shp.getString(KEY_FARMER_ID, "");
+        if (registeredUserId != null && !registeredUserId.isEmpty()) {
+            farmerID = registeredUserId;
+        } else {
+            //userName_home.setText("Unknown User");
+        }
         plan_card_recycler = findViewById(R.id.plan_card_recycler);
-        RetrofitInstance.BASEURL = " http://gallus.innovaneers.in/";
+        RetrofitInstance.BASEURL = "http://api.gallus.in/";
         try {
             Call<List<PlanModel>> lcall = RetrofitInstance.getInstance().getMyApi().createPlanList();
             lcall.enqueue(new Callback<List<PlanModel>>() {
@@ -134,35 +151,38 @@ private List<PlanModel> planModels;
             if (termsCheckbox.isChecked()) {
                 // Process payment
                 //GetBatchID
-               /* RetrofitInstance.BASEURL = "http://gallus.innovaneers.in/";
-                PlanRequestModel planRequestModel = new PlanRequestModel("","");
+                Log.d("FarmerId",farmerID);
+                Log.d("PlanId",planModel.getPlanID());
+               RetrofitInstance.BASEURL = "http://api.gallus.in/";
+                PlanRequestModel planRequestModel = new PlanRequestModel(farmerID,planModel.getPlanID());
                 try {
-                    Call<PlanModel> call = RetrofitInstance.getInstance().getMyApi().createPlanPurchase(planRequestModel);
-                    call.enqueue(new Callback<PlanModel>() {
+                    Call<PlanPurchaseResponseModel> call = RetrofitInstance.getInstance().getMyApi().createPlanPurchase(planRequestModel);
+                    call.enqueue(new Callback<PlanPurchaseResponseModel>() {
                         @Override
-                        public void onResponse(Call<PlanModel> call, Response<PlanModel> response) {
+                        public void onResponse(Call<PlanPurchaseResponseModel> call, Response<PlanPurchaseResponseModel> response) {
                             if (response.isSuccessful() && response.body() != null) {
-                                PlanModel purchaseResponse = response.body();
-                                if (purchaseResponse.isSuccess()) {
-                                    Toast.makeText(PlanActivity.this, "Plan purchased successfully: " + purchaseResponse.getMessage(), Toast.LENGTH_LONG).show();
-                                } else {
-                                    Toast.makeText(PlanActivity.this, "Purchase failed: " + purchaseResponse.getMessage(), Toast.LENGTH_LONG).show();
-                                }
+                                PlanPurchaseResponseModel purchaseResponse = response.body();
+                                Intent i = new Intent(PlanActivity.this,MainActivity.class);
+                                Toast.makeText(PlanActivity.this, purchaseResponse.getDescription(), Toast.LENGTH_LONG).show();
+                                startActivity(i);
+                                dialog.dismiss();
+
                             } else {
-                                Toast.makeText(PlanActivity.this, "Response error", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(PlanActivity.this, "Response error"+response.body().getDescription(), Toast.LENGTH_SHORT).show();
+
                             }
                         }
 
                         @Override
-                        public void onFailure(Call<PlanModel> call, Throwable t) {
+                        public void onFailure(Call<PlanPurchaseResponseModel> call, Throwable t) {
                             Log.e("API Error", t.getMessage());
                             Toast.makeText(PlanActivity.this, "Network error: " + t.getMessage(), Toast.LENGTH_LONG).show();
 
                         }
-                    });*/
-                Intent i = new Intent(PlanActivity.this,MainActivity.class);
-                startActivity(i);
-                dialog.dismiss();
+                    });
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
             } else {
                 Toast.makeText(this, "Please agree to the Terms and Conditions", Toast.LENGTH_SHORT).show();
             }

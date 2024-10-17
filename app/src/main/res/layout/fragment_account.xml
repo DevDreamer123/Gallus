@@ -24,7 +24,7 @@
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginBottom="@dimen/_10sdp"
         android:layout_marginRight="@dimen/_10sdp"
         android:layout_marginLeft="@dimen/_10sdp"
@@ -40,50 +40,45 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:weightSum="2"
         android:gravity="center"
       android:orientation="horizontal">
       <TextView
-          android:layout_width="0dp"
-          android:layout_weight="1"
-          android:gravity="right"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="Name"
+          android:text="Name :"
+          android:gravity="center"
+          android:layout_gravity="center"
         android:textStyle="bold"/>
       <TextView
           android:id="@+id/user_account"
-          android:layout_width="0dp"
-          android:layout_weight="1"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_marginLeft="@dimen/_10sdp"
           android:text="xyz" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:weightSum="2"
         android:gravity="center"
         android:orientation="horizontal">
       <TextView
-          android:layout_width="0dp"
-          android:layout_weight="1"
-          android:gravity="right"
+          android:layout_width="wrap_content"
+          android:gravity="center"
+          android:layout_gravity="center"
           android:layout_height="wrap_content"
-          android:text="Uder Id"
+          android:text="Farmer ID :"
           android:textStyle="bold"/>
       <TextView
           android:id="@+id/farmer_Id_account"
-          android:layout_width="0dp"
-          android:layout_weight="1"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_marginLeft="@dimen/_10sdp"
           android:text="xyz00001" />
     </LinearLayout>
       </LinearLayout>
 
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
+        android:id="@+id/pi_account_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/_10sdp"
@@ -103,6 +98,7 @@
       </LinearLayout>
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
+        android:id="@+id/sp_account_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/_10sdp"
@@ -114,7 +110,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Schemes Availed"
+            android:text="Subscription purchase"
             android:padding="@dimen/_10sdp"
             android:drawableRight="@drawable/baseline_arrow_right_24"
             android:drawableLeft="@drawable/baseline_person_24_yellow"
@@ -122,6 +118,7 @@
       </LinearLayout>
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
+        android:id="@+id/cp_account_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/_10sdp"
@@ -133,14 +130,14 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Land Details"
+            android:text="Change Password"
             android:padding="@dimen/_10sdp"
             android:drawableRight="@drawable/baseline_arrow_right_24"
             android:drawableLeft="@drawable/baseline_person_24_yellow"
             android:drawablePadding="@dimen/_5sdp"/>
       </LinearLayout>
     </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
+    <!--<androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/_10sdp"
@@ -158,17 +155,18 @@
             android:drawableLeft="@drawable/baseline_person_24_yellow"
             android:drawablePadding="@dimen/_5sdp"/>
       </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>-->
 
     <Button
+        android:id="@+id/logout_profile_btn_account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-      android:text="Update Profile"
-      android:backgroundTint="@color/yellow"
+        android:text="Logout"
+        android:backgroundTint="@color/yellow"
         android:layout_marginTop="@dimen/_30sdp"
         android:layout_marginBottom="@dimen/_150sdp"
-      android:layout_marginRight="@dimen/_10sdp"
-      android:layout_marginLeft="@dimen/_10sdp"/>
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_10sdp"/>
 
 
   </LinearLayout>

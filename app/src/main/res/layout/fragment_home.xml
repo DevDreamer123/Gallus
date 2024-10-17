@@ -307,7 +307,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:layout_gravity="bottom"
-                    android:text="Sell"
+                    android:text="Sell \n comming soon"
                     android:padding="@dimen/_5sdp"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
@@ -346,6 +346,7 @@
                     android:layout_gravity="right"
                     android:gravity="right">
                 <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/show_daily_records_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAllCaps="false"

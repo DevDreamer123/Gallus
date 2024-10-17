@@ -44,7 +44,13 @@ public interface ApiInterface {
     Call<List<PlanModel>> createPlanList();
 
     @POST("Plans/Purchase")  //Plan purchase
-    Call<PlanModel> createPlanPurchase(@Body PlanRequestModel planRequestModel);
+    Call<PlanPurchaseResponseModel> createPlanPurchase(@Body PlanRequestModel planRequestModel);
+
+    @POST("Farmers/Subscriptions")  //Plan Subscription History
+    Call<List<PlanModel>> createPlanSubscriptionHistory(@Body FarmIdModel farmIdModel);
+
+
+
 
 
 

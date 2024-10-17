@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/bgplan"
+    android:orientation="vertical"
+    tools:context=".ProfileActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <!-- Profile Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="20dp">
+
+            <!-- Profile Image -->
+            <ImageView
+                android:id="@+id/farmerProfileImage"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:src="@drawable/baseline_person_24"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center"
+                android:tint="@color/white"
+                android:background="@drawable/circle_bg"
+                android:padding="10dp"/>
+
+            <!-- Edit Profile Picture Button -->
+            <TextView
+                android:id="@+id/editProfilePic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/baseline_camera_alt_24"
+                android:drawablePadding="@dimen/_5sdp"
+                android:text="Select Image"
+                android:textColor="@color/blue_sky"
+                android:textSize="14sp"
+                android:paddingTop="10dp"/>
+        </LinearLayout>
+
+        <!-- Farmer Name Field -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Farmer Name"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_13sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:paddingTop="@dimen/_5sdp"/>
+
+        <EditText
+            android:id="@+id/farmerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:hint="Enter Farmer's Name"
+            android:textColorHint="#808080" />
+
+        <!-- Phone Number Field -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_height="wrap_content"
+            android:text="Phone Number"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_13sdp"
+            android:paddingTop="@dimen/_5sdp"/>
+
+        <EditText
+            android:id="@+id/farmerPhone"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Phone Number"
+            android:inputType="phone"
+            android:textColorHint="#808080" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:text="Email Id"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_13sdp"
+            android:paddingTop="@dimen/_5sdp"/>
+
+        <EditText
+            android:id="@+id/farmeremailId"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_height="wrap_content"
+            android:hint="Enter Email Id"
+            android:inputType="phone"
+            android:textColorHint="#808080" />
+
+        <!-- Address Field -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_13sdp"
+            android:paddingTop="@dimen/_5sdp"/>
+
+        <EditText
+            android:id="@+id/farmerAddress"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_height="wrap_content"
+            android:hint="Enter Address"
+            android:textColorHint="#808080" />
+
+        <!-- Land Size Field -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:text="Area"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_13sdp"
+            android:paddingTop="@dimen/_5sdp"/>
+
+        <EditText
+            android:id="@+id/farmerLandSize"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_height="wrap_content"
+            android:hint="Enter Area"
+            android:inputType="numberDecimal"
+            android:textColorHint="#808080" />
+
+        <!-- Crop Type Field -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:text="City"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_13sdp"
+            android:paddingTop="@dimen/_5sdp"/>
+
+        <EditText
+            android:id="@+id/farmerCropType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:hint="Enter City"
+            android:textColorHint="#808080" />
+
+        <!-- Save Button -->
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save and Update"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/yellow"
+            android:textSize="16sp"
+            android:layout_marginTop="20dp"/>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

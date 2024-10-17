@@ -50,7 +50,7 @@ public class BatchListActivity extends AppCompatActivity {
         Log.d("selectedFarmId",selectedFarmId);
         if (!farmerId.isEmpty() && !selectedFarmId.isEmpty()) {
             Log.d("selectFarmId", selectedFarmId);
-            RetrofitInstance.BASEURL = "http://gallus.innovaneers.in/";
+            RetrofitInstance.BASEURL = "http://api.gallus.in/";
             FarmIdModel farmIdModel = new FarmIdModel(selectedFarmId);
 
             try {

@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -49,9 +50,9 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.ViewHolder> {
         holder.offer_title_text.setText(model.getTitle());
         holder.amount_text_plan.setText("₹"+model.getAmount());
         holder.validaity_text_plan.setText("Validity "+model.getValidity()+" Days");
-        holder.discount_plan.setText("₹599");
+        //holder.discount_plan.setText("₹599");
        // holder.background_img_plan.setImageResource(model.getImage());
-        holder.discount_plan.setPaintFlags(holder.discount_plan.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+       // holder.discount_plan.setPaintFlags(holder.discount_plan.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,6 +66,9 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.ViewHolder> {
                 //context.startActivity(i);
             }
         });
+        holder.choose_text_plan.setOnClickListener(view -> {
+            onPlanClickListener.onPlanClick(model);
+        });
 
     }
 
@@ -75,8 +79,9 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView offer_text ,amount_text_plan,validaity_text_plan,choose_text_plan,offer_title_text,discount_plan;
+        TextView offer_text ,amount_text_plan,validaity_text_plan,offer_title_text,discount_plan;
         ImageView img_offer,background_img_plan;
+        AppCompatButton choose_text_plan;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             offer_text = itemView.findViewById(R.id.offer_text);
@@ -85,7 +90,7 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.ViewHolder> {
             choose_text_plan = itemView.findViewById(R.id.choose_text_plan);
             offer_title_text = itemView.findViewById(R.id.offer_title_text);
             background_img_plan = itemView.findViewById(R.id.background_img_plan);
-            discount_plan = itemView.findViewById(R.id.discount_plan);
+           // discount_plan = itemView.findViewById(R.id.discount_plan);
         }
     }
     public interface OnPlanClickListener{

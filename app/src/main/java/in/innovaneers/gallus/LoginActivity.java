@@ -6,10 +6,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +48,9 @@ public class LoginActivity extends AppCompatActivity {
     public static final String KEY_PASSWORD = "Password";
     public static final String KEY_ADDRESS = "Address";
 
+    private ImageView ivShowHidePassword;
+    private boolean isPasswordVisible = false;
+
 
 
 
@@ -63,7 +69,31 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-        user_id_login = findViewById(R.id.user_Id_login);
+
+        ivShowHidePassword = findViewById(R.id.ivShowHidePassword);
+
+
+        ivShowHidePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isPasswordVisible) {
+                    // Hide the password
+                    password_login.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    ivShowHidePassword.setImageResource(R.drawable.baseline_visibility_off_24); // Change icon to visibility_off
+                } else {
+                    // Show the password
+                    password_login.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    ivShowHidePassword.setImageResource(R.drawable.baseline_visibility_24); // Change icon to visibility
+                }
+                isPasswordVisible = !isPasswordVisible;
+
+                // Move cursor to the end of the text
+                password_login.setSelection(password_login.getText().length());
+            }
+        });
+
+
+    user_id_login = findViewById(R.id.user_Id_login);
         password_login = findViewById(R.id.password_Login);
 
         shp = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
@@ -78,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-                        RetrofitInstance.BASEURL = " http://gallus.innovaneers.in/";
+                        RetrofitInstance.BASEURL = "http://api.gallus.in/";
                         try {
                             Call<LoginResponseModel> lcall = RetrofitInstance.getInstance().getMyApi().login(namemobel);
                             lcall.enqueue(new Callback<LoginResponseModel>() {
@@ -99,6 +129,7 @@ public class LoginActivity extends AppCompatActivity {
                                         // Toast.makeText(LoginActivity.this,response.body().getName(), Toast.LENGTH_SHORT).show();
                                         //  Toast.makeText(LoginActivity.this, "SuccessFully", Toast.LENGTH_SHORT).show();
                                         Intent i = new Intent(LoginActivity.this, PlanActivity.class);
+                                        i.putExtra("FarmerIDLogin",response.body().getFarmerID());
                                         Toast.makeText(LoginActivity.this, "SuccessFully", Toast.LENGTH_SHORT).show();
                                         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(i);

@@ -25,9 +25,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Welcome!"
-            android:textSize="30dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="30dp"
+            android:textSize="@dimen/_25sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:textStyle="bold"
             android:textColor="@color/black"/>
 
@@ -36,27 +36,46 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter email/mobile"
-            android:textColorHint="#808080"
             android:backgroundTint="#808080"
-            android:drawablePadding="5dp"
+            android:drawablePadding="@dimen/_5sdp"
             android:textColor="@color/black"
             android:drawableLeft="@drawable/baseline_person_24_yellow"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
         <EditText
             android:id="@+id/password_Login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter password"
-            android:textColorHint="#808080"
-            android:drawablePadding="5dp"
+            android:inputType="textPassword"
+            android:drawablePadding="@dimen/_5sdp"
             android:drawableLeft="@drawable/baseline_key_24_yellow"
             android:backgroundTint="#808080"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:textColor="@color/black"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginLeft="@dimen/_10sdp"/>
+        <!-- ImageView for the eye icon -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:gravity="right"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/ivShowHidePassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/baseline_visibility_off_24"
+            android:contentDescription="Toggle Password Visibility" />
+            </LinearLayout>
+    </RelativeLayout>
 
         <TextView
             android:id="@+id/forget"
@@ -65,22 +84,22 @@
             android:layout_gravity="right"
             android:gravity="right"
             android:layout_marginRight="25dp"
-            android:layout_marginTop="10dp"
-            android:text="Forget?"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Forgot password?"
             android:layout_weight="1"
-            android:textSize="15dp"
-            android:textColor="#FFD119"
+            android:textColor="@color/red"
             android:layout_marginLeft="20dp"/>
         <Button
             android:id="@+id/sign_in_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sign_in"
-            android:layout_marginRight="20dp"
+            android:text="Login"
+            android:textSize="@dimen/_13sdp"
+            android:layout_marginRight="@dimen/_10sdp"
             android:backgroundTint="#FFD119"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"/>
-        <TextView
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_30sdp"/>
+        <!--<TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="or"
@@ -88,15 +107,15 @@
             android:layout_marginTop="5dp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:textColor="#808080" />
-        <Button
+            android:textColor="#808080" />-->
+       <!-- <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Sign in with Google"
             android:layout_marginRight="20dp"
             android:backgroundTint="#FFD119"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="5dp"/>-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -104,20 +123,20 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Create account?"
-                android:textSize="15dp"
-                android:textColor="#808080" />
+                android:layout_height="match_parent"
+                android:text="Don't have an account?"
+                android:textColor="#808080"
+                android:textSize="@dimen/_10sdp" />
             <TextView
                 android:id="@+id/signup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sing up"
-                android:layout_marginLeft="8dp"
-                android:textStyle="bold"
-                android:textColor="#FFD119"
+                android:text="Register"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:textColor="#0000FF"
                 />
         </LinearLayout>
         <LinearLayout

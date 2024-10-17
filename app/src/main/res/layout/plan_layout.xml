@@ -127,7 +127,7 @@
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:textColor="@color/white"
                 android:text="0"/>
-                <TextView
+               <!-- <TextView
                     android:id="@+id/discount_plan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -139,7 +139,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_5sdp"
                     android:textColor="@color/grey"
-                    android:text="Save 20%"/>
+                    android:text="Save 20%"/>-->
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -170,7 +170,9 @@
                 android:background="@drawable/gradient_third_color"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:textColor="@color/black"
-                android:text="Subscribe Now"/>
+                android:text="Get Started"
+                android:drawableTint="@color/black"
+                android:drawableRight="@drawable/baseline_arrow_right_24"/>
             </LinearLayout>
             </LinearLayout>
         </LinearLayout>

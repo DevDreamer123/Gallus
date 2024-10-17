@@ -27,6 +27,17 @@
                 android:layout_gravity="center"
                 android:paddingBottom="@dimen/_10sdp"/>
         </androidx.cardview.widget.CardView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tap on "
+            android:padding="@dimen/_5sdp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/_13sdp"
+            android:layout_gravity="center"
+            android:paddingBottom="@dimen/_10sdp"/>
+
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

@@ -76,6 +76,7 @@ public class HomeFragment extends Fragment {
      String farmId;
      String currentBatchId;
     String selectedFarmId;
+    AppCompatButton show_daily_records_btn;
 
     CardView add_record_card,show_farm_list_btn_card,add_batch_home_card,daily_record;
 
@@ -89,6 +90,11 @@ public class HomeFragment extends Fragment {
         rate_per_kg_home = view.findViewById(R.id.rate_per_kg_home);
         fCR_per_kg_home = view.findViewById(R.id.fCR_per_kg_home);
         cpg_per_kg_home = view.findViewById(R.id.cpg_per_kg_home);
+        show_daily_records_btn = view.findViewById(R.id.show_daily_records_btn);
+        show_daily_records_btn.setOnClickListener(view1 -> {
+            Intent i = new Intent(getContext(), RecordsHistoryActivity.class);
+            startActivity(i);
+        });
         daily_record = view.findViewById(R.id.daily_record);
         daily_record.setOnClickListener(view1 -> {
             Intent i = new Intent(getContext(), RecordsHistoryActivity.class);
@@ -173,7 +179,7 @@ public class HomeFragment extends Fragment {
 
 
         //GetBatchID
-        RetrofitInstance.BASEURL = "http://gallus.innovaneers.in/";
+        RetrofitInstance.BASEURL = "http://api.gallus.in/";
         FarmIdModel farmIdModel = new FarmIdModel(selectedFarmId);
         try {
             Call<GetBatchIDModel> call = RetrofitInstance.getInstance().getMyApi().GetBatchId(farmIdModel);
@@ -210,7 +216,7 @@ public class HomeFragment extends Fragment {
 
 
         //DashBoard Data
-       RetrofitInstance.BASEURL = "http://gallus.innovaneers.in/";
+       RetrofitInstance.BASEURL = "http://api.gallus.in/";
         BatchIdModel batchIdModel = new BatchIdModel(currentBatchId);
         try {
             Call<DashBoardModel> call = RetrofitInstance.getInstance().getMyApi().dashBoard(batchIdModel);
@@ -288,7 +294,7 @@ public class HomeFragment extends Fragment {
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RetrofitInstance.BASEURL = "http://gallus.innovaneers.in/";
+                RetrofitInstance.BASEURL = "http://api.gallus.in/";
 
                 // Get values from EditTexts and trim
                 String chicks = chicks_no_edit_popup.getText().toString().trim();

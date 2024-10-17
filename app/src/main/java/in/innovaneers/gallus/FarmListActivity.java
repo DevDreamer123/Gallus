@@ -69,7 +69,7 @@ RecyclerView farm_list_recycler;
 
         farmsModels = new ArrayList<>();
         globalFarmerId = farmerId;
-        RetrofitInstance.BASEURL = "http://gallus.innovaneers.in/";
+        RetrofitInstance.BASEURL = "http://api.gallus.in/";
         FarmerIdModel farmerIdModel = new FarmerIdModel(globalFarmerId);
         try {
             Call<List<FarmsModel>> call = RetrofitInstance.getInstance().getMyApi().farmList(farmerIdModel);

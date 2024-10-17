@@ -1,12 +1,17 @@
 package in.innovaneers.gallus;
 
+import static java.security.AccessController.getContext;
+
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +21,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 import in.innovaneers.gallus.model.RegistrationRequestModel;
 import in.innovaneers.gallus.model.RegistrationResponseModel;
@@ -72,6 +81,7 @@ EditText user_name_regi,mobile_regi,email_regi,address_regi,area_regi,city_regi,
                     return; // Ensure no further action occurs when details are missing
                 }else {
 
+                    String date = date_regi.getText().toString().trim();
 
                     RegistrationRequestModel registerModel = new RegistrationRequestModel();
                     registerModel.setName(user_name_regi.getText().toString());
@@ -80,10 +90,10 @@ EditText user_name_regi,mobile_regi,email_regi,address_regi,area_regi,city_regi,
                     registerModel.setAddress(address_regi.getText().toString());
                     registerModel.setArea(area_regi.getText().toString());
                     registerModel.setCity(city_regi.getText().toString());
-                    registerModel.setRegistrationDate(date_regi.getText().toString());
+                    registerModel.setRegistrationDate(date);
                     registerModel.setPassword(password_regi.getText().toString());
 
-                    RetrofitInstance.BASEURL = " http://gallus.innovaneers.in/";
+                    RetrofitInstance.BASEURL = "http://api.gallus.in/";
                     try {
                         Call<RegistrationResponseModel> call = RetrofitInstance.getInstance().getMyApi().registration(registerModel);
                         call.enqueue(new Callback<RegistrationResponseModel>() {
@@ -111,6 +121,13 @@ EditText user_name_regi,mobile_regi,email_regi,address_regi,area_regi,city_regi,
                     }
                 }
 
+            }
+        });
+        date_regi.setInputType(InputType.TYPE_NULL);
+        date_regi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePickerDialog();
             }
         });
     }
@@ -144,5 +161,27 @@ EditText user_name_regi,mobile_regi,email_regi,address_regi,area_regi,city_regi,
                 // after all validation return true.
                 return true;
 
+    }
+    private void showDatePickerDialog() {
+        final Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(RegistrationActivity.this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        calendar.set(Calendar.YEAR, year);
+                        calendar.set(Calendar.MONTH, month);
+                        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                        // Update TextInputEditText with selected date
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                        date_regi.setText(dateFormat.format(calendar.getTime()));
+                        Toast.makeText(RegistrationActivity.this, date_regi.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }, year, month, dayOfMonth);
+        datePickerDialog.show();
     }
 }

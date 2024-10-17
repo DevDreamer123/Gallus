@@ -160,75 +160,95 @@ public class RecordsHistoryActivity extends AppCompatActivity {
             tableRow.addView(housedView);
 
             // Mortality (Daily/Total/Cum%)
-            LinearLayout mortalityLayout = new LinearLayout(this);
-            mortalityLayout.setOrientation(LinearLayout.VERTICAL);
+            //LinearLayout mortalityLayout = new LinearLayout(this);
+            //.setOrientation(LinearLayout.HORIZONTAL);
 
             // Daily Mortality
-            TextView dailyMortalityView = new TextView(this);
-            dailyMortalityView.setText(record.getMortalityCount() != null ? String.valueOf(record.getMortalityCount()) : "N/A");
-            mortalityLayout.addView(dailyMortalityView);
+            TextView dailyMortalityCountView = new TextView(this);
+            dailyMortalityCountView.setText(record.getMortalityCount() != null ? String.valueOf(record.getMortalityCount()) : "N/A");
+            dailyMortalityCountView.setPadding(150,0,0,0);
+            tableRow.addView(dailyMortalityCountView);
 
             // Total Mortality
             TextView totalMortalityView = new TextView(this);
             totalMortalityView.setText(record.getMortalityCount() != null ? String.valueOf(record.getMortalityCount()) : "N/A");
-            mortalityLayout.addView(totalMortalityView);
+            totalMortalityView.setPadding(150,0,0,0);
+            tableRow.addView(totalMortalityView);
 
             // Cumulative Mortality Percentage
-            TextView cumMortalityView = new TextView(this);
-            cumMortalityView.setText(record.getMortalityCount() != null ? String.valueOf(record.getMortalityCount()) : "N/A");
-            mortalityLayout.addView(cumMortalityView);
+            TextView PerMortalityView = new TextView(this);
+            PerMortalityView.setText(record.getMortalityCount() != null ? String.valueOf(record.getMortalityCount()) : "N/A");
+            PerMortalityView.setPadding(200,0,0,0);
+            tableRow.addView(PerMortalityView);
 
-            tableRow.addView(mortalityLayout);
+            //tableRow.addView(mortalityLayout);
 
             // Mortality (Standard and Actual)
-            LinearLayout mortalityStdActualLayout = new LinearLayout(this);
-            mortalityStdActualLayout.setOrientation(LinearLayout.HORIZONTAL);
+            //LinearLayout mortalityStdActualLayout = new LinearLayout(this);
+            //mortalityStdActualLayout.setOrientation(LinearLayout.HORIZONTAL);
 
             // Standard Mortality
-            TextView stdMortalityView = new TextView(this);
-            stdMortalityView.setText(record.getMortalityCount() != null ? String.valueOf(record.getMortalityCount()) : "N/A");
-            stdMortalityView.setPadding(150,0,0,0);
-            mortalityStdActualLayout.addView(stdMortalityView);
+            TextView feedBrandView = new TextView(this);
+            feedBrandView.setText(record.getFeedBrand() != null ? String.valueOf(record.getFeedBrand()) : "N/A");
+            feedBrandView.setPadding(100,0,0,0);
+            tableRow.addView(feedBrandView);
 
             // Actual Mortality
-            TextView actualMortalityView = new TextView(this);
-            actualMortalityView.setText(record.getMortalityTotal() != null ? String.valueOf(record.getMortalityTotal()) : "N/A");
-            mortalityStdActualLayout.addView(actualMortalityView);
+            // TextView actualMortalityView = new TextView(this);
+            // actualMortalityView.setText(record.getMortalityTotal() != null ? String.valueOf(record.getMortalityTotal()) : "N/A");
+            //tableRow.addView(actualMortalityView);
 
-            tableRow.addView(mortalityStdActualLayout);
+            //  tableRow.addView(actualMortalityView);
 
             // Feed Intake (Standard and Actual)
-            LinearLayout feedIntakeLayout = new LinearLayout(this);
-            feedIntakeLayout.setOrientation(LinearLayout.HORIZONTAL);
+            LinearLayout consumptionLayout = new LinearLayout(this);
+            consumptionLayout.setOrientation(LinearLayout.HORIZONTAL);
 
             // Standard Feed Intake
-            TextView stdFeedIntakeView = new TextView(this);
+            TextView stdConsumptionView = new TextView(this);
 
-            stdFeedIntakeView.setText(String.valueOf(record.getFeedConsumption())); // Assuming FeedIntakeStd field exists
-            stdFeedIntakeView.setPadding(50,0,0,0);
+            stdConsumptionView.setText(String.valueOf(record.getStandardFeedConsumption())); // Assuming FeedIntakeStd field exists
+            stdConsumptionView.setPadding(150,0,0,0);
 
-            stdFeedIntakeView.setText(record.getFeedBrand() != null ? String.valueOf(record.getFeedBrand()) : "N/A");
+            stdConsumptionView.setText(record.getStandardFeedConsumption() != null ? String.valueOf(record.getStandardFeedConsumption()) : "N/A");
 
-            feedIntakeLayout.addView(stdFeedIntakeView);
+            consumptionLayout.addView(stdConsumptionView);
 
             // Actual Feed Intake
-            TextView actualFeedIntakeView = new TextView(this);
+            TextView actualConsumptionView = new TextView(this);
 
-            actualFeedIntakeView.setText(String.valueOf(record.getCumulativeFeed()));
-            actualFeedIntakeView.setPadding(50,0,0,0);
+            actualConsumptionView.setText(String.valueOf(record.getFeedConsumption()));
+            actualConsumptionView.setPadding(80,0,0,0);
 
-            actualFeedIntakeView.setText(record.getFeedBrand() != null ? String.valueOf(record.getFeedBrand()) : "N/A");
+            actualConsumptionView.setText(record.getFeedConsumption() != null ? String.valueOf(record.getFeedConsumption()) : "N/A");
 
-            feedIntakeLayout.addView(actualFeedIntakeView);
+            consumptionLayout.addView(actualConsumptionView);
 
-            tableRow.addView(feedIntakeLayout);
+            tableRow.addView(consumptionLayout);
 
             // Cumulative (Standard and Actual)
             LinearLayout cumulativeLayout = new LinearLayout(this);
             cumulativeLayout.setOrientation(LinearLayout.HORIZONTAL);
 
+            // Standard Cumulative
+            TextView stdCumulativeView = new TextView(this);
+            stdCumulativeView.setText(String.valueOf(record.getStandardCumulativeFeed()));
+            stdCumulativeView.setPadding(130,0,0,0);
+            stdCumulativeView.setText(record.getStandardCumulativeFeed() != null ? String.valueOf(record.getStandardCumulativeFeed()) : "N/A");
+            cumulativeLayout.addView(stdCumulativeView);
 
-            TextView bodyWeightActualView = new TextView(this);
+            // Actual Cumulative
+            TextView actualCumulativeView = new TextView(this);
+            actualCumulativeView.setText(String.valueOf(record.getCumulativeFeed()));
+            actualCumulativeView.setPadding(80,0,0,0);
+            actualCumulativeView.setText(record.getCumulativeFeed() != null ? String.valueOf(record.getCumulativeFeed()) : "N/A");
+            cumulativeLayout.addView(actualCumulativeView);
+
+            tableRow.addView(cumulativeLayout);
+
+
+
+           /* TextView bodyWeightActualView = new TextView(this);
             bodyWeightActualView.setText(String.valueOf(record.getBodyWeight()));
             bodyWeightActualView.setPadding(150,0,0,0);
             tableRow.addView(bodyWeightActualView);
@@ -236,20 +256,8 @@ public class RecordsHistoryActivity extends AppCompatActivity {
             TextView dayGainActualView = new TextView(this);
             dayGainActualView.setText(String.valueOf(record.getStandardCumulativeFeed()));
             dayGainActualView.setPadding(100,0,0,0);
-            tableRow.addView(dayGainActualView);
+            tableRow.addView(dayGainActualView);*/
 
-            // Standard Cumulative
-            TextView stdCumulativeView = new TextView(this);
-            stdCumulativeView.setText(record.getCumulativeFeed() != null ? String.valueOf(record.getCumulativeFeed()) : "N/A");
-            cumulativeLayout.addView(stdCumulativeView);
-
-            // Actual Cumulative
-            TextView actualCumulativeView = new TextView(this);
-            actualCumulativeView.setText(record.getCumulativeFeed() != null ? String.valueOf(record.getCumulativeFeed()) : "N/A");
-            cumulativeLayout.addView(actualCumulativeView);
-
-
-            tableRow.addView(cumulativeLayout);
 
             // Body Weight (Standard and Actual)
             LinearLayout bodyWeightLayout = new LinearLayout(this);
@@ -257,12 +265,15 @@ public class RecordsHistoryActivity extends AppCompatActivity {
 
             // Standard Body Weight
             TextView stdBodyWeightView = new TextView(this);
-            stdBodyWeightView.setText(record.getBodyWeight() != null ? String.valueOf(record.getBodyWeight()) : "N/A");
-//actualBodyWeightView.setText(record.getActualBodyWeight() != null ? String.valueOf(record.getActualBodyWeight()) : "N/A");
+            stdBodyWeightView.setText(String.valueOf(record.getStandardBodyWeight()));
+            stdBodyWeightView.setPadding(80,0,0,0);
+            stdBodyWeightView.setText(record.getStandardBodyWeight() != null ? String.valueOf(record.getStandardBodyWeight()) : "N/A");
             bodyWeightLayout.addView(stdBodyWeightView);
 
             // Actual Body Weight
             TextView actualBodyWeightView = new TextView(this);
+            actualBodyWeightView.setText(String.valueOf(record.getBodyWeight()));
+            actualBodyWeightView.setPadding(70,0,0,0);
             actualBodyWeightView.setText(record.getBodyWeight() != null ? String.valueOf(record.getBodyWeight()) : "N/A");
             bodyWeightLayout.addView(actualBodyWeightView);
 
@@ -274,35 +285,67 @@ public class RecordsHistoryActivity extends AppCompatActivity {
 
             // Standard Day Gain
             TextView stdDayGainView = new TextView(this);
-            stdDayGainView.setText(record.getMedicine() != null ? String.valueOf(record.getMedicine()) : "N/A");
+            stdDayGainView.setText(String.valueOf(record.getStandardDayGain()));
+            stdDayGainView.setPadding(80,0,0,0);
+            stdDayGainView.setText(record.getStandardDayGain() != null ? String.valueOf(record.getStandardDayGain()) : "N/A");
             dayGainLayout.addView(stdDayGainView);
 
             // Actual Day Gain
             TextView actualDayGainView = new TextView(this);
-            actualDayGainView.setText(record.getMedicine() != null ? String.valueOf(record.getMedicine()) : "N/A");
+            actualDayGainView.setText(String.valueOf(record.getDayGain()));
+            actualDayGainView.setPadding(80,0,0,0);
+            actualDayGainView.setText(record.getDayGain() != null ? String.valueOf(record.getDayGain()) : "N/A");
             dayGainLayout.addView(actualDayGainView);
 
             tableRow.addView(dayGainLayout);
 
             // FCR (Standard and Actual)
+
+            // Day Gain (Standard and Actual)
             LinearLayout fcrLayout = new LinearLayout(this);
             fcrLayout.setOrientation(LinearLayout.HORIZONTAL);
 
-            // Standard FCR
-            TextView stdFcrView = new TextView(this);
-            stdFcrView.setText(record.getDayGain() != null ? String.valueOf(record.getDayGain()) : "N/A");
-            fcrLayout.addView(stdFcrView);
+            // Standard Day Gain
+            TextView stdFCRView = new TextView(this);
+            stdFCRView.setText(String.valueOf(record.getStandardFCR()));
+            stdFCRView.setPadding(80,0,0,0);
+            stdFCRView.setText(record.getStandardFCR() != null ? String.valueOf(record.getStandardFCR()) : "N/A");
+            fcrLayout.addView(stdFCRView);
 
-            // Actual FCR
-            TextView actualFcrView = new TextView(this);
-            actualFcrView.setText(record.getDayGain() != null ? String.valueOf(record.getDayGain()) : "N/A");
-            fcrLayout.addView(actualFcrView);
+            // Actual Day Gain
+            TextView actualFCRView = new TextView(this);
+            actualFCRView.setText(String.valueOf(record.getFCR()));
+            actualFCRView.setPadding(80,0,0,0);
+            actualFCRView.setText(record.getFCR() != null ? String.valueOf(record.getFCR()) : "N/A");
+            fcrLayout.addView(actualFCRView);
 
             tableRow.addView(fcrLayout);
+
+            // Actual FCR
+            TextView medicineView = new TextView(this);
+            medicineView.setText(String.valueOf(record.getMedicine()));
+            medicineView.setPadding(80,0,0,0);
+            medicineView.setText(record.getMedicine() != null ? String.valueOf(record.getMedicine()) : "N/A");
+            tableRow.addView(medicineView);
+
+            TextView vaccineView = new TextView(this);
+            vaccineView.setText(String.valueOf(record.getVaccine()));
+            vaccineView.setPadding(80,0,0,0);
+            vaccineView.setText(record.getVaccine() != null ? String.valueOf(record.getVaccine()) : "N/A");
+            tableRow.addView(vaccineView);
+
+            TextView waterConsumptionView = new TextView(this);
+            waterConsumptionView.setText(String.valueOf(record.getWaterConsumption()));
+            waterConsumptionView.setPadding(130,0,0,0);
+            waterConsumptionView.setText(record.getWaterConsumption() != null ? String.valueOf(record.getWaterConsumption()) : "N/A");
+            tableRow.addView(waterConsumptionView);
+
+            //  tableRow.addView(fcrLayout);
 
             // Add the completed table row to the TableLayout
             tableLayout.addView(tableRow);
         }
+
 
     }
 }

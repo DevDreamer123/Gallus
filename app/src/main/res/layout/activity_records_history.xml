@@ -64,20 +64,44 @@
                         android:text="Housed"
                         android:padding="@dimen/_8sdp"
                         android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/feedIntake"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mortality Count"
+                        android:padding="@dimen/_8sdp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mortality Total"
+                        android:padding="@dimen/_8sdp"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mortality Percentage"
+                        android:padding="@dimen/_8sdp"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Feed Brand"
+                        android:padding="@dimen/_8sdp"
+                        android:textStyle="bold"/>
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
-
-
                         <TextView
-                            android:id="@+id/feedIntake"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Feed Intake"
+                            android:text="Feed Consumption"
                             android:padding="@dimen/_8sdp"
-                            android:textStyle="bold" />
-
+                            android:textStyle="bold"/>
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -85,7 +109,7 @@
                             android:layout_marginTop="8dp">
 
                             <TextView
-                                android:id="@+id/stdValue"
+                                android:id="@+id/std_consumption_Value"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -94,7 +118,152 @@
                                 android:gravity="end" />
 
                             <TextView
-                                android:id="@+id/actualValue"
+                                android:id="@+id/actual_consumption_Value"
+                                android:layout_width="0dp"
+                                android:layout_marginLeft="@dimen/_3ssp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Actual"
+                                android:gravity="start" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cumulative Feed"
+                            android:padding="@dimen/_8sdp"
+                            android:textStyle="bold"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="8dp">
+
+                            <TextView
+                                android:id="@+id/std_cumulative_Value"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="STD"
+                                android:layout_marginRight="@dimen/_3ssp"
+                                android:gravity="end" />
+
+                            <TextView
+                                android:id="@+id/actual_cumulative_Value"
+                                android:layout_width="0dp"
+                                android:layout_marginLeft="@dimen/_3ssp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Actual"
+                                android:gravity="start" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Body Weight"
+                            android:padding="@dimen/_8sdp"
+                            android:textStyle="bold"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="8dp">
+
+                            <TextView
+                                android:id="@+id/std_body_Value"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="STD"
+                                android:layout_marginRight="@dimen/_3ssp"
+                                android:gravity="end" />
+
+                            <TextView
+                                android:id="@+id/actual_body_Value"
+                                android:layout_width="0dp"
+                                android:layout_marginLeft="@dimen/_3ssp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Actual"
+                                android:gravity="start" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Day Gain"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:padding="@dimen/_8sdp"
+                            android:textStyle="bold"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="8dp">
+
+                            <TextView
+                                android:id="@+id/std_day_Value"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="STD"
+                                android:layout_marginRight="@dimen/_3ssp"
+                                android:gravity="end" />
+
+                            <TextView
+                                android:id="@+id/actual_day_Value"
+                                android:layout_width="0dp"
+                                android:layout_marginLeft="@dimen/_3ssp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Actual"
+                                android:gravity="start" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="FCR"
+                            android:layout_marginLeft="@dimen/_20sdp"
+                            android:layout_marginRight="@dimen/_20sdp"
+                            android:padding="@dimen/_8sdp"
+                            android:textStyle="bold"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="8dp">
+
+                            <TextView
+                                android:id="@+id/std_fcr_Value"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="STD"
+                                android:layout_marginRight="@dimen/_3ssp"
+                                android:gravity="end" />
+
+                            <TextView
+                                android:id="@+id/actual_fcr_Value"
                                 android:layout_width="0dp"
                                 android:layout_marginLeft="@dimen/_3ssp"
                                 android:layout_height="wrap_content"
@@ -106,15 +275,24 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Body Weight (Actual)"
+                        android:text="Medicine"
                         android:padding="8dp"
                         android:textStyle="bold"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Day Gain (Actual)"
+                        android:text="Vaccine"
                         android:padding="8dp"
                         android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Water Consumption"
+                        android:padding="8dp"
+                        android:textStyle="bold"/>
+
+
+
                 </TableRow>
 
             </TableLayout>

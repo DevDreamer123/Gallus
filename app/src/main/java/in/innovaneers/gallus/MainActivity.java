@@ -2,9 +2,11 @@ package in.innovaneers.gallus;
 
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -114,13 +116,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
          fab_msg = findViewById(R.id.fab_msg);
-        fab_msg.setOnClickListener(new View.OnClickListener() {
+       fab_msg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this,MassageActivity.class);
-                startActivity(i);
+
+                openWhatsApp("Hello!"); // Replace with your message
+
             }
         });
+        //fab_msg.setOnClickListener(v -> openWhatsAppChat("1234567890", "Hello! I need help.")); // Use a valid phone number
 
 
     }
@@ -130,4 +134,12 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.container,new HomeFragment());
         transaction.commit();
     }
+    private void openWhatsApp(String message) {
+        String phoneNumber = "+91 9919916661"; // Replace with the phone number you want to send the message to
+        String url = "https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + Uri.encode(message);
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        startActivity(intent);
+    }
+
 }

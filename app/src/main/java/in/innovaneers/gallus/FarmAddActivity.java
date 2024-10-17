@@ -82,7 +82,7 @@ public class FarmAddActivity extends AppCompatActivity {
                     farmsModel.setSize(size_addFarm.getText().toString());
                     farmsModel.setChicks(chicks_addFarm.getText().toString());
 
-                    RetrofitInstance.BASEURL = " http://gallus.innovaneers.in/";
+                    RetrofitInstance.BASEURL = "http://api.gallus.in/";
                     try {
                         Call<RegistrationResponseModel> call = RetrofitInstance.getInstance().getMyApi().farmAdd(farmsModel);
                         call.enqueue(new Callback<RegistrationResponseModel>() {
