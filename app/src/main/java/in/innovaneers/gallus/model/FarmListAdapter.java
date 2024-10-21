@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,6 +68,11 @@ public class FarmListAdapter extends RecyclerView.Adapter<FarmListAdapter.ViewHo
             Intent intent = new Intent("farm_name_action");
             intent.putExtra("farm_name", farmNameCurrent);
             context.sendBroadcast(intent);
+            // Save in SharedPreferences first
+            SharedPreferences.Editor editor = shp.edit();
+            editor.putString("selectedFarmId", LatestFarmId);
+            editor.putString("selectedFarmName",farmNameCurrent);
+            editor.apply();
 
 
 
@@ -84,10 +90,10 @@ public class FarmListAdapter extends RecyclerView.Adapter<FarmListAdapter.ViewHo
 
 
                 // Save in SharedPreferences first
-                SharedPreferences.Editor editor = shp.edit();
+                /*SharedPreferences.Editor editor = shp.edit();
                 editor.putString("selectedFarmId", farmsModel.getFarmID());
                 editor.putString("selectedFarmName", farmsModel.getName());
-                editor.apply(); // Apply changes to SharedPreferences
+                editor.apply(); // Apply changes to SharedPreferences*/
 
                 // Then start the activity
                 Intent i = new Intent(context, MainActivity.class);

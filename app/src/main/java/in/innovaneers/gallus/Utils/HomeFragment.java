@@ -91,16 +91,20 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
+        farmId_home = view.findViewById(R.id.farmId_home);
         BroadcastReceiver receiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 String farmName = intent.getStringExtra("farm_name");
                 cuFarmName = farmName;
-                Log.d("CuFarmName",cuFarmName);
-
+               // Log.d("CuFarmName",cuFarmName);
+                if (cuFarmName != null ) {
+                    farmId_home.setText(cuFarmName);
+                }
             }
         };
+   //     Log.d("CuFarmName",cuFarmName);
+
 
         IntentFilter filter = new IntentFilter("farm_name_action");
         getContext().registerReceiver(receiver, filter);
@@ -111,6 +115,7 @@ public class HomeFragment extends Fragment {
                 String farmId = intent.getStringExtra("farm_id");
                  cuFarmId = farmId;
                 Log.d("CuFarmId",farmId);
+
 
             }
         };
@@ -144,7 +149,8 @@ public class HomeFragment extends Fragment {
         }
 
 
-         selectedFarmId = shp.getString("selectedFarmId", "");
+
+        /* selectedFarmId = shp.getString("selectedFarmId", "");
         String selectedName = shp.getString("selectedFarmName", "");
 
         if (selectedName != null && selectedFarmId != null) {
@@ -159,7 +165,7 @@ public class HomeFragment extends Fragment {
         if (selectedName == null || selectedName.isEmpty()) {
             farmId_home.setText(R.string.select_farm);
         } else {
-            farmId_home.setText(cuFarmName);
+            farmId_home.setText(selectedName);
         }
 
       //  farmId_home.setText(selectedName);
@@ -169,7 +175,7 @@ public class HomeFragment extends Fragment {
                 Intent i = new Intent(getContext(),FarmListActivity.class);
                 startActivity(i);
             }
-        });
+        });*/
 
 
 

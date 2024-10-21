@@ -171,7 +171,7 @@ public class PlanActivity extends AppCompatActivity {
                                 Toast.makeText(PlanActivity.this, "Response error"+response.body().getDescription(), Toast.LENGTH_SHORT).show();
 
                             }
-                            Log.d("URl",RetrofitInstance.BASEURL);
+                           // Log.d("URl",RetrofitInstance.BASEURL+"Plans/Purchase"+"?FarmerID="+farmerID+"&"+"PlanID="+planModel.getPlanID());
                         }
 
                         @Override

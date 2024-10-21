@@ -113,6 +113,45 @@ public class FarmAddActivity extends AppCompatActivity {
                             public void onResponse(Call<RegistrationResponseModel> call, Response<RegistrationResponseModel> response) {
 
                                 Intent intent = new Intent(FarmAddActivity.this, MainActivity.class);
+
+                               /* BatchRequestModel model = new BatchRequestModel(cuFarmID,chicks,free_chicks,Body_weight,date,purchase);
+                                try {
+                                    Call<RegistrationResponseModel> lcall = RetrofitInstance.getInstance().getMyApi().addBatch(model);
+                                    lcall.enqueue(new Callback<RegistrationResponseModel>() {
+                                        @Override
+                                        public void onResponse(Call<RegistrationResponseModel> call, Response<RegistrationResponseModel> response) {
+                                            if (response.isSuccessful() && response.body() != null) {
+                                                RegistrationResponseModel showModel = response.body();
+                                                // Show success toast
+                                                addBatch(date);
+                                                Intent i = new Intent(FarmAddActivity.this,MainActivity.class);
+                                                Toast.makeText(FarmAddActivity.this, "Successfully Added", Toast.LENGTH_SHORT).show();
+                                                startActivity(i);
+                                            } else {
+                                                Log.d("error", "Response unsuccessful or null body");
+                                                Toast.makeText(FarmAddActivity.this, "Failed to Add", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<RegistrationResponseModel> call, Throwable t) {
+                                            // Toast.makeText(getContext(),t.getMessage(), Toast.LENGTH_SHORT).show();
+                                            Log.d("error",t.getMessage());
+                                            Log.d("erroe2",t.getLocalizedMessage());
+                                            Log.d("erroe3",t.toString());
+                                            t.printStackTrace();
+
+
+                                        }
+                                    });
+
+
+                                }catch (Exception e){
+                                    e.getMessage();
+                                    e.toString();
+
+                                }*/
+
                                 Toast.makeText(FarmAddActivity.this,"Successfully", Toast.LENGTH_SHORT).show();
                                startActivity(intent);
 
@@ -121,7 +160,8 @@ public class FarmAddActivity extends AppCompatActivity {
                                // finish();
 
                                 // Toast.makeText(RegistrationActivity.this, "SuccessFully", Toast.LENGTH_SHORT).show();
-
+                                Log.d("URl",RetrofitInstance.BASEURL+"Farms/Add"+"Plans/Purchase"+"?FarmerID="+farmerId+"&"+"Name="+name_addFarm.getText().toString()+"&"+"Address="+address_addFarm.getText().toString()+"&"+"Area="+area_addFarm.getText().toString()
+                                        +"&"+"City="+city_addFarm.getText().toString()+"&"+"State="+state_addFarm.getText().toString()+"&"+"Pincode="+pincode_addFarm.getText().toString()+"&"+"Chicks="+chicks_addFarm.getText().toString()+"&"+"Size="+size_addFarm.getText().toString());
 
                             }
 
@@ -227,6 +267,7 @@ public class FarmAddActivity extends AppCompatActivity {
                                 Log.d("error", "Response unsuccessful or null body");
                                 Toast.makeText(FarmAddActivity.this, "Failed to Add", Toast.LENGTH_SHORT).show();
                             }
+
                         }
 
                         @Override
