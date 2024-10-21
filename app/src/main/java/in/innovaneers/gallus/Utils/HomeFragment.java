@@ -150,7 +150,7 @@ public class HomeFragment extends Fragment {
 
 
 
-        /* selectedFarmId = shp.getString("selectedFarmId", "");
+         selectedFarmId = shp.getString("selectedFarmId", "");
         String selectedName = shp.getString("selectedFarmName", "");
 
         if (selectedName != null && selectedFarmId != null) {
@@ -161,8 +161,9 @@ public class HomeFragment extends Fragment {
         userName_home = view.findViewById(R.id.userName_home);
         farmId_home = view.findViewById(R.id.farmId_home);
         userName_home.setText(registeredUserNumber);
+        farmId_home.setText(selectedName);
 
-        if (selectedName == null || selectedName.isEmpty()) {
+       /* if (selectedName == null || selectedName.isEmpty()) {
             farmId_home.setText(R.string.select_farm);
         } else {
             farmId_home.setText(selectedName);

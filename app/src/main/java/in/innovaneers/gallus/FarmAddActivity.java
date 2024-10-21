@@ -160,7 +160,7 @@ public class FarmAddActivity extends AppCompatActivity {
                                // finish();
 
                                 // Toast.makeText(RegistrationActivity.this, "SuccessFully", Toast.LENGTH_SHORT).show();
-                                Log.d("URl",RetrofitInstance.BASEURL+"Farms/Add"+"Plans/Purchase"+"?FarmerID="+farmerId+"&"+"Name="+name_addFarm.getText().toString()+"&"+"Address="+address_addFarm.getText().toString()+"&"+"Area="+area_addFarm.getText().toString()
+                                Log.d("URl",RetrofitInstance.BASEURL+"Farms/Add?"+"FarmerID="+farmerId+"&"+"Name="+name_addFarm.getText().toString()+"&"+"Address="+address_addFarm.getText().toString()+"&"+"Area="+area_addFarm.getText().toString()
                                         +"&"+"City="+city_addFarm.getText().toString()+"&"+"State="+state_addFarm.getText().toString()+"&"+"Pincode="+pincode_addFarm.getText().toString()+"&"+"Chicks="+chicks_addFarm.getText().toString()+"&"+"Size="+size_addFarm.getText().toString());
 
                             }
