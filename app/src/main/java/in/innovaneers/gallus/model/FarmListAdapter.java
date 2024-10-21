@@ -58,17 +58,30 @@ public class FarmListAdapter extends RecyclerView.Adapter<FarmListAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull FarmListAdapter.ViewHolder holder, int position) {
         final FarmsModel farmsModel = farmsModels.get(position);
+        if (position == farmsModels.size() -1){
+            String LatestFarmId = farmsModel.getFarmID();
+            Intent i = new Intent("farm_id_action");
+            i.putExtra("farm_id", LatestFarmId);
+            context.sendBroadcast(i);
+            String farmNameCurrent = farmsModel.getName();
+            Intent intent = new Intent("farm_name_action");
+            intent.putExtra("farm_name", farmNameCurrent);
+            context.sendBroadcast(intent);
+
+
+
+        }
         holder.name_list_farm.setText(farmsModel.getName());
         holder.chicks_list_farm.setText(farmsModel.getChicks());
         holder.address_list_farm.setText(farmsModel.getAddress());
         holder.farmerid_list_farm.setText(farmsModel.getFarmerID());
-        String farmid = farmsModel.getFarmID();
         shp = context.getSharedPreferences(SHARED_PREF_NAME,context.MODE_PRIVATE);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Save selected farm ID and name in SharedPreferences
                 Toast.makeText(context, "Selected", Toast.LENGTH_SHORT).show();
+
 
                 // Save in SharedPreferences first
                 SharedPreferences.Editor editor = shp.edit();

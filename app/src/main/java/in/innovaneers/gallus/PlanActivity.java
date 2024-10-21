@@ -162,7 +162,7 @@ public class PlanActivity extends AppCompatActivity {
                         public void onResponse(Call<PlanPurchaseResponseModel> call, Response<PlanPurchaseResponseModel> response) {
                             if (response.isSuccessful() && response.body() != null) {
                                 PlanPurchaseResponseModel purchaseResponse = response.body();
-                                Intent i = new Intent(PlanActivity.this,MainActivity.class);
+                                Intent i = new Intent(PlanActivity.this,FarmAddActivity.class);
                                 Toast.makeText(PlanActivity.this, purchaseResponse.getDescription(), Toast.LENGTH_LONG).show();
                                 startActivity(i);
                                 dialog.dismiss();
@@ -171,6 +171,7 @@ public class PlanActivity extends AppCompatActivity {
                                 Toast.makeText(PlanActivity.this, "Response error"+response.body().getDescription(), Toast.LENGTH_SHORT).show();
 
                             }
+                            Log.d("URl",RetrofitInstance.BASEURL);
                         }
 
                         @Override

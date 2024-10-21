@@ -5,6 +5,7 @@ import static in.innovaneers.gallus.LoginActivity.KEY_FARMER_ID;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,6 +24,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +46,7 @@ RecyclerView farm_list_recycler;
     public static final String SHARED_PREF_NAME = "Gallus";
     Button btnAddExpense;
     private static String globalFarmerId;
-
+    private SwipeRefreshLayout swipeRefreshLayout;
     private List<FarmsModel> farmsModels;
 
 
@@ -69,6 +71,65 @@ RecyclerView farm_list_recycler;
 
         farmsModels = new ArrayList<>();
         globalFarmerId = farmerId;
+        swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
+
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshFarmList();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
+        refreshFarmList();
+
+
+
+       /* RetrofitInstance.BASEURL = "http://api.gallus.in/";
+        FarmerIdModel farmerIdModel = new FarmerIdModel(globalFarmerId);
+        try {
+            Call<List<FarmsModel>> call = RetrofitInstance.getInstance().getMyApi().farmList(farmerIdModel);
+            call.enqueue(new Callback<List<FarmsModel>>() {
+                @Override
+                public void onResponse(Call<List<FarmsModel>> call, Response<List<FarmsModel>> response) {
+                    //  Toast.makeText(CategoryActivity.this, "Hello", Toast.LENGTH_SHORT).show();
+                    List<FarmsModel> farmsModels = response.body();
+                    farm_list_recycler = findViewById(R.id.farm_list_recycler);
+                    farm_list_recycler.setLayoutManager(new LinearLayoutManager(FarmListActivity.this, LinearLayoutManager.VERTICAL,false));
+                    FarmListAdapter cate = new FarmListAdapter(FarmListActivity.this,farmsModels);
+                    farm_list_recycler.setAdapter(cate);
+                }
+
+
+                @Override
+                public void onFailure(Call<List<FarmsModel>> call, Throwable t) {
+                    Toast.makeText(FarmListActivity.this,t.toString(), Toast.LENGTH_SHORT).show();
+                    Log.d("error",t.getMessage());
+
+                    t.toString();
+                }
+            });
+
+        } catch (Exception e) {
+            Toast.makeText(FarmListActivity.this,e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            Log.d("error1",e.getMessage());
+            e.getMessage();
+        }*/
+
+
+        //Farm Form clickListener
+        btnAddExpense = findViewById(R.id.btnAddExpense);
+        btnAddExpense.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(FarmListActivity.this, FarmAddActivity.class);
+                startActivity(i);
+            }
+        });
+
+    }
+    private void refreshFarmList() {
         RetrofitInstance.BASEURL = "http://api.gallus.in/";
         FarmerIdModel farmerIdModel = new FarmerIdModel(globalFarmerId);
         try {
@@ -100,17 +161,7 @@ RecyclerView farm_list_recycler;
             e.getMessage();
         }
 
-
-        //Farm Form clickListener
-        btnAddExpense = findViewById(R.id.btnAddExpense);
-        btnAddExpense.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(FarmListActivity.this, FarmAddActivity.class);
-                startActivity(i);
-            }
-        });
-
     }
+
 
 }

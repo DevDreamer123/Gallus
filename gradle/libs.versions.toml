@@ -13,6 +13,7 @@ constraintlayout = "2.1.4"
 poiOoxml = "5.2.3"
 sdpAndroid = "1.1.1"  # Updated version
 sspAndroid = "1.1.1"  # Updated version
+swiperefreshlayout = "1.1.0"
 volley = "1.2.1"
 
 [libraries]
@@ -32,6 +33,7 @@ poi-ooxml = { module = "org.apache.poi:poi-ooxml", version.ref = "poiOoxml" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "converterGson" }
 sdp-android = { module = "com.intuit.sdp:sdp-android", version.ref = "sdpAndroid" }
 ssp-android = { module = "com.intuit.ssp:ssp-android", version.ref = "sspAndroid" }
+swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swiperefreshlayout" }
 volley = { module = "com.android.volley:volley", version.ref = "volley" }
 
 [plugins]

@@ -44,10 +44,17 @@
                     android:layout_gravity="center" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-        <androidx.recyclerview.widget.RecyclerView
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/farm_list_recycler"/>
+            android:layout_height="839dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/farm_list_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

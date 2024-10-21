@@ -46,6 +46,7 @@ dependencies {
     implementation libs.volley
     implementation libs.glide
     implementation libs.converter.gson
+    implementation (libs.swiperefreshlayout)
     implementation libs.logging.interceptor
     implementation libs.okhttp
     androidTestImplementation libs.espresso.core

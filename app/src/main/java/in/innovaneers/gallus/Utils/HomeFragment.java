@@ -10,7 +10,10 @@ import static in.innovaneers.gallus.LoginActivity.KEY_NAME;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -79,6 +82,8 @@ public class HomeFragment extends Fragment {
     AppCompatButton show_daily_records_btn;
 
     CardView add_record_card,show_farm_list_btn_card,add_batch_home_card,daily_record;
+    public static String cuFarmName;
+    public static String cuFarmId;
 
 
     @Override
@@ -86,6 +91,32 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        BroadcastReceiver receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                String farmName = intent.getStringExtra("farm_name");
+                cuFarmName = farmName;
+                Log.d("CuFarmName",cuFarmName);
+
+            }
+        };
+
+        IntentFilter filter = new IntentFilter("farm_name_action");
+        getContext().registerReceiver(receiver, filter);
+
+        BroadcastReceiver receiver1 = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                String farmId = intent.getStringExtra("farm_id");
+                 cuFarmId = farmId;
+                Log.d("CuFarmId",farmId);
+
+            }
+        };
+
+        IntentFilter filter1 = new IntentFilter("farm_id_action");
+        getContext().registerReceiver(receiver1, filter1);
 
         rate_per_kg_home = view.findViewById(R.id.rate_per_kg_home);
         fCR_per_kg_home = view.findViewById(R.id.fCR_per_kg_home);
@@ -128,7 +159,7 @@ public class HomeFragment extends Fragment {
         if (selectedName == null || selectedName.isEmpty()) {
             farmId_home.setText(R.string.select_farm);
         } else {
-            farmId_home.setText(selectedName);
+            farmId_home.setText(cuFarmName);
         }
 
       //  farmId_home.setText(selectedName);
@@ -180,7 +211,7 @@ public class HomeFragment extends Fragment {
 
         //GetBatchID
         RetrofitInstance.BASEURL = "http://api.gallus.in/";
-        FarmIdModel farmIdModel = new FarmIdModel(selectedFarmId);
+        FarmIdModel farmIdModel = new FarmIdModel(cuFarmId);
         try {
             Call<GetBatchIDModel> call = RetrofitInstance.getInstance().getMyApi().GetBatchId(farmIdModel);
             call.enqueue(new Callback<GetBatchIDModel>() {
@@ -189,7 +220,7 @@ public class HomeFragment extends Fragment {
                     GetBatchIDModel getBatchIDModel = response.body();
                     if (getBatchIDModel != null) {
                         currentBatchId = getBatchIDModel.getCurrentBatch();
-                        Log.d("API Response", currentBatchId);  // API से आया हुआ response
+                        //Log.d("API Response", currentBatchId);  // API से आया हुआ response
                         SharedPreferences.Editor editor = shp.edit();
                         editor.putString("currentBatchID", currentBatchId);
                         editor.apply();
@@ -294,6 +325,11 @@ public class HomeFragment extends Fragment {
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
+                // Reset all fields
+
                 RetrofitInstance.BASEURL = "http://api.gallus.in/";
 
                 // Get values from EditTexts and trim
@@ -330,7 +366,7 @@ public class HomeFragment extends Fragment {
 
                         @Override
                         public void onFailure(Call<RegistrationResponseModel> call, Throwable t) {
-                           // Toast.makeText(getContext(),t.getMessage(), Toast.LENGTH_SHORT).show();
+                            // Toast.makeText(getContext(),t.getMessage(), Toast.LENGTH_SHORT).show();
                             Log.d("error",t.getMessage());
                             Log.d("erroe2",t.getLocalizedMessage());
                             Log.d("erroe3",t.toString());
@@ -346,11 +382,6 @@ public class HomeFragment extends Fragment {
                     e.toString();
 
                 }
-
-
-
-
-                // Reset all fields
 
 
                 // Reset Spinner
