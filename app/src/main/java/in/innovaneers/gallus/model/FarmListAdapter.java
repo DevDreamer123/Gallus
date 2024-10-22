@@ -90,10 +90,10 @@ public class FarmListAdapter extends RecyclerView.Adapter<FarmListAdapter.ViewHo
 
 
                 // Save in SharedPreferences first
-                /*SharedPreferences.Editor editor = shp.edit();
+                SharedPreferences.Editor editor = shp.edit();
                 editor.putString("selectedFarmId", farmsModel.getFarmID());
                 editor.putString("selectedFarmName", farmsModel.getName());
-                editor.apply(); // Apply changes to SharedPreferences*/
+                editor.apply(); // Apply changes to SharedPreferences
 
                 // Then start the activity
                 Intent i = new Intent(context, MainActivity.class);

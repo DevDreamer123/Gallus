@@ -25,6 +25,14 @@ public class FarmsModel {
     private String Chicks;
     @SerializedName("Size")
     private String Size;
+    @SerializedName("FreeChicks ")
+    private String FreeChicks ;
+    @SerializedName("BodyWeight")
+    private String BodyWeight ;
+    @SerializedName("Date")
+    private String Date ;
+    @SerializedName("PurchaseRate")
+    private String PurchaseRate;
 
 
     // Getter Methods
@@ -116,5 +124,37 @@ public class FarmsModel {
 
     public void setSize(String size) {
         Size = size;
+    }
+
+    public String getFreeChicks() {
+        return FreeChicks;
+    }
+
+    public void setFreeChicks(String freeChicks) {
+        FreeChicks = freeChicks;
+    }
+
+    public String getBodyWeight() {
+        return BodyWeight;
+    }
+
+    public void setBodyWeight(String bodyWeight) {
+        BodyWeight = bodyWeight;
+    }
+
+    public String getDate() {
+        return Date;
+    }
+
+    public void setDate(String date) {
+        Date = date;
+    }
+
+    public String getPurchaseRate() {
+        return PurchaseRate;
+    }
+
+    public void setPurchaseRate(String purchaseRate) {
+        PurchaseRate = purchaseRate;
     }
 }

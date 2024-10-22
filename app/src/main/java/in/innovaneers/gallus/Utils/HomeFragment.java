@@ -98,9 +98,7 @@ public class HomeFragment extends Fragment {
                 String farmName = intent.getStringExtra("farm_name");
                 cuFarmName = farmName;
                // Log.d("CuFarmName",cuFarmName);
-                if (cuFarmName != null ) {
-                    farmId_home.setText(cuFarmName);
-                }
+
             }
         };
    //     Log.d("CuFarmName",cuFarmName);
@@ -114,11 +112,15 @@ public class HomeFragment extends Fragment {
             public void onReceive(Context context, Intent intent) {
                 String farmId = intent.getStringExtra("farm_id");
                  cuFarmId = farmId;
-                Log.d("CuFarmId",farmId);
+
 
 
             }
         };
+        if (cuFarmName != null ) {
+            farmId_home.setText(cuFarmName);
+        }
+        //Log.d("CuFarmId",farmId);
 
         IntentFilter filter1 = new IntentFilter("farm_id_action");
         getContext().registerReceiver(receiver1, filter1);
@@ -152,6 +154,8 @@ public class HomeFragment extends Fragment {
 
          selectedFarmId = shp.getString("selectedFarmId", "");
         String selectedName = shp.getString("selectedFarmName", "");
+        Toast.makeText(getContext(),selectedName+"SelectName", Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(),cuFarmName+"SelectName", Toast.LENGTH_LONG  ).show();
 
         if (selectedName != null && selectedFarmId != null) {
             Toast.makeText(getContext(), selectedName + selectedFarmId, Toast.LENGTH_SHORT).show();
@@ -163,7 +167,7 @@ public class HomeFragment extends Fragment {
         userName_home.setText(registeredUserNumber);
         farmId_home.setText(selectedName);
 
-       /* if (selectedName == null || selectedName.isEmpty()) {
+        if (selectedName == null || selectedName.isEmpty()) {
             farmId_home.setText(R.string.select_farm);
         } else {
             farmId_home.setText(selectedName);
@@ -176,7 +180,7 @@ public class HomeFragment extends Fragment {
                 Intent i = new Intent(getContext(),FarmListActivity.class);
                 startActivity(i);
             }
-        });*/
+        });
 
 
 
