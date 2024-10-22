@@ -15,7 +15,7 @@ public interface ApiInterface {
     Call<RegistrationResponseModel> registration(@Body RegistrationRequestModel registrationRequestModel);
 
     @POST("Farms/Add")  //FarmAdd
-    Call<RegistrationResponseModel> farmAdd(@Body FarmsModel farmsModel);
+    Call<FarmResponseModel> farmAdd(@Body FarmsModel farmsModel);
 
     @POST("Farms/List")  //farmList
     Call<List<FarmsModel>> farmList(@Body FarmerIdModel farmerIdModel);
@@ -42,12 +42,17 @@ public interface ApiInterface {
 
     @POST("Plans/List ")  //Plan List
     Call<List<PlanModel>> createPlanList();
+    @POST("Products/List")  //Product list
+    Call<List<ProductModel>> createproductList();
+
+    @POST("Farmers/ValidPlan")  //Plan Valid
+    Call<RegistrationResponseModel> createValidPlan(@Body FarmerIdModel farmerIdModel);
 
     @POST("Plans/Purchase")  //Plan purchase
     Call<PlanPurchaseResponseModel> createPlanPurchase(@Body PlanRequestModel planRequestModel);
 
     @POST("Farmers/Subscriptions")  //Plan Subscription History
-    Call<List<PlanModel>> createPlanSubscriptionHistory(@Body FarmIdModel farmIdModel);
+    Call<List<SubscriptionModel>> createPlanSubscriptionHistory(@Body FarmerIdModel farmerIdModel);
 
 
 

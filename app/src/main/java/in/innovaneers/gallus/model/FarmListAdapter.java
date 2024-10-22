@@ -59,24 +59,26 @@ public class FarmListAdapter extends RecyclerView.Adapter<FarmListAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull FarmListAdapter.ViewHolder holder, int position) {
         final FarmsModel farmsModel = farmsModels.get(position);
-        if (position == farmsModels.size() -1){
+       /* if (position == farmsModels.size() - 1) {
             String LatestFarmId = farmsModel.getFarmID();
-            Intent i = new Intent("farm_id_action");
-            i.putExtra("farm_id", LatestFarmId);
-            context.sendBroadcast(i);
-            String farmNameCurrent = farmsModel.getName();
-            Intent intent = new Intent("farm_name_action");
-            intent.putExtra("farm_name", farmNameCurrent);
-            context.sendBroadcast(intent);
-            // Save in SharedPreferences first
+            Log.d("SendBroadcast", "LatestFarmId: " + LatestFarmId);
+
+            if (LatestFarmId != null) {
+                Intent i = new Intent("farm_id_action");
+                i.putExtra("farm_id", LatestFarmId);
+                context.sendBroadcast(i);
+
+                Intent intent = new Intent("farm_name_action");
+                intent.putExtra("farm_name", farmsModel.getName());
+                context.sendBroadcast(intent);
+            }
+
+            // Save in SharedPreferences
             SharedPreferences.Editor editor = shp.edit();
             editor.putString("selectedFarmId", LatestFarmId);
-            editor.putString("selectedFarmName",farmNameCurrent);
+            editor.putString("selectedFarmName", farmsModel.getName());
             editor.apply();
-
-
-
-        }
+        }*/
         holder.name_list_farm.setText(farmsModel.getName());
         holder.chicks_list_farm.setText(farmsModel.getChicks());
         holder.address_list_farm.setText(farmsModel.getAddress());
@@ -97,6 +99,7 @@ public class FarmListAdapter extends RecyclerView.Adapter<FarmListAdapter.ViewHo
 
                 // Then start the activity
                 Intent i = new Intent(context, MainActivity.class);
+                i.putExtra("formFarmSelection",true);
                 context.startActivity(i);
             }
         });

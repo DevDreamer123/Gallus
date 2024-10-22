@@ -31,8 +31,8 @@ public class FarmsModel {
     private String BodyWeight ;
     @SerializedName("Date")
     private String Date ;
-    @SerializedName("PurchaseRate")
-    private String PurchaseRate;
+    @SerializedName("PurchaseAmount")
+    private String PurchaseAmount;
 
 
     // Getter Methods
@@ -150,11 +150,11 @@ public class FarmsModel {
         Date = date;
     }
 
-    public String getPurchaseRate() {
-        return PurchaseRate;
+    public String getPurchaseAmount() {
+        return PurchaseAmount;
     }
 
-    public void setPurchaseRate(String purchaseRate) {
-        PurchaseRate = purchaseRate;
+    public void setPurchaseAmount(String purchaseAmount) {
+        PurchaseAmount = purchaseAmount;
     }
 }

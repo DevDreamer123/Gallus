@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -16,10 +17,10 @@ import in.innovaneers.gallus.R;
 import in.innovaneers.gallus.SubscriptionHistoryActivity;
 public class SubscriptionAdapter extends RecyclerView .Adapter<SubscriptionAdapter.ViewHolder> {
 
-    private List<PlanModel> subscriptionList;
+    private List<SubscriptionModel> subscriptionList;
     private Context context;
 
-    public SubscriptionAdapter(List<PlanModel> subscriptionList,Context context) {
+    public SubscriptionAdapter(List<SubscriptionModel> subscriptionList,Context context) {
         this.subscriptionList = subscriptionList;
         this.context = context;
     }
@@ -33,11 +34,13 @@ public class SubscriptionAdapter extends RecyclerView .Adapter<SubscriptionAdapt
 
     @Override
     public void onBindViewHolder(@NonNull SubscriptionAdapter.ViewHolder holder, int position) {
-        PlanModel subscription = subscriptionList.get(position);
-        holder.offer_title_text_his.setText(subscription.getTitle());
+        SubscriptionModel subscription = subscriptionList.get(position);
+        holder.offer_title_text_his.setText(subscription.getPlanID());
         //  holder.tvSubscriptionDate.setText("Subscribed on: " + subscription.getValidity());
-        holder.validaity_text_plan_his.setText("Expires on: " + subscription.getValidity());
-        holder.amount_text_plan_his.setText("Price: $" + subscription.getAmount());
+        String Date = Method.UnixToDate(subscription.getValidTill());
+        holder.validaity_text_plan_his.setText("Expires on: " + Date);
+        Toast.makeText(context,Date, Toast.LENGTH_SHORT).show();
+        holder.amount_text_plan_his.setText("Price: ₹" + subscription.getAmount());
     }
 
     @Override

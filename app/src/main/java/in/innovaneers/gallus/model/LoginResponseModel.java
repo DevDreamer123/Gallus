@@ -23,6 +23,13 @@ public class LoginResponseModel {
     private String City;
     @SerializedName("RegistrationDate")
     private String RegistrationDate;
+    @SerializedName("CurrentPlan")
+    private String CurrentPlan;
+    @SerializedName("SubscriptionID")
+    private String SubscriptionID;
+    @SerializedName("FarmQty")
+    private int FarmQty;
+
 
 
     // Getter Methods
@@ -107,5 +114,29 @@ public class LoginResponseModel {
 
     public void setRegistrationDate(String RegistrationDate) {
         this.RegistrationDate = RegistrationDate;
+    }
+
+    public String getCurrentPlan() {
+        return CurrentPlan;
+    }
+
+    public void setCurrentPlan(String currentPlan) {
+        CurrentPlan = currentPlan;
+    }
+
+    public String getSubscriptionID() {
+        return SubscriptionID;
+    }
+
+    public void setSubscriptionID(String subscriptionID) {
+        SubscriptionID = subscriptionID;
+    }
+
+    public int getFarmQty() {
+        return FarmQty;
+    }
+
+    public void setFarmQty(int farmQty) {
+        FarmQty = farmQty;
     }
 }

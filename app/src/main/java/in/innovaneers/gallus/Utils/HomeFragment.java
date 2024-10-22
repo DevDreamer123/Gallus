@@ -23,6 +23,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.InputType;
 import android.text.TextUtils;
@@ -48,6 +49,7 @@ import in.innovaneers.gallus.BatchListActivity;
 import in.innovaneers.gallus.DailyRecordActivity;
 import in.innovaneers.gallus.FarmAddActivity;
 import in.innovaneers.gallus.FarmListActivity;
+import in.innovaneers.gallus.PlanActivity;
 import in.innovaneers.gallus.R;
 import in.innovaneers.gallus.RecordsHistoryActivity;
 import in.innovaneers.gallus.model.BatchRequestModel;
@@ -59,6 +61,10 @@ import in.innovaneers.gallus.model.FarmListAdapter;
 import in.innovaneers.gallus.model.FarmerIdModel;
 import in.innovaneers.gallus.model.FarmsModel;
 import in.innovaneers.gallus.model.GetBatchIDModel;
+import in.innovaneers.gallus.model.PlanAdapter;
+import in.innovaneers.gallus.model.PlanModel;
+import in.innovaneers.gallus.model.ProductAdapter;
+import in.innovaneers.gallus.model.ProductModel;
 import in.innovaneers.gallus.model.RegistrationResponseModel;
 import in.innovaneers.gallus.model.RetrofitInstance;
 import retrofit2.Call;
@@ -72,18 +78,20 @@ public class HomeFragment extends Fragment {
     SharedPreferences shp;
     public static final String SHARED_PREF_NAME = "Gallus";
     TextView userName_home;
+    RecyclerView recylcer_product;
     TextInputEditText chicks_no_edit_popup,purchase_edit_popup;
     AppCompatButton farmId_home;
-    TextView rate_per_kg_home,fCR_per_kg_home,cpg_per_kg_home;
+    TextView rate_per_kg_home,fCR_per_kg_home,cpg_per_kg_home,current_batch_status;
     TextInputEditText free_chicks_no_edit_popup,editTextDate,body_weight_text_edit_popup;
      String farmId;
      String currentBatchId;
     String selectedFarmId;
-    AppCompatButton show_daily_records_btn;
+    AppCompatButton show_daily_records_btn,add_new_batch;
 
     CardView add_record_card,show_farm_list_btn_card,add_batch_home_card,daily_record;
     public static String cuFarmName;
     public static String cuFarmId;
+    public static String cuFarmerId;
 
 
     @Override
@@ -92,43 +100,47 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         farmId_home = view.findViewById(R.id.farmId_home);
-        BroadcastReceiver receiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                String farmName = intent.getStringExtra("farm_name");
-                cuFarmName = farmName;
-               // Log.d("CuFarmName",cuFarmName);
 
-            }
-        };
-   //     Log.d("CuFarmName",cuFarmName);
-
-
-        IntentFilter filter = new IntentFilter("farm_name_action");
-        getContext().registerReceiver(receiver, filter);
-
-        BroadcastReceiver receiver1 = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                String farmId = intent.getStringExtra("farm_id");
-                 cuFarmId = farmId;
-
-
-
-            }
-        };
-        if (cuFarmName != null ) {
-            farmId_home.setText(cuFarmName);
-        }
-        //Log.d("CuFarmId",farmId);
-
-        IntentFilter filter1 = new IntentFilter("farm_id_action");
-        getContext().registerReceiver(receiver1, filter1);
 
         rate_per_kg_home = view.findViewById(R.id.rate_per_kg_home);
         fCR_per_kg_home = view.findViewById(R.id.fCR_per_kg_home);
         cpg_per_kg_home = view.findViewById(R.id.cpg_per_kg_home);
+        current_batch_status = view.findViewById(R.id.current_batch_status);
+        add_new_batch = view.findViewById(R.id.add_new_batch);
         show_daily_records_btn = view.findViewById(R.id.show_daily_records_btn);
+        recylcer_product = view.findViewById(R.id.recylcer_product);
+        RetrofitInstance.BASEURL = "http://api.gallus.in/";
+        try {
+            Call<List<ProductModel>> lcall = RetrofitInstance.getInstance().getMyApi().createproductList();
+            lcall.enqueue(new Callback<List<ProductModel>>() {
+                @Override
+                public void onResponse(Call<List<ProductModel>> call, Response<List<ProductModel>> response) {
+                    List<ProductModel> itemModels = response.body();
+                    ProductAdapter itemAdapter = new ProductAdapter(getContext(), itemModels);
+                    recylcer_product.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+                    recylcer_product.setAdapter(itemAdapter);
+                }
+
+                @Override
+                public void onFailure(Call<List<ProductModel>> call, Throwable t) {
+                    Log.d("error", t.getMessage());
+
+                    t.toString();
+
+                }
+            });
+        }catch (Exception e){
+
+        }
+
+
+
+
+
+
+
+
+
         show_daily_records_btn.setOnClickListener(view1 -> {
             Intent i = new Intent(getContext(), RecordsHistoryActivity.class);
             startActivity(i);
@@ -143,6 +155,13 @@ public class HomeFragment extends Fragment {
 
         shp = getActivity().getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
         String registeredUserNumber = shp.getString(KEY_NAME, "");
+        String registerFarmerId = shp.getString(KEY_FARMER_ID,"");
+        cuFarmerId = registerFarmerId;
+        // Get current farm from API if needed
+        getCurrentFarmFromAPI();
+
+        // Set farm name when fragment is created
+        updateFarmName();
         userName_home = view.findViewById(R.id.userName_home);
         if (registeredUserNumber != null && !registeredUserNumber.isEmpty()) {
             userName_home.setText(registeredUserNumber);
@@ -151,8 +170,15 @@ public class HomeFragment extends Fragment {
         }
 
 
-
-         selectedFarmId = shp.getString("selectedFarmId", "");
+        //farmId_home.setText(selectedName);
+        farmId_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(),FarmListActivity.class);
+                startActivity(i);
+            }
+        });
+        /* selectedFarmId = shp.getString("selectedFarmId", "");
         String selectedName = shp.getString("selectedFarmName", "");
         Toast.makeText(getContext(),selectedName+"SelectName", Toast.LENGTH_LONG).show();
         Toast.makeText(getContext(),cuFarmName+"SelectName", Toast.LENGTH_LONG  ).show();
@@ -163,24 +189,15 @@ public class HomeFragment extends Fragment {
             Toast.makeText(getContext(), "No farm selected", Toast.LENGTH_SHORT).show();
         }
         userName_home = view.findViewById(R.id.userName_home);
-        farmId_home = view.findViewById(R.id.farmId_home);
         userName_home.setText(registeredUserNumber);
-        farmId_home.setText(selectedName);
 
         if (selectedName == null || selectedName.isEmpty()) {
             farmId_home.setText(R.string.select_farm);
         } else {
             farmId_home.setText(selectedName);
-        }
+        }*/
 
-      //  farmId_home.setText(selectedName);
-        farmId_home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getContext(),FarmListActivity.class);
-                startActivity(i);
-            }
-        });
+
 
 
 
@@ -193,14 +210,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        /*show_farm_list_btn = view.findViewById(R.id.show_farm_list_btn);
-        show_farm_list_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getContext(), BatchListActivity.class);
-                startActivity(i);
-            }
-        });*/
+
         show_farm_list_btn_card = view.findViewById(R.id.show_farm_list_btn_card);
         show_farm_list_btn_card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -305,11 +315,60 @@ public class HomeFragment extends Fragment {
         }
 
 
+     /*   //get Current Farm Name
+        RetrofitInstance.BASEURL = "http://api.gallus.in/";
+        FarmerIdModel farmerIdModel = new FarmerIdModel(registerFarmerId);
+        try {
+            Call<List<FarmsModel>> call = RetrofitInstance.getInstance().getMyApi().farmList(farmerIdModel);
+            call.enqueue(new Callback<List<FarmsModel>>() {
+                @Override
+                public void onResponse(Call<List<FarmsModel>> call, Response<List<FarmsModel>> response) {
+                    if (response.isSuccessful() && response.body() != null) {
+                        List<FarmsModel> farmsModels = response.body();
+                        if (!farmsModels.isEmpty()) {
+                            // Get the latest farm (assuming the latest is the last item in the list)
+                            FarmsModel latestFarm = farmsModels.get(farmsModels.size() - 1);
+                            farmId_home.setText(latestFarm.getName());
+                           // farmId_home.setText(latestFarm.getName());
+                            //latestFarmNameTextView.setText(latestFarm.getName());
+                        } else {
+                            Toast.makeText(getContext(), "No farms available", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(getContext(), "Failed to load farms", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+
+                @Override
+                public void onFailure(Call<List<FarmsModel>> call, Throwable t) {
+                    Toast.makeText(getContext(),t.toString(), Toast.LENGTH_SHORT).show();
+                    Log.d("error",t.getMessage());
+
+                    t.toString();
+                }
+            });
+
+        } catch (Exception e) {
+            Toast.makeText(getContext(),e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            Log.d("error1",e.getMessage());
+            e.getMessage();
+        }*/
+
+
+
 
         return view;
 
 
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+        // When fragment resumes, update the farm name again
+        updateFarmName();
+    }
+
 
     private void openPopup() {
 
@@ -346,7 +405,7 @@ public class HomeFragment extends Fragment {
                 // Get values from EditTexts and trim
                 String chicks = chicks_no_edit_popup.getText().toString().trim();
                 String free_chicks = free_chicks_no_edit_popup.getText().toString().trim();
-                int Body_weight = Integer.parseInt(body_weight_text_edit_popup.getText().toString().trim());
+                String Body_weight = body_weight_text_edit_popup.getText().toString().trim();
                 String purchase = purchase_edit_popup.getText().toString().trim();
                 String date = editTextDate.getText().toString().trim();
 
@@ -464,5 +523,56 @@ private  void handleError(String errorMessage){
         Log.e("API Error", errorMessage);
     Toast.makeText(getActivity(), "Failed to load data", Toast.LENGTH_SHORT).show();
 }
+
+    // Method to fetch farm from API
+    private void getCurrentFarmFromAPI() {
+        RetrofitInstance.BASEURL = "http://api.gallus.in/";
+        FarmerIdModel farmerIdModel = new FarmerIdModel(cuFarmerId);
+
+        Call<List<FarmsModel>> call = RetrofitInstance.getInstance().getMyApi().farmList(farmerIdModel);
+        call.enqueue(new Callback<List<FarmsModel>>() {
+            @Override
+            public void onResponse(Call<List<FarmsModel>> call, Response<List<FarmsModel>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    List<FarmsModel> farmsModels = response.body();
+                    if (!farmsModels.isEmpty()) {
+                        FarmsModel latestFarm = farmsModels.get(farmsModels.size() - 1);
+
+                        // Save farm name and ID to SharedPreferences
+                        SharedPreferences.Editor editor = shp.edit();
+                        editor.putString("selectedFarmId", latestFarm.getFarmID());
+                        editor.putString("selectedFarmName", latestFarm.getName());
+                        editor.apply();  // Apply changes
+
+                        // Update TextView with latest farm name
+                        farmId_home.setText(latestFarm.getName());
+
+                    } else {
+                        Toast.makeText(getContext(), "No farms available", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getContext(), "Failed to load farms", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<FarmsModel>> call, Throwable t) {
+                Toast.makeText(getContext(), t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+
+
+    // Method to update farm name from SharedPreferences
+    private void updateFarmName() {
+        String selectedFarmName = shp.getString("selectedFarmName", "");
+        if (!selectedFarmName.isEmpty()) {
+            farmId_home.setText(selectedFarmName);
+        } else {
+            farmId_home.setText(R.string.select_farm);
+        }
+    }
 
 }

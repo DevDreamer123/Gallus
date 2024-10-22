@@ -19,10 +19,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import in.innovaneers.gallus.model.FarmIdModel;
+import in.innovaneers.gallus.model.FarmerIdModel;
 import in.innovaneers.gallus.model.PlanAdapter;
 import in.innovaneers.gallus.model.PlanModel;
 import in.innovaneers.gallus.model.RetrofitInstance;
 import in.innovaneers.gallus.model.SubscriptionAdapter;
+import in.innovaneers.gallus.model.SubscriptionModel;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -53,14 +55,14 @@ public class SubscriptionHistoryActivity extends AppCompatActivity {
             //userName_home.setText("Unknown User");
         }
         recyclerViewSubscriptionHistory = findViewById(R.id.recyclerViewSubscriptionHistory);
-        FarmIdModel farmIdModel =  new FarmIdModel(farmerID);
+        FarmerIdModel farmIdModel =  new FarmerIdModel(farmerID);
         RetrofitInstance.BASEURL = "http://api.gallus.in/";
         try {
-            Call<List<PlanModel>> lcall = RetrofitInstance.getInstance().getMyApi().createPlanSubscriptionHistory(farmIdModel);
-            lcall.enqueue(new Callback<List<PlanModel>>() {
+            Call<List<SubscriptionModel>> lcall = RetrofitInstance.getInstance().getMyApi().createPlanSubscriptionHistory(farmIdModel);
+            lcall.enqueue(new Callback<List<SubscriptionModel>>() {
                 @Override
-                public void onResponse(Call<List<PlanModel>> call, Response<List<PlanModel>> response) {
-                    List<PlanModel> itemModels = response.body();
+                public void onResponse(Call<List<SubscriptionModel>> call, Response<List<SubscriptionModel>> response) {
+                    List<SubscriptionModel> itemModels = response.body();
                     if (response.body().isEmpty() || response.body() == null){
                         history_text.setVisibility(View.VISIBLE);
                     }else {
@@ -72,7 +74,7 @@ public class SubscriptionHistoryActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<List<PlanModel>> call, Throwable t) {
+                public void onFailure(Call<List<SubscriptionModel>> call, Throwable t) {
                     Log.d("error", t.getMessage());
 
                     t.toString();

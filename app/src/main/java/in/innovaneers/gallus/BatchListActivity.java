@@ -3,6 +3,7 @@ package in.innovaneers.gallus;
 import static in.innovaneers.gallus.LoginActivity.KEY_FARMER_ID;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -43,6 +44,10 @@ public class BatchListActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
+
+
         shp = getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         String farmerId =shp.getString(KEY_FARMER_ID,"");
         String selectedFarmId = shp.getString("selectedFarmId","");

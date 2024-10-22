@@ -10,13 +10,13 @@ public class BatchRequestModel {
     @SerializedName("FreeChicks ")
     private String FreeChicks ;
     @SerializedName("BodyWeight")
-    private int BodyWeight ;
+    private String BodyWeight ;
     @SerializedName("Date")
     private String Date ;
     @SerializedName("PurchaseRate")
     private String PurchaseRate;
 
-    public BatchRequestModel(String farmID, String chicks, String freeChicks, int bodyWeight, String date, String PurchaseRate) {
+    public BatchRequestModel(String farmID, String chicks, String freeChicks, String bodyWeight, String date, String PurchaseRate) {
         this.FarmID = farmID;
         this.Chicks = chicks;
         this.FreeChicks = freeChicks;
