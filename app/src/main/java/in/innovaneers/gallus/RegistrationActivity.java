@@ -8,11 +8,15 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,11 +38,16 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RegistrationActivity extends AppCompatActivity {
-Button sign_up_btn;
-TextView sign_in_text;
 
-EditText user_name_regi,mobile_regi,email_regi,address_regi,area_regi,city_regi,date_regi,password_regi;
+    Button sign_up_btn;
+    TextView sign_in_text;
+    private ImageView ivShowHidePasswordRegi;
+    private boolean isPasswordVisible = false;
+    EditText user_name_regi,mobile_regi,email_regi,
+            address_regi,area_regi,city_regi,date_regi,password_regi;
+    ProgressBar progressBarRegi;
     boolean isAllFieldsChecked = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,13 +58,35 @@ EditText user_name_regi,mobile_regi,email_regi,address_regi,area_regi,city_regi,
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        ivShowHidePasswordRegi = findViewById(R.id.ivShowHidePasswordRegi);
+
+
+        ivShowHidePasswordRegi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isPasswordVisible) {
+                    // Hide the password
+                    password_regi.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    ivShowHidePasswordRegi.setImageResource(R.drawable.baseline_visibility_off_24); // Change icon to visibility_off
+                } else {
+                    // Show the password
+                    password_regi.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    ivShowHidePasswordRegi.setImageResource(R.drawable.baseline_visibility_24); // Change icon to visibility
+                }
+                isPasswordVisible = !isPasswordVisible;
+
+                // Move cursor to the end of the text
+                password_regi.setSelection(password_regi.getText().length());
+            }
+        });
+        progressBarRegi = findViewById(R.id.progressBarRegi);
         user_name_regi = findViewById(R.id.user_name_regi);
         mobile_regi = findViewById(R.id.mobile_regi);
-        email_regi = findViewById(R.id.email_regi);
-        address_regi = findViewById(R.id.address_regi);
-        area_regi = findViewById(R.id.area_regi);
+       // email_regi = findViewById(R.id.email_regi);
+        //address_regi = findViewById(R.id.address_regi);
+        //area_regi = findViewById(R.id.area_regi);
         city_regi = findViewById(R.id.city_regi);
-        date_regi = findViewById(R.id.date_regi);
+        //date_regi = findViewById(R.id.date_regi);
         password_regi = findViewById(R.id.password_regi);
 
 
@@ -68,29 +99,32 @@ EditText user_name_regi,mobile_regi,email_regi,address_regi,area_regi,city_regi,
                 finish();
             }
         });
+        String currentDate = getCurrentDate();
         sign_up_btn = findViewById(R.id.sign_up_btn);
         sign_up_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Show a loading indicator to inform the user
+                progressBarRegi.setVisibility(View.VISIBLE);  // Progress bar to show process is running
 
                 if (TextUtils.isEmpty(user_name_regi.getText().toString()) ||
-                        TextUtils.isEmpty(email_regi.getText().toString()) ||
+                        TextUtils.isEmpty(city_regi.getText().toString()) ||
                         TextUtils.isEmpty(mobile_regi.getText().toString()) ||
                         TextUtils.isEmpty(password_regi.getText().toString())) {
                     Toast.makeText(RegistrationActivity.this, "Please Enter All Details", Toast.LENGTH_SHORT).show();
                     return; // Ensure no further action occurs when details are missing
                 }else {
 
-                    String date = date_regi.getText().toString().trim();
+                   // String date = date_regi.getText().toString().trim();
 
                     RegistrationRequestModel registerModel = new RegistrationRequestModel();
                     registerModel.setName(user_name_regi.getText().toString());
-                    registerModel.setEmail(email_regi.getText().toString());
+                   // registerModel.setEmail(email_regi.getText().toString());
                     registerModel.setMobile(mobile_regi.getText().toString());
-                    registerModel.setAddress(address_regi.getText().toString());
-                    registerModel.setArea(area_regi.getText().toString());
+                   // registerModel.setAddress(address_regi.getText().toString());
+                    //registerModel.setArea(area_regi.getText().toString());
                     registerModel.setCity(city_regi.getText().toString());
-                    registerModel.setRegistrationDate(date);
+                    registerModel.setRegistrationDate(currentDate);
                     registerModel.setPassword(password_regi.getText().toString());
 
                     RetrofitInstance.BASEURL = "http://api.gallus.in/";
@@ -99,6 +133,7 @@ EditText user_name_regi,mobile_regi,email_regi,address_regi,area_regi,city_regi,
                         call.enqueue(new Callback<RegistrationResponseModel>() {
                             @Override
                             public void onResponse(Call<RegistrationResponseModel> call, Response<RegistrationResponseModel> response) {
+                                progressBarRegi.setVisibility(View.GONE);
                                 if (response.isSuccessful() && response.body() != null) {
                                     Toast.makeText(RegistrationActivity.this, response.body().getStatus(), Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
@@ -123,13 +158,13 @@ EditText user_name_regi,mobile_regi,email_regi,address_regi,area_regi,city_regi,
 
             }
         });
-        date_regi.setInputType(InputType.TYPE_NULL);
+       /* date_regi.setInputType(InputType.TYPE_NULL);
         date_regi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDatePickerDialog();
             }
-        });
+        });*/
     }
             private boolean CheckAllFields() {
                 //String MobilePattern = "[0-9]{10}";
@@ -162,7 +197,7 @@ EditText user_name_regi,mobile_regi,email_regi,address_regi,area_regi,city_regi,
                 return true;
 
     }
-    private void showDatePickerDialog() {
+   /* private void showDatePickerDialog() {
         final Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
@@ -183,5 +218,10 @@ EditText user_name_regi,mobile_regi,email_regi,address_regi,area_regi,city_regi,
                     }
                 }, year, month, dayOfMonth);
         datePickerDialog.show();
+    }*/
+    public String getCurrentDate() {
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // Date format
+        return dateFormat.format(calendar.getTime());
     }
 }

@@ -22,123 +22,136 @@ public class FarmsModel {
     @SerializedName("Pincode")
     private String Pincode;
     @SerializedName("Chicks")
-    private String Chicks;
+    private int Chicks;
     @SerializedName("Size")
     private String Size;
     @SerializedName("FreeChicks ")
-    private String FreeChicks ;
+    private int FreeChicks ;
     @SerializedName("BodyWeight")
-    private String BodyWeight ;
+    private int BodyWeight ;
     @SerializedName("Date")
     private String Date ;
     @SerializedName("PurchaseAmount")
-    private String PurchaseAmount;
+    private double PurchaseAmount;
 
+    public FarmsModel( String farmerID, String name, String address, String area, String city, String state, String pincode, int chicks, String size, int freeChicks, int bodyWeight, String date, double purchaseAmount) {
+        FarmerID = farmerID;
+        Name = name;
+        Address = address;
+        Area = area;
+        City = city;
+        State = state;
+        Pincode = pincode;
+        Chicks = chicks;
+        Size = size;
+        FreeChicks = freeChicks;
+        BodyWeight = bodyWeight;
+        Date = date;
+        PurchaseAmount = purchaseAmount;
+    }
 
-    // Getter Methods
 
     public float getID() {
         return ID;
+    }
+
+    public void setID(float ID) {
+        this.ID = ID;
     }
 
     public String getFarmID() {
         return FarmID;
     }
 
+    public void setFarmID(String farmID) {
+        FarmID = farmID;
+    }
+
     public String getFarmerID() {
         return FarmerID;
+    }
+
+    public void setFarmerID(String farmerID) {
+        FarmerID = farmerID;
     }
 
     public String getName() {
         return Name;
     }
 
+    public void setName(String name) {
+        Name = name;
+    }
+
     public String getAddress() {
         return Address;
+    }
+
+    public void setAddress(String address) {
+        Address = address;
     }
 
     public String getArea() {
         return Area;
     }
 
+    public void setArea(String area) {
+        Area = area;
+    }
+
     public String getCity() {
         return City;
+    }
+
+    public void setCity(String city) {
+        City = city;
     }
 
     public String getState() {
         return State;
     }
 
+    public void setState(String state) {
+        State = state;
+    }
+
     public String getPincode() {
         return Pincode;
     }
 
-    public String getChicks() {
+    public void setPincode(String pincode) {
+        Pincode = pincode;
+    }
+
+    public int getChicks() {
         return Chicks;
+    }
+
+    public void setChicks(int chicks) {
+        Chicks = chicks;
     }
 
     public String getSize() {
         return Size;
-    }
-    // Setter Methods
-
-    public void setID(float ID) {
-        this.ID = ID;
-    }
-
-    public void setFarmID(String FarmID) {
-        this.FarmID = FarmID;
-    }
-
-    public void setFarmerID(String FarmerID) {
-        this.FarmerID = FarmerID;
-    }
-
-    public void setName(String Name) {
-        this.Name = Name;
-    }
-
-    public void setAddress(String Address) {
-        this.Address = Address;
-    }
-
-    public void setArea(String Area) {
-        this.Area = Area;
-    }
-
-    public void setCity(String City) {
-        this.City = City;
-    }
-
-    public void setState(String State) {
-        this.State = State;
-    }
-
-    public void setPincode(String Pincode) {
-        this.Pincode = Pincode;
-    }
-
-    public void setChicks(String Chicks) {
-        this.Chicks = Chicks;
     }
 
     public void setSize(String size) {
         Size = size;
     }
 
-    public String getFreeChicks() {
+    public int getFreeChicks() {
         return FreeChicks;
     }
 
-    public void setFreeChicks(String freeChicks) {
+    public void setFreeChicks(int freeChicks) {
         FreeChicks = freeChicks;
     }
 
-    public String getBodyWeight() {
+    public int getBodyWeight() {
         return BodyWeight;
     }
 
-    public void setBodyWeight(String bodyWeight) {
+    public void setBodyWeight(int bodyWeight) {
         BodyWeight = bodyWeight;
     }
 
@@ -150,11 +163,11 @@ public class FarmsModel {
         Date = date;
     }
 
-    public String getPurchaseAmount() {
+    public double getPurchaseAmount() {
         return PurchaseAmount;
     }
 
-    public void setPurchaseAmount(String purchaseAmount) {
+    public void setPurchaseAmount(double purchaseAmount) {
         PurchaseAmount = purchaseAmount;
     }
 }

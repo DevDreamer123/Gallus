@@ -6,17 +6,17 @@ public class BatchRequestModel {
     @SerializedName("FarmID")
     private String FarmID ;
     @SerializedName("Chicks")
-    private String Chicks;
+    private int Chicks;
     @SerializedName("FreeChicks ")
-    private String FreeChicks ;
+    private int FreeChicks ;
     @SerializedName("BodyWeight")
-    private String BodyWeight ;
+    private int BodyWeight ;
     @SerializedName("Date")
     private String Date ;
     @SerializedName("PurchaseRate")
-    private String PurchaseRate;
+    private double PurchaseRate;
 
-    public BatchRequestModel(String farmID, String chicks, String freeChicks, String bodyWeight, String date, String PurchaseRate) {
+    public BatchRequestModel(String farmID, int chicks, int freeChicks, int bodyWeight, String date, double PurchaseRate) {
         this.FarmID = farmID;
         this.Chicks = chicks;
         this.FreeChicks = freeChicks;

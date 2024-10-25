@@ -99,6 +99,12 @@
             android:backgroundTint="#FFD119"
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_30sdp"/>
+        <ProgressBar
+            android:id="@+id/progressBarLog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"/>  <!-- Initially hidden -->
         <!--<TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -23,4 +23,6 @@
     <string name="selectMixture">Select</string>
     <string name="select_farm">Select Farm</string>
     <string name="no_batch_id_current">No Batch Available</string>
+    <string name="enter_farm_size">Enter Farm Size</string>
+    <string name="enter_size_size_in_square_feet">Enter Size(Size in Square Feet)</string>
 </resources>

@@ -59,47 +59,36 @@ public class FarmListAdapter extends RecyclerView.Adapter<FarmListAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull FarmListAdapter.ViewHolder holder, int position) {
         final FarmsModel farmsModel = farmsModels.get(position);
-       /* if (position == farmsModels.size() - 1) {
+        if (position == farmsModels.size() - 1) {
             String LatestFarmId = farmsModel.getFarmID();
             Log.d("SendBroadcast", "LatestFarmId: " + LatestFarmId);
 
-            if (LatestFarmId != null) {
-                Intent i = new Intent("farm_id_action");
-                i.putExtra("farm_id", LatestFarmId);
-                context.sendBroadcast(i);
-
-                Intent intent = new Intent("farm_name_action");
-                intent.putExtra("farm_name", farmsModel.getName());
-                context.sendBroadcast(intent);
-            }
-
             // Save in SharedPreferences
-            SharedPreferences.Editor editor = shp.edit();
-            editor.putString("selectedFarmId", LatestFarmId);
-            editor.putString("selectedFarmName", farmsModel.getName());
-            editor.apply();
-        }*/
+            // Use SharedPrefHelper to save selected farm data
+            SharedPrefHelper sharedPrefHelper = new SharedPrefHelper(context);
+            sharedPrefHelper.saveSelectedFarm(farmsModel.getFarmID(), farmsModel.getName());
+        }
         holder.name_list_farm.setText(farmsModel.getName());
-        holder.chicks_list_farm.setText(farmsModel.getChicks());
+        holder.chicks_list_farm.setText(String.valueOf(farmsModel.getChicks()));
         holder.address_list_farm.setText(farmsModel.getAddress());
         holder.farmerid_list_farm.setText(farmsModel.getFarmerID());
-        shp = context.getSharedPreferences(SHARED_PREF_NAME,context.MODE_PRIVATE);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Save selected farm ID and name in SharedPreferences
                 Toast.makeText(context, "Selected", Toast.LENGTH_SHORT).show();
 
+                // Use SharedPrefHelper to save selected farm data
+                SharedPrefHelper sharedPrefHelper = new SharedPrefHelper(context);
+                sharedPrefHelper.saveSelectedFarm(farmsModel.getFarmID(), farmsModel.getName());
 
-                // Save in SharedPreferences first
-                SharedPreferences.Editor editor = shp.edit();
-                editor.putString("selectedFarmId", farmsModel.getFarmID());
-                editor.putString("selectedFarmName", farmsModel.getName());
-                editor.apply(); // Apply changes to SharedPreferences
+                // Log the selected farm data for debugging
+                Log.d("FarmIdAdapter", farmsModel.getFarmID());
+                Log.d("FarmNameAdapter", farmsModel.getName());
 
-                // Then start the activity
+                // Start MainActivity or any other activity if required
                 Intent i = new Intent(context, MainActivity.class);
-                i.putExtra("formFarmSelection",true);
+                i.putExtra("formFarmSelection", true);
                 context.startActivity(i);
             }
         });

@@ -87,35 +87,35 @@
         </LinearLayout>
 
         <!-- Email Field -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/_10sdp">
+        <!-- <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+             android:layout_marginTop="@dimen/_10sdp">
 
-            <ImageView
-                android:layout_width="@dimen/_20sdp"
-                android:layout_height="@dimen/_20sdp"
-                android:tint="@color/yellow"
-                android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/_5sdp"
-                android:src="@drawable/baseline_alternate_email_24"
-                android:contentDescription="Email Icon" />
+             <ImageView
+                 android:layout_width="@dimen/_20sdp"
+                 android:layout_height="@dimen/_20sdp"
+                 android:tint="@color/yellow"
+                 android:layout_gravity="center"
+                 android:layout_marginLeft="@dimen/_5sdp"
+                 android:src="@drawable/baseline_alternate_email_24"
+                 android:contentDescription="Email Icon" />
 
-            <EditText
-                android:id="@+id/email_regi"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Enter email id"
-                android:textColor="@color/black"
-                android:backgroundTint="#808080"
-                android:imeOptions="actionNext"
-                android:inputType="textEmailAddress"/>
-        </LinearLayout>
+             <EditText
+                 android:id="@+id/email_regi"
+                 android:layout_width="0dp"
+                 android:layout_height="wrap_content"
+                 android:layout_weight="1"
+                 android:hint="Enter email id"
+                 android:textColor="@color/black"
+                 android:backgroundTint="#808080"
+                 android:imeOptions="actionNext"
+                 android:inputType="textEmailAddress"/>
+         </LinearLayout>-->
 
-        <!-- Address Field -->
-        <LinearLayout
+         <!-- Address Field -->
+      <!--  <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -140,10 +140,10 @@
                 android:backgroundTint="#808080"
                 android:imeOptions="actionNext"
                 android:inputType="textPostalAddress"/>
-        </LinearLayout>
+        </LinearLayout>-->
 
         <!-- Area Field -->
-        <LinearLayout
+     <!--   <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -168,7 +168,7 @@
                 android:backgroundTint="#808080"
                 android:imeOptions="actionNext"
                 android:inputType="text"/>
-        </LinearLayout>
+        </LinearLayout>-->
 
         <!-- City Field -->
         <LinearLayout
@@ -199,7 +199,7 @@
         </LinearLayout>
 
         <!-- Date Field -->
-        <LinearLayout
+       <!-- <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -225,34 +225,46 @@
                 android:backgroundTint="#808080"
                 android:imeOptions="actionNext"
                 android:inputType="date"/>
-        </LinearLayout>
+        </LinearLayout>-->
 
         <!-- Password Field -->
-        <LinearLayout
+
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/_10sdp">
-
-            <ImageView
-                android:layout_width="@dimen/_20sdp"
-                android:layout_height="@dimen/_20sdp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/_5sdp"
-                android:src="@drawable/baseline_key_24_yellow"
-                android:contentDescription="Key Icon" />
-
+            android:orientation="horizontal">
             <EditText
                 android:id="@+id/password_regi"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:hint="Enter password"
-                android:textColor="@color/black"
+                android:inputType="textPassword"
+                android:drawablePadding="@dimen/_5sdp"
+                android:drawableLeft="@drawable/baseline_key_24_yellow"
                 android:backgroundTint="#808080"
-                android:imeOptions="actionDone"
-                android:inputType="textPassword"/>
-        </LinearLayout>
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="@dimen/_10sdp"/>
+            <!-- ImageView for the eye icon -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:gravity="right"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/ivShowHidePasswordRegi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/baseline_visibility_off_24"
+                    android:contentDescription="Toggle Password Visibility" />
+            </LinearLayout>
+        </RelativeLayout>
+
+
 
         <Button
             android:id="@+id/sign_up_btn"
@@ -264,6 +276,12 @@
             android:textSize="@dimen/_13sdp"
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_20sdp"/>
+        <ProgressBar
+            android:id="@+id/progressBarRegi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"/>  <!-- Initially hidden -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

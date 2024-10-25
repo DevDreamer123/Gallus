@@ -26,6 +26,7 @@ import in.innovaneers.gallus.model.FarmListAdapter;
 import in.innovaneers.gallus.model.FarmerIdModel;
 import in.innovaneers.gallus.model.FarmsModel;
 import in.innovaneers.gallus.model.RetrofitInstance;
+import in.innovaneers.gallus.model.SharedPrefHelper;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -33,7 +34,6 @@ import retrofit2.Response;
 public class BatchListActivity extends AppCompatActivity {
     RecyclerView recycler_batch_list;
     SharedPreferences shp;
-    public static final String SHARED_PREF_NAME = "Gallus";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,12 +48,14 @@ public class BatchListActivity extends AppCompatActivity {
 
 
 
-        shp = getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        String farmerId =shp.getString(KEY_FARMER_ID,"");
-        String selectedFarmId = shp.getString("selectedFarmId","");
+        SharedPrefHelper sharedPrefHelper = new SharedPrefHelper(BatchListActivity.this);
+
+        // Get the farm ID
+        String selectedFarmId = sharedPrefHelper.getSelectedFarmId();
+        //String selectedFarmId = shp.getString("selectedFarmId","");
         recycler_batch_list = findViewById(R.id.recycler_batch_list);
         Log.d("selectedFarmId",selectedFarmId);
-        if (!farmerId.isEmpty() && !selectedFarmId.isEmpty()) {
+    //    if (selectedFarmId != null) {
             Log.d("selectFarmId", selectedFarmId);
             RetrofitInstance.BASEURL = "http://api.gallus.in/";
             FarmIdModel farmIdModel = new FarmIdModel(selectedFarmId);
@@ -85,9 +87,9 @@ public class BatchListActivity extends AppCompatActivity {
                 Toast.makeText(BatchListActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 Log.d("error1", e.getMessage());
             }
-        } else {
-            Toast.makeText(this, "Farmer ID or Farm ID missing", Toast.LENGTH_SHORT).show();
-        }
+       // } else {
+            Toast.makeText(this, "Farm ID missing", Toast.LENGTH_SHORT).show();
+      //  }
 
 
 

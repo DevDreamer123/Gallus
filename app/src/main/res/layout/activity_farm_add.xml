@@ -45,6 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
+            android:imeOptions="actionNext"
             android:padding="@dimen/_10sdp"
             android:hint="Enter Farm Name"
             android:inputType="text" />
@@ -66,6 +67,7 @@
                 android:id="@+id/mobile_addFarm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:imeOptions="actionNext"
                 android:backgroundTint="@color/white"
                 android:padding="@dimen/_10sdp"
                 android:hint="Enter mobile no"
@@ -88,6 +90,7 @@
         <EditText
             android:id="@+id/address_addFarm"
             android:layout_width="match_parent"
+            android:imeOptions="actionNext"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
             android:padding="@dimen/_10sdp"
@@ -113,6 +116,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
+            android:imeOptions="actionNext"
             android:padding="@dimen/_10sdp"
             android:hint="Enter Farm Area" />
         </androidx.cardview.widget.CardView>
@@ -135,6 +139,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
+            android:imeOptions="actionNext"
             android:padding="@dimen/_10sdp"
             android:hint="Enter City" />
         </androidx.cardview.widget.CardView>
@@ -157,6 +162,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
+            android:imeOptions="actionNext"
             android:padding="@dimen/_10sdp"
             android:hint="Enter State" />
         </androidx.cardview.widget.CardView>
@@ -177,6 +183,8 @@
                 android:id="@+id/pincode_addFarm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:imeOptions="actionNext"
+                android:inputType="number"
                 android:backgroundTint="@color/white"
                 android:padding="@dimen/_10sdp"
                 android:hint="Pincode" />
@@ -198,6 +206,7 @@
             android:id="@+id/chicks_addFarm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
             android:backgroundTint="@color/white"
             android:padding="@dimen/_10sdp"
             android:hint="Enter Number of Birds"
@@ -221,6 +230,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
+            android:imeOptions="actionNext"
             android:padding="@dimen/_10sdp"
             android:hint="Enter Number of Free Chicks"
             android:inputType="number" />
@@ -242,6 +252,7 @@
             android:id="@+id/chicks_rate_addFarm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
             android:backgroundTint="@color/white"
             android:padding="@dimen/_10sdp"
             android:hint="Enter Rate"
@@ -264,6 +275,7 @@
             android:id="@+id/chicks_body_weight_addFarm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
             android:backgroundTint="@color/white"
             android:padding="@dimen/_10sdp"
             android:hint="Enter body Weight"
@@ -286,6 +298,7 @@
             android:id="@+id/chicks_date_addFarm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
             android:backgroundTint="@color/white"
             android:focusable="false"
             android:padding="@dimen/_10sdp"
@@ -309,6 +322,7 @@
                 android:id="@+id/size_addFarm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:imeOptions="actionNext"
                 android:backgroundTint="@color/white"
                 android:padding="@dimen/_10sdp"
                 android:hint="Enter Size(Size in Square Feet)"
@@ -326,6 +340,13 @@
             android:padding="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_30sdp"
             android:layout_marginTop="@dimen/_20sdp" />
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"/>  <!-- Initially hidden -->
+
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

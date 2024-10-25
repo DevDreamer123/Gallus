@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,20 +29,25 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
+import in.innovaneers.gallus.Utils.HomeFragment;
 import in.innovaneers.gallus.model.BatchRequestModel;
 import in.innovaneers.gallus.model.FarmResponseModel;
+import in.innovaneers.gallus.model.FarmerIdModel;
 import in.innovaneers.gallus.model.FarmsModel;
 import in.innovaneers.gallus.model.RegistrationRequestModel;
 import in.innovaneers.gallus.model.RegistrationResponseModel;
 import in.innovaneers.gallus.model.RetrofitInstance;
+import in.innovaneers.gallus.model.SharedPrefHelper;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -54,10 +60,12 @@ public class FarmAddActivity extends AppCompatActivity {
     Button saveFarmButton;
     SharedPreferences shp;
     public static final String SHARED_PREF_NAME = "Gallus";
+    ProgressBar  progressBar;
+    String farmApiId;
+    String farmerId;
+    String responseStatus;
+    int flag;
 
-    TextInputEditText chicks_no_edit_popup,purchase_edit_popup;
-    TextInputEditText free_chicks_no_edit_popup,editTextDate,body_weight_text_edit_popup;
-    private static String cuFarmID;
 
 
     @Override
@@ -72,11 +80,11 @@ public class FarmAddActivity extends AppCompatActivity {
         });
 
         shp = getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        String farmerId =shp.getString(KEY_FARMER_ID,"");
+         farmerId =shp.getString(KEY_FARMER_ID,"");
 
 
 
-
+        progressBar = findViewById(R.id.progressBar);
         name_addFarm = findViewById(R.id.name_addFarm);
         address_addFarm = findViewById(R.id.address_addFarm);
         mobile_addFarm = findViewById(R.id.mobile_addFarm);
@@ -106,6 +114,11 @@ public class FarmAddActivity extends AppCompatActivity {
         saveFarmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //saveFarmButton.setEnabled(false);
+
+                // Show a loading indicator to inform the user
+                progressBar.setVisibility(View.VISIBLE);  // Progress bar to show process is running
+
                 if (TextUtils.isEmpty(name_addFarm.getText().toString())
                         || TextUtils.isEmpty(chicks_addFarm.getText().toString())
                         || TextUtils.isEmpty(address_addFarm.getText().toString())
@@ -117,42 +130,72 @@ public class FarmAddActivity extends AppCompatActivity {
                     Toast.makeText(FarmAddActivity.this, "Please Enter All Mandatory Details", Toast.LENGTH_SHORT).show();
                 } else  {
 
-                     FarmsModel farmsModel = new FarmsModel();
-                    farmsModel.setFarmerID(farmerId);
-                    farmsModel.setName(name_addFarm.getText().toString());
-                    farmsModel.setAddress(address_addFarm.getText().toString());
-                    farmsModel.setArea(area_addFarm.getText().toString());
-                    farmsModel.setCity(city_addFarm.getText().toString());
-                    farmsModel.setState(state_addFarm.getText().toString());
-                    farmsModel.setPincode(pincode_addFarm.getText().toString());
-                    farmsModel.setFreeChicks(chicks__free_addFarm.getText().toString());
-                    farmsModel.setPurchaseAmount(chicks_rate_addFarm.getText().toString());  // Mandatory field
-                    farmsModel.setBodyWeight(chicks_body_weight_addFarm.getText().toString());  // Mandatory field
-                    farmsModel.setDate(chicks_date_addFarm.getText().toString());  // Mandatory field
-                    farmsModel.setSize(size_addFarm.getText().toString());
-                    farmsModel.setChicks(chicks_addFarm.getText().toString());
 
-                    RetrofitInstance.BASEURL = "http://api.gallus.in/";
-                    try {
-                        Call<FarmResponseModel> call = RetrofitInstance.getInstance().getMyApi().farmAdd(farmsModel);
-                        call.enqueue(new Callback<FarmResponseModel>() {
-                            @Override
-                            public void onResponse(Call<FarmResponseModel> call, Response<FarmResponseModel> response) {
-                                if (response.isSuccessful() && response.body() != null) {
-                                    Toast.makeText(FarmAddActivity.this, "Successfully added farm", Toast.LENGTH_SHORT).show();
+                    submitFarmDetails();
 
 
-                                    String farmApiId = response.body().getFarmID();
-                                    batchAdd(farmApiId, chicks_addFarm.getText().toString(),
-                                            chicks__free_addFarm.getText().toString(),
-                                            chicks_body_weight_addFarm.getText().toString(),
-                                            chicks_rate_addFarm.getText().toString(),
-                                            chicks_date_addFarm.getText().toString());
+                }
 
 
-                                } else {
-                                    // Error handling
-                                    String errorMessage = "";
+
+
+
+            }
+
+
+        });
+
+
+
+
+
+
+    }
+    private void submitFarmDetails() {
+        progressBar.setVisibility(View.VISIBLE);
+
+        // Get values from EditTexts
+        String name = name_addFarm.getText().toString();
+        String address = address_addFarm.getText().toString();
+        String area = area_addFarm.getText().toString();
+        String city = city_addFarm.getText().toString();
+        String state = state_addFarm.getText().toString();
+        String pincode = pincode_addFarm.getText().toString();
+        int chicks = Integer.parseInt(chicks_addFarm.getText().toString());
+        String size = size_addFarm.getText().toString();
+        int freeChicks = Integer.parseInt(chicks__free_addFarm.getText().toString());
+        double purchaseRate = Double.parseDouble(chicks_rate_addFarm.getText().toString());
+        int bodyWeight = Integer.parseInt((chicks_body_weight_addFarm.getText().toString()));
+        String date = chicks_date_addFarm.getText().toString();
+
+        RetrofitInstance.BASEURL = "http://api.gallus.in/";
+        FarmsModel farmsModel = new FarmsModel(farmerId, name, address, area, city, state, pincode, chicks, size,freeChicks, bodyWeight, date, purchaseRate);
+        try {
+            Call<FarmResponseModel> call = RetrofitInstance.getInstance().getMyApi().farmAdd(farmsModel);
+            call.enqueue(new Callback<FarmResponseModel>() {
+                @Override
+                public void onResponse(Call<FarmResponseModel> call, Response<FarmResponseModel> response) {
+                    progressBar.setVisibility(View.GONE);
+                    if (response.isSuccessful() && response.body() != null) {
+                        Toast.makeText(FarmAddActivity.this, "Successfully added farm", Toast.LENGTH_SHORT).show();
+                        farmApiId = response.body().getFarmID();
+                        responseStatus = response.body().getStatus();
+                            Toast.makeText(FarmAddActivity.this, "Batch Added Successfully", Toast.LENGTH_SHORT).show();
+                           Intent i = new Intent(FarmAddActivity.this,MainActivity.class);
+                           startActivity(i);
+                            /*FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                            transaction.replace(R.id.container, new AccountFragment());
+                            transaction.commit();*/
+                            addBatch(date);
+
+                        //saveFarmButton.setEnabled(false);
+                        //batchAddAPI(farmApiId,chicks,freeChicks,bodyWeight,purchaseRate,date);
+
+                        saveFarmButton.setEnabled(true);
+
+                    } else {
+                        // Error handling
+                                  /*  String errorMessage = "";
                                     if (response.errorBody() != null) {
                                         try {
                                             String errorBody = response.errorBody().string();
@@ -164,136 +207,81 @@ public class FarmAddActivity extends AppCompatActivity {
                                         } catch (Exception e) {
                                             errorMessage = "Error reading errorBody: " + e.getMessage();
                                         }
-                                    }
-                                    Toast.makeText(FarmAddActivity.this, "Failed to add farm: " + errorMessage, Toast.LENGTH_SHORT).show();
-                                    Log.e("API Error", "Unsuccessful response: " + errorMessage);
-                                }
-                                Log.d("URl", RetrofitInstance.BASEURL + "Farms/Add?" +
-                                        "FarmerID=" + farmerId +
-                                        "&Name=" + name_addFarm.getText().toString() +
-                                        "&Address=" + address_addFarm.getText().toString() +
-                                        "&Area=" + area_addFarm.getText().toString() +
-                                        "&City=" + city_addFarm.getText().toString() +
-                                        "&State=" + state_addFarm.getText().toString() +
-                                        "&Pincode=" + pincode_addFarm.getText().toString() +
-                                        "&Chicks=" + chicks_addFarm.getText().toString() +
-                                        "&FreeChicks=" + chicks__free_addFarm.getText().toString() +
-                                        "&BodyWeight=" + chicks_body_weight_addFarm.getText().toString() +
-                                        "&Date=" + chicks_date_addFarm.getText().toString() +
-                                        "&PurchaseRate=" + chicks_rate_addFarm.getText().toString() +
-                                        "&Size=" + size_addFarm.getText().toString());
-
-                                //  Intent intent = new Intent(FarmAddActivity.this, MainActivity.class);
-                               // startActivity(intent);
-                              //  finish();
-                            }
-
-                            @Override
-                            public void onFailure(Call<FarmResponseModel> call, Throwable t) {
-                                Toast.makeText(FarmAddActivity.this, "Failed to connect to the server: " + t.getMessage(), Toast.LENGTH_LONG).show();
-                                Log.e("API Error", t.getMessage(), t);
-                            }
-                        });
-
-                    } catch (Exception e) {
-                        Toast.makeText(FarmAddActivity.this, "An unexpected error occurred: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                        Log.e("API Error", e.getMessage(), e);
+                                    }*/
+                        Toast.makeText(FarmAddActivity.this, "Failed to add farm: " , Toast.LENGTH_SHORT).show();
+                        Log.e("API Error", "Unsuccessful response: " );
                     }
+                    Log.d("URl", RetrofitInstance.BASEURL + "Farms/Add?" +
+                            "FarmerID=" + farmerId +
+                            "&Name=" + name_addFarm.getText().toString() +
+                            "&Address=" + address_addFarm.getText().toString() +
+                            "&Area=" + area_addFarm.getText().toString() +
+                            "&City=" + city_addFarm.getText().toString() +
+                            "&State=" + state_addFarm.getText().toString() +
+                            "&Pincode=" + pincode_addFarm.getText().toString() +
+                            "&Chicks=" + chicks_addFarm.getText().toString() +
+                            "&FreeChicks=" + chicks__free_addFarm.getText().toString() +
+                            "&BodyWeight=" + chicks_body_weight_addFarm.getText().toString() +
+                            "&Date=" + chicks_date_addFarm.getText().toString() +
+                            "&PurchaseRate=" + chicks_rate_addFarm.getText().toString() +
+                            "&Size=" + size_addFarm.getText().toString());
+
+
+
                 }
 
 
-
-            }
-        });
-       /* BroadcastReceiver receiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                String farmId = intent.getStringExtra("farm_id");
-                cuFarmID = farmId;
-
-            }
-        };
-
-        Log.d("CuFarmIdAdd",cuFarmID);
-
-        IntentFilter filter = new IntentFilter("farm_id_action");
-        registerReceiver(receiver, filter);*/
+                @Override
+                public void onFailure(Call<FarmResponseModel> call, Throwable t) {
+                    progressBar.setVisibility(View.VISIBLE);
+                    Toast.makeText(FarmAddActivity.this, "Failed to connect to the server: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                    Log.e("API Error", t.getMessage(), t);
+                }
+            });
 
 
 
 
-
-
-
-
+        } catch (Exception e) {
+            Toast.makeText(FarmAddActivity.this, "An unexpected error occurred: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.e("API Error", e.getMessage(), e);
+        }
+        getCurrentFarmFromAPI();
 
     }
-    private void batchAdd(String farmId, String chicks, String freeChicks, String bodyWeight, String purchaseRate, String date) {
-        BatchRequestModel model = new BatchRequestModel(farmId, chicks, freeChicks, bodyWeight, date, purchaseRate);
-
+    // Method to fetch farm from API
+    private void getCurrentFarmFromAPI() {
         RetrofitInstance.BASEURL = "http://api.gallus.in/";
-        Call<RegistrationResponseModel> call = RetrofitInstance.getInstance().getMyApi().addBatch(model);
-        call.enqueue(new Callback<RegistrationResponseModel>() {
+        FarmerIdModel farmerIdModel = new FarmerIdModel(farmerId);
+
+        Call<List<FarmsModel>> call = RetrofitInstance.getInstance().getMyApi().farmList(farmerIdModel);
+        call.enqueue(new Callback<List<FarmsModel>>() {
             @Override
-            public void onResponse(Call<RegistrationResponseModel> call, Response<RegistrationResponseModel> response) {
+            public void onResponse(Call<List<FarmsModel>> call, Response<List<FarmsModel>> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    Toast.makeText(FarmAddActivity.this, "Batch Added Successfully", Toast.LENGTH_SHORT).show();
-                    addBatch(date);
-                    Intent intent = new Intent(FarmAddActivity.this, MainActivity.class);
-                    SharedPreferences.Editor editor = shp.edit();
-                    editor.putString("selectedFarmId", farmId);
-                    editor.apply();
-                    startActivity(intent);
-                    finish();
+                    List<FarmsModel> farmsModels = response.body();
+                    if (!farmsModels.isEmpty()) {
+                        FarmsModel latestFarm = farmsModels.get(farmsModels.size() - 1);
+
+                        SharedPrefHelper sharedPrefHelper = new SharedPrefHelper(FarmAddActivity.this);
+                        sharedPrefHelper.saveSelectedFarm(latestFarm.getFarmID(), latestFarm.getName());
+
+                    } else {
+                        Toast.makeText(FarmAddActivity.this, "No farms available", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
-                    Toast.makeText(FarmAddActivity.this, "Failed to add batch", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FarmAddActivity.this, "Failed to load farms", Toast.LENGTH_SHORT).show();
                 }
-                Log.d("URl", RetrofitInstance.BASEURL + "Batches/Add?" +
-                        "FarmID=" + farmId +
-                        "&Chicks=" + chicks +
-                        "&FreeChicks=" + freeChicks +
-                        "&BodyWeight=" + bodyWeight +
-                        "&Date=" + date +
-                        "&PurchaseRate=" + purchaseRate);
             }
 
             @Override
-            public void onFailure(Call<RegistrationResponseModel> call, Throwable t) {
-                Toast.makeText(FarmAddActivity.this, "Failed to connect to the server", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<List<FarmsModel>> call, Throwable t) {
+                Toast.makeText(FarmAddActivity.this, t.toString(), Toast.LENGTH_SHORT).show();
             }
         });
-
-
-                // Reset Spinner
-                //spinner.setSelection(0);
-         /*   }
-        });
-        editTextDate.setInputType(InputType.TYPE_NULL);
-        editTextDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDatePickerDialog();
-            }
-        });
-
-        // Close button click listener
-        closeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(FarmAddActivity.this,MainActivity.class);
-                startActivity(i);
-
-                dialog.dismiss();
-            }
-        });*/
-
-
-
-
-
-
-
     }
+
+
     private void addBatch(String batchName){
         shp = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = shp.edit();
@@ -331,9 +319,5 @@ public class FarmAddActivity extends AppCompatActivity {
     }
 
 
-    private  void handleError(String errorMessage){
-        Log.e("API Error", errorMessage);
-        Toast.makeText(FarmAddActivity.this, "Failed to load data", Toast.LENGTH_SHORT).show();
-    }
 
 }

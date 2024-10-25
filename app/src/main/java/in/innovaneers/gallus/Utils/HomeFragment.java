@@ -67,6 +67,7 @@ import in.innovaneers.gallus.model.ProductAdapter;
 import in.innovaneers.gallus.model.ProductModel;
 import in.innovaneers.gallus.model.RegistrationResponseModel;
 import in.innovaneers.gallus.model.RetrofitInstance;
+import in.innovaneers.gallus.model.SharedPrefHelper;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -92,6 +93,7 @@ public class HomeFragment extends Fragment {
     public static String cuFarmName;
     public static String cuFarmId;
     public static String cuFarmerId;
+    public static String selectedFarmName;
 
 
     @Override
@@ -105,8 +107,8 @@ public class HomeFragment extends Fragment {
         rate_per_kg_home = view.findViewById(R.id.rate_per_kg_home);
         fCR_per_kg_home = view.findViewById(R.id.fCR_per_kg_home);
         cpg_per_kg_home = view.findViewById(R.id.cpg_per_kg_home);
-        current_batch_status = view.findViewById(R.id.current_batch_status);
-        add_new_batch = view.findViewById(R.id.add_new_batch);
+        //current_batch_status = view.findViewById(R.id.current_batch_status);
+        //add_new_batch = view.findViewById(R.id.add_new_batch);
         show_daily_records_btn = view.findViewById(R.id.show_daily_records_btn);
         recylcer_product = view.findViewById(R.id.recylcer_product);
         RetrofitInstance.BASEURL = "http://api.gallus.in/";
@@ -216,6 +218,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getContext(), BatchListActivity.class);
+               // i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
             }
         });
@@ -354,7 +357,7 @@ public class HomeFragment extends Fragment {
             Log.d("error1",e.getMessage());
             e.getMessage();
         }*/
-
+        //farmId_home.setText(selectedFarmName);
 
 
 
@@ -403,15 +406,15 @@ public class HomeFragment extends Fragment {
                 RetrofitInstance.BASEURL = "http://api.gallus.in/";
 
                 // Get values from EditTexts and trim
-                String chicks = chicks_no_edit_popup.getText().toString().trim();
-                String free_chicks = free_chicks_no_edit_popup.getText().toString().trim();
-                String Body_weight = body_weight_text_edit_popup.getText().toString().trim();
-                String purchase = purchase_edit_popup.getText().toString().trim();
+                int chicks = Integer.parseInt(chicks_no_edit_popup.getText().toString().trim());
+                int free_chicks = Integer.parseInt(free_chicks_no_edit_popup.getText().toString().trim());
+                int Body_weight = Integer.parseInt(body_weight_text_edit_popup.getText().toString().trim());
+                double purchase = Double.parseDouble(purchase_edit_popup.getText().toString().trim());
                 String date = editTextDate.getText().toString().trim();
 
 
                 // Validate fields
-                if (TextUtils.isEmpty(chicks) || TextUtils.isEmpty(purchase) || TextUtils.isEmpty(date)) {
+                if (TextUtils.isEmpty(body_weight_text_edit_popup.getText().toString()) || TextUtils.isEmpty(purchase_edit_popup.getText().toString()) || TextUtils.isEmpty(date)) {
                     Toast.makeText(getContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -426,12 +429,20 @@ public class HomeFragment extends Fragment {
                                 RegistrationResponseModel showModel = response.body();
                                 // Show success toast
                                 addBatch(date);
+                                Log.d("BatchHomeadd",response.body().getDescription());
                                 Toast.makeText(getContext(), "Successfully Added", Toast.LENGTH_SHORT).show();
                                 dialog.dismiss();  // Dismiss dialog only on successful response
                             } else {
                                 Log.d("error", "Response unsuccessful or null body");
                                 Toast.makeText(getContext(), "Failed to Add", Toast.LENGTH_SHORT).show();
                             }
+                            Log.d("URl", RetrofitInstance.BASEURL + "Batches/Add?" +
+                                    "FarmID=" + farmId +
+                                    "&Chicks=" + chicks +
+                                    "&FreeChicks=" + free_chicks +
+                                    "&BodyWeight=" + Body_weight +
+                                    "&Date=" + date +
+                                    "&PurchaseRate=" + purchase);
                         }
 
                         @Override
@@ -526,7 +537,7 @@ private  void handleError(String errorMessage){
 
     // Method to fetch farm from API
     private void getCurrentFarmFromAPI() {
-        RetrofitInstance.BASEURL = "http://api.gallus.in/";
+        /*RetrofitInstance.BASEURL = "http://api.gallus.in/";
         FarmerIdModel farmerIdModel = new FarmerIdModel(cuFarmerId);
 
         Call<List<FarmsModel>> call = RetrofitInstance.getInstance().getMyApi().farmList(farmerIdModel);
@@ -536,16 +547,19 @@ private  void handleError(String errorMessage){
                 if (response.isSuccessful() && response.body() != null) {
                     List<FarmsModel> farmsModels = response.body();
                     if (!farmsModels.isEmpty()) {
-                        FarmsModel latestFarm = farmsModels.get(farmsModels.size() - 1);
+                        FarmsModel latestFarm = farmsModels.get(farmsModels.size() - 1);*/
 
-                        // Save farm name and ID to SharedPreferences
-                        SharedPreferences.Editor editor = shp.edit();
+        // Save farm name and ID to SharedPreferences
+                       /* SharedPreferences.Editor editor = shp.edit();
                         editor.putString("selectedFarmId", latestFarm.getFarmID());
                         editor.putString("selectedFarmName", latestFarm.getName());
-                        editor.apply();  // Apply changes
+                        editor.apply();  // Apply changes*/
+                       /* SharedPrefHelper sharedPrefHelper = new SharedPrefHelper(getContext());
+                        sharedPrefHelper.saveSelectedFarm(latestFarm.getFarmID(), latestFarm.getName());
+
 
                         // Update TextView with latest farm name
-                        farmId_home.setText(latestFarm.getName());
+                      //  farmId_home.setText(latestFarm.getName());
 
                     } else {
                         Toast.makeText(getContext(), "No farms available", Toast.LENGTH_SHORT).show();
@@ -560,19 +574,34 @@ private  void handleError(String errorMessage){
                 Toast.makeText(getContext(), t.toString(), Toast.LENGTH_SHORT).show();
             }
         });
+    }*/
     }
 
 
 
-
-    // Method to update farm name from SharedPreferences
     private void updateFarmName() {
-        String selectedFarmName = shp.getString("selectedFarmName", "");
-        if (!selectedFarmName.isEmpty()) {
-            farmId_home.setText(selectedFarmName);
-        } else {
-            farmId_home.setText(R.string.select_farm);
-        }
+        // Use SharedPrefHelper to retrieve selected farm data
+        SharedPrefHelper sharedPrefHelper = new SharedPrefHelper(getContext());
+
+        // Get the farm ID and name
+         selectedFarmName = sharedPrefHelper.getSelectedFarmName();
+         selectedFarmId = sharedPrefHelper.getSelectedFarmId();
+
+        // Update the TextView with the selected farm name
+        farmId_home.setText(selectedFarmName);
+     //   Log.d("HomeFarmName",selectedFarmName);
+
+        Toast.makeText(getContext(), "farmName: " + selectedFarmName, Toast.LENGTH_SHORT).show();
+        // Retrieve the selected farm name from SharedPreferences
+        /*SharedPreferences shp = getActivity().getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
+        selectedFarmName = shp.getString("selectedFarmName", null);
+        selectedFarmId = shp.getString("selectedFarmId",null);
+
+        // Update the TextView with the selected farm name
+        farmId_home.setText(selectedFarmName);
+        Toast.makeText(getContext(), "farmName"+selectedFarmName, Toast.LENGTH_SHORT).show();*/
+        //Log.d("farmIDHome" , selectedFarmId);
+       // Log.d("farmNameHome" , selectedFarmName);
     }
 
 }

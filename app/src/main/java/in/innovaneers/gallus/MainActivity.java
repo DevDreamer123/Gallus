@@ -64,16 +64,10 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        float radius = getResources().getDimension(R.dimen.radius_corner);
-        //BottomAppBar bottomAppBar = findViewById(R.id.bottomAppBar);
 
-       /* MaterialShapeDrawable bottomBarBackground = (MaterialShapeDrawable) bottomAppBar.getBackground();
-        bottomBarBackground.setShapeAppearanceModel(
-                bottomBarBackground.getShapeAppearanceModel()
-                        .toBuilder()
-                        .setTopRightCorner(CornerFamily.ROUNDED,radius)
-                        .setTopLeftCorner(CornerFamily.ROUNDED,radius)
-                        .build());*/
+
+
+
         showHomeFragment();
         bottomNavigationView = findViewById(R.id.bottom_navigation);
       //  bottomNavigationView = findViewById(R.id.bottonnav);
@@ -124,8 +118,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        //fab_msg.setOnClickListener(v -> openWhatsAppChat("1234567890", "Hello! I need help.")); // Use a valid phone number
-
 
     }
 

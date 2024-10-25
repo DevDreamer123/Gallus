@@ -8,11 +8,11 @@ public class BatchListModel {
     @SerializedName("BatchID")
     private String BatchID;
     @SerializedName("FarmID")
-    private String FarmID = null;
+    private String FarmID;
     @SerializedName("Chicks")
-    private String Chicks = null;
+    private String Chicks;
     @SerializedName("FreeChicks")
-    private String FreeChicks = null;
+    private String FreeChicks;
     @SerializedName("FeedingCost")
     private float FeedingCost;
     @SerializedName("TotalCost")
@@ -22,17 +22,23 @@ public class BatchListModel {
     @SerializedName("PurchaseRate")
     private float PurchaseRate;
     @SerializedName("Date")
-    private String Date = null;
+    private String Date;
     @SerializedName("FeedConsumption")
-    private String FeedConsumption = null;
+    private String FeedConsumption;
     @SerializedName("WaterConsumption")
-    private String WaterConsumption = null;
+    private String WaterConsumption;
     @SerializedName("Medicine")
-    private String Medicine = null;
+    private String Medicine;
     @SerializedName("Vaccine")
-    private String Vaccine = null;
+    private String Vaccine ;
     @SerializedName("BodyWeight")
-    private String BodyWeight = null;
+    private String BodyWeight ;
+    @SerializedName("ReadyToSell")
+    private String ReadyToSell;
+    @SerializedName("SellAmount")
+    private String SellAmount ;
+    @SerializedName("SellingDate")
+    private String SellingDate ;
 
 
     // Getter Methods
@@ -157,5 +163,29 @@ public class BatchListModel {
 
     public void setBodyWeight(String BodyWeight) {
         this.BodyWeight = BodyWeight;
+    }
+
+    public String getSellingDate() {
+        return SellingDate;
+    }
+
+    public void setSellingDate(String sellingDate) {
+        SellingDate = sellingDate;
+    }
+
+    public String getSellAmount() {
+        return SellAmount;
+    }
+
+    public void setSellAmount(String sellAmount) {
+        SellAmount = sellAmount;
+    }
+
+    public String getReadyToSell() {
+        return ReadyToSell;
+    }
+
+    public void setReadyToSell(String readyToSell) {
+        ReadyToSell = readyToSell;
     }
 }

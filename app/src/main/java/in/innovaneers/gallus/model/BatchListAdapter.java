@@ -34,7 +34,7 @@ public class BatchListAdapter extends RecyclerView.Adapter<BatchListAdapter.View
     @Override
     public void onBindViewHolder(@NonNull BatchListAdapter.ViewHolder holder, int position) {
         final BatchListModel batchListModel = batchListModels.get(position);
-        holder.totalcost_batch_adapter.setText(batchListModel.getTotalCost());
+        holder.totalcost_batch_adapter.setText(String.valueOf(batchListModel.getPurchaseRate()));
         holder.bodyweight_batch_adapter.setText(batchListModel.getBodyWeight());
         holder.date_batch_adpter.setText(batchListModel.getDate());
         holder.chicks_batch_adapter.setText(batchListModel.getChicks());

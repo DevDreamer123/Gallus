@@ -22,6 +22,8 @@ public interface ApiInterface {
 
     @POST("Batches/Add")  //batch
     Call<RegistrationResponseModel> addBatch(@Body BatchRequestModel batchRequestModel);
+    @POST("Batches/Add")  //batch
+    Call<RegistrationResponseModel> addBatchInFarm(@Body BatchRequestModel batchRequestModel);
     @POST("Batches/List")  //batchList
     Call<List<BatchListModel>> ListBatch(@Body FarmIdModel farmIdModel);
 
